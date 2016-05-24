@@ -3,13 +3,14 @@ using Android.App;
 using Android.Content;
 using Android.Widget;
 using Android.OS;
+using Android.Preferences;
 using Android.Support.V7.App;
 using ZSProduct;
 using AlertDialog = Android.App.AlertDialog;
 
 namespace App2
 {
-    [Activity(Label = "ZSProduct_V2_5", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.AppCompat.Light.NoActionBar")]
+    [Activity(Label = "ZSProduct_V2_5", Icon = "@drawable/icon", Theme = "@style/Theme.AppCompat.Light.NoActionBar")]
     public class MainActivity : AppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
@@ -31,6 +32,13 @@ namespace App2
 
                 if (nif != "" && username != "" && password != "")
                 {
+                        var pref = Application.Context.GetSharedPreferences("UserInfo",
+                            FileCreationMode.Private);
+                        var edit = pref.Edit();
+                        edit.PutString("nif", nif);
+                        edit.PutString("username", username);
+                        edit.PutString("password", password);
+                        edit.Apply();
                     var zsHandler = new ZSClient(username, password, 0, nif);
                     zsHandler.Login();
                     if (zsHandler.Login())
