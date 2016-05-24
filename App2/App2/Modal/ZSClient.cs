@@ -4,11 +4,11 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Net;
 using System.Text;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Android.Content;
 using ZSProduct.Modal;
+using String = System.String;
+using System.Threading;
 
 
 namespace ZSProduct
@@ -16,9 +16,7 @@ namespace ZSProduct
     public class ZSClient
     {
         public string hash { get; set; }
-
-        public int nLojas { get; set; }
-        bool isAutenticated;
+        bool _isAutenticated;
         string username;
         string password;
         string nif;
@@ -59,7 +57,7 @@ namespace ZSProduct
                     Console.WriteLine("Autenticado com sucesso");
                     //Get the other values
                     this.hash = (element["Response"]["Content"]["auth_hash"]).ToString();
-                    this.isAutenticated = true;
+                    this._isAutenticated = true;
                     Console.WriteLine(this.hash);
                     return true;
                 }
@@ -69,7 +67,7 @@ namespace ZSProduct
             catch
             {
                 Console.WriteLine("Falhou login.Verifique conecçao.");
-                this.isAutenticated = false;
+                this._isAutenticated = false;
                 return false;
             }
 
@@ -80,7 +78,7 @@ namespace ZSProduct
 
         public string GetProductCode(string barCode)
         {
-            if (isAutenticated)
+            if (_isAutenticated)
             {
                 try
                 {
@@ -108,7 +106,7 @@ namespace ZSProduct
                 catch
                 {
                     Console.WriteLine("Falhou obter producto.Verifique conecçao.");
-                    this.isAutenticated = false;
+                    this._isAutenticated = false;
                     return null;
                 }
             }
@@ -121,22 +119,30 @@ namespace ZSProduct
 
         //-----------------------------------------------------------
 
-        public List<string> getProducts()
+        public List<string> GetProducts()
         {
-            if (isAutenticated)
+            if (_isAutenticated)
             {
-                try
-                {
-                    string request = "{\"auth_hash\":\"" + hash + "\"}";
-                    byte[] dataBytes = Encoding.UTF8.GetBytes(request);
-                    WebClient wc = new WebClient();
+                /*try
+                {*/
+
+                //curl -k https://api.zonesoft.org/v1.5/Products/getInstances -H 'Content-type: application/json' - X POST - d '{"auth_hash":"6d3eb84c5e4e916d0f3255d326da65387f65e1d8","product":{ "offset":150}}' 
+
+                //string request = "{\"auth_hash\":\"" + hash + "\"," + "\"auth_hash\":\"" + hash}";
+                var val = 0;
+                /*do
+                {*/
+                    Console.WriteLine("\n\n\n\nval= " + val + "\n\n\n\n");
+                    var request = "{\"auth_hash\":\"" + hash + "\",\"product\":{\"offset\":\"" + val + "\"}}";
+                    var dataBytes = Encoding.UTF8.GetBytes(request);
+                    var wc = new WebClient();
                     wc.Headers.Add(HttpRequestHeader.ContentType, "application/json; charset=utf-8");
                     Console.WriteLine(request);
-                    byte[] responseBytes = wc.UploadData(new Uri("https://api.zonesoft.org/v1.6/Products/getInstances"), "POST", dataBytes);
-                    string responseString = Encoding.UTF8.GetString(responseBytes);
+                    var responseBytes = wc.UploadData(new Uri("https://api.zonesoft.org/v1.6/Products/getInstances"), "POST", dataBytes);
+                    var responseString = Encoding.UTF8.GetString(responseBytes);
 
                     //Parse the string to a JsonObject
-                    JObject element = JObject.Parse(responseString);
+                    var element = JObject.Parse(responseString);
                     if (((int)element["Response"]["StatusCode"]) == 200)
                     {
                         Console.WriteLine("Produto obtido com sucesso");
@@ -145,40 +151,45 @@ namespace ZSProduct
                         Console.WriteLine(array);
                         foreach (var content in array)
                         {
-                            Product singleProduct = new Product(content["descricaocurta"].ToString(),
-                                                    (uint)content["codigo"],
-                                                    (uint)content["loja"],
-                                                    (uint)content["qtdstock"],
-                                                    (string)content["codbarras"],
-                                                    (double)content["precovenda"],
-                                                    (double)content["pvp2"]);
-                            Console.WriteLine("Código: " + content["codigo"] + ": \n" + "Loja: " + content["loja"] + "\nStock: " + content["qtdstock"] + "\nCod. Barras : " + content["codbarras"] + "\npreco venda: " + content["precovenda"] + "\n pvp2: " + content["pvp2"]);
+                            var singleProduct = new Product(content["descricaocurta"].ToString(),
+                                (uint)content["codigo"],
+                                (uint)content["loja"],
+                                (uint)content["qtdstock"],
+                                (string)content["codbarras"],
+                                (double)content["precovenda"],
+                                (double)content["pvp2"]);
+                            Console.WriteLine("Código: " + content["codigo"] + ": \n" + "Loja: " + content["loja"] +
+                                              "\nStock: " + content["qtdstock"] + "\nCod. Barras : " +
+                                              content["codbarras"] + "\npreco venda: " + content["precovenda"] +
+                                              "\n pvp2: " + content["pvp2"]);
                             productInStore.Add(singleProduct);
                         }
-                        return null;
-
                     }
-                    return null;
-                }
+                    val += 250;
+                    Thread.Sleep(500);
+                /*} while (val < 20000);*/
+
+                return null;
+                /*}
                 catch
                 {
                     Console.WriteLine("Falhou obter producto.Verifique conecçao.");
-                    this.isAutenticated = false;
+                    this._isAutenticated = false;
                     return null;
-                }
+                }*/
             }
             return null;
         }
 
         //-----------------------------------------------------------
 
-        public int getProductsCount() => productInStore.Count;
+        public int GetProductsCount() => productInStore.Count;
 
         //-----------------------------------------------------------
 
-        public string getSuppliers()
+        public string GetSuppliers()
         {
-            if (isAutenticated)
+            if (_isAutenticated)
             {
                 try
                 {
@@ -213,7 +224,7 @@ namespace ZSProduct
                 catch
                 {
                     Console.WriteLine("Falhou obter dados do fornecedor. Verifique conecçao.");
-                    this.isAutenticated = false;
+                    this._isAutenticated = false;
                     return null;
                 }
             }
@@ -222,13 +233,13 @@ namespace ZSProduct
 
         //-----------------------------------------------------------
 
-        public string getSupplierNameWithId(int id) => (from item in suppliers where item.GetId() == id select item.GetName()).FirstOrDefault();
+        public string GetSupplierNameWithId(int id) => (from item in suppliers where item.GetId() == id select item.GetName()).FirstOrDefault();
 
         //-----------------------------------------------------------
 
         public List<string> GetStores()
         {
-            if (isAutenticated)
+            if (_isAutenticated)
             {
                 try
                 {
@@ -268,7 +279,7 @@ namespace ZSProduct
                 catch
                 {
                     Console.WriteLine("Falhou obter lojas.Verifique conecçao.");
-                    this.isAutenticated = false;
+                    this._isAutenticated = false;
                     return null;
                 }
             }
@@ -283,7 +294,7 @@ namespace ZSProduct
 
         public string GetStockForStoresWithProductCode(string productCode)
         {
-            if (isAutenticated)
+            if (_isAutenticated)
             {
                 try
                 {
@@ -312,7 +323,7 @@ namespace ZSProduct
                 catch
                 {
                     Console.WriteLine("Falhou o acesso a internet.Verifique conecçao.");
-                    this.isAutenticated = false;
+                    this._isAutenticated = false;
                     return null;
                 }
 
@@ -320,6 +331,31 @@ namespace ZSProduct
             }
             return null;
         }
+
+        //-----------------------------------------------------------
+
+        public int TotalStores()
+        {
+            var terminar = true;
+            var nLojas = 0;
+            do
+            {
+                var request = "{\"auth_hash\":\"" + hash + "\",\"store\":{\"codigo\":\"" + nLojas + "\"}}";
+                var dataBytes = Encoding.UTF8.GetBytes(request);
+                var wc = new WebClient();
+                wc.Headers.Add(HttpRequestHeader.ContentType, "application/json; charset=utf-8");
+                var responseBytes = wc.UploadData(new Uri("https://api.zonesoft.org/v1.6/Stores/getInstance"), "POST",
+                    dataBytes);
+                var responseString = Encoding.UTF8.GetString(responseBytes);
+                var element = JObject.Parse(responseString);
+
+                if ((int)element["Response"]["StatusCode"] != 200) continue;
+                if ((string)element["Response"]["Content"]["store"]["descricao"] == "")
+                    terminar = false;
+                nLojas++;
+                Thread.Sleep(500);
+            } while (terminar);
+            return nLojas - 2; //Shop 0 and last store are added, but do not count
+        }
     }
-    //End of Class declaration
 }

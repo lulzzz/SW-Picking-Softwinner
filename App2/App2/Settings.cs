@@ -26,9 +26,9 @@ namespace App2
              };
         }
 
-        public override void Finish()
+        /*public override void Finish()
         {
             Toast.MakeText(this, "Fechar!", ToastLength.Short).Show();
-        }
+        }*/
     }
 }

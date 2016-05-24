@@ -1770,6 +1770,7 @@ containing a value of this type.
         public static final int select_dialog_singlechoice_material=0x7f030026;
         public static final int settings=0x7f030027;
         public static final int support_simple_spinner_dropdown_item=0x7f030028;
+        public static final int test1=0x7f030029;
     }
     public static final class string {
         public static final int ApplicationName=0x7f050015;

@@ -1504,6 +1504,9 @@ namespace App2
 			// aapt resource value: 0x7f0b006d
 			public const int btnPreencher = 2131427437;
 			
+			// aapt resource value: 0x7f0b007c
+			public const int btnTerminarSessao = 2131427452;
+			
 			// aapt resource value: 0x7f0b002b
 			public const int buttonPanel = 2131427371;
 			
@@ -1536,6 +1539,9 @@ namespace App2
 			
 			// aapt resource value: 0x7f0b000c
 			public const int disableHome = 2131427340;
+			
+			// aapt resource value: 0x7f0b007b
+			public const int editText1 = 2131427451;
 			
 			// aapt resource value: 0x7f0b0043
 			public const int edit_query = 2131427395;
@@ -1970,6 +1976,9 @@ namespace App2
 			
 			// aapt resource value: 0x7f030028
 			public const int support_simple_spinner_dropdown_item = 2130903080;
+			
+			// aapt resource value: 0x7f030029
+			public const int test1 = 2130903081;
 			
 			static Layout()
 			{
