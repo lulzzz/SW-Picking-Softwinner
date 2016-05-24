@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <ImageView
+        android:src="@drawable/circle_icon_softwinner"
+        android:layout_width="match_parent"
+        android:layout_height="360.0dp"
+        android:id="@+id/imageView1"
+        android:layout_marginTop="72dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="ZSProduct"
+        android:textSize="40sp"
+        android:textColor="#333333" />
+    <TextView
+        android:text="Copyrights © 2016, Softwinner"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1"
+        android:gravity="center_horizontal" />
+    <ImageView
+        android:src="@drawable/header_block"
+        android:layout_width="match_parent"
+        android:layout_height="43.5dp"
+        android:id="@+id/imgLogoSoftWinner"
+        android:layout_marginBottom="0.0dp"
+        android:layout_marginTop="0.0dp"
+        android:maxHeight="50px"
+        android:maxWidth="50px"
+        android:minHeight="50px"
+        android:minWidth="50px"
+        android:layout_marginLeft="0.0dp"
+        android:onClick="http://www.softwinner.pt" />
+</LinearLayout>
