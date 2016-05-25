@@ -11,19 +11,26 @@
         android:layout_marginLeft="50px"
         android:layout_marginRight="50px">
         <TextView
-            android:text="Número de Lojas:"
+            android:text="Offline/Online:"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_width="162.5dp"
             android:layout_height="match_parent"
-            android:id="@+id/textView1"
+            android:id="@+id/lblOnOffLine"
             android:layout_gravity="center"
             android:layout_marginTop="30px" />
-        <EditText
-            android:inputType="number"
-            android:layout_width="107.0dp"
+        <Switch
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/editText1" />
+            android:id="@+id/switch1"
+            android:checked="true" />
     </LinearLayout>
+    <Button
+        android:text="Guardar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnGuardar"
+        android:layout_marginLeft="50px"
+        android:layout_marginRight="50px" />
     <Button
         android:text="Terminar Sessão"
         android:layout_width="match_parent"

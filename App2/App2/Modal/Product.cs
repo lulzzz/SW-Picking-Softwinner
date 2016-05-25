@@ -10,12 +10,14 @@ namespace ZSProduct
         private uint store;
         private uint stock;
         private uint supplierId;
-        private string barCode;
-        string description;
-        double priceOfSale;
-        double pvp2;
+        private readonly string barCode;
+        private readonly string description;
+        private readonly double priceOfSale;
+        private double pvp2;
+        private string reference;
+        private string pcu;
 
-        public Product(string description, uint productCode, uint store, uint stock, string barCode, double price, double pvp2)
+        public Product(string description, uint productCode, uint store, uint stock, string barCode, double price, double pvp2, string reference, string pcu)
         {
             this.productCode = productCode;
             this.description = description;
@@ -24,6 +26,8 @@ namespace ZSProduct
             this.barCode = barCode;
             this.priceOfSale = price;
             this.pvp2 = pvp2;
+            this.reference = reference;
+            this.pcu = pcu;
 
         }
 
@@ -40,5 +44,9 @@ namespace ZSProduct
         public double GetPvp2() => pvp2;
 
         public uint GetStock() => stock;
+
+        public string GetReference() => reference;
+
+        public string GetPcu() => pcu;
     }
 }

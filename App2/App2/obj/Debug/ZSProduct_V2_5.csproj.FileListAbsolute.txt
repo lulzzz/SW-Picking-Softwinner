@@ -45,6 +45,5 @@ C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwi
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\App2\App2\obj\Debug\res\drawable\icon.png
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\App2\App2\obj\Debug\R.cs.flag
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\App2\App2\obj\Debug\uploadflags.txt
-C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\App2\App2\obj\Debug\res\layout\test1.xml
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\App2\App2\obj\Debug\App2.dll.mdb
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\App2\App2\bin\Debug\App2.dll.mdb

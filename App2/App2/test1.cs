@@ -20,7 +20,7 @@ namespace App2
         {
             base.OnCreate(savedInstanceState);
 
-            SetContentView(Resource.Layout.test1);
+            //SetContentView(Resource.Layout.test1);
         }
     }
 }

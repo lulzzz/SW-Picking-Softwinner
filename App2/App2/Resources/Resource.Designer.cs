@@ -1498,14 +1498,17 @@ namespace App2
 			// aapt resource value: 0x7f0b0018
 			public const int beginning = 2131427352;
 			
+			// aapt resource value: 0x7f0b007d
+			public const int btnGuardar = 2131427453;
+			
 			// aapt resource value: 0x7f0b006c
 			public const int btnLogin = 2131427436;
 			
 			// aapt resource value: 0x7f0b006d
 			public const int btnPreencher = 2131427437;
 			
-			// aapt resource value: 0x7f0b007c
-			public const int btnTerminarSessao = 2131427452;
+			// aapt resource value: 0x7f0b007e
+			public const int btnTerminarSessao = 2131427454;
 			
 			// aapt resource value: 0x7f0b002b
 			public const int buttonPanel = 2131427371;
@@ -1539,9 +1542,6 @@ namespace App2
 			
 			// aapt resource value: 0x7f0b000c
 			public const int disableHome = 2131427340;
-			
-			// aapt resource value: 0x7f0b007b
-			public const int editText1 = 2131427451;
 			
 			// aapt resource value: 0x7f0b0043
 			public const int edit_query = 2131427395;
@@ -1582,11 +1582,11 @@ namespace App2
 			// aapt resource value: 0x7f0b0079
 			public const int info = 2131427449;
 			
-			// aapt resource value: 0x7f0b0059
-			public const int lblCodigo = 2131427417;
+			// aapt resource value: 0x7f0b0055
+			public const int lblCodBarras = 2131427413;
 			
 			// aapt resource value: 0x7f0b0057
-			public const int lblCodigoBarras = 2131427415;
+			public const int lblCodigo = 2131427415;
 			
 			// aapt resource value: 0x7f0b005d
 			public const int lblDescricao = 2131427421;
@@ -1594,20 +1594,23 @@ namespace App2
 			// aapt resource value: 0x7f0b005f
 			public const int lblFornecedor = 2131427423;
 			
-			// aapt resource value: 0x7f0b0061
-			public const int lblPVP1 = 2131427425;
-			
-			// aapt resource value: 0x7f0b0063
-			public const int lblPVP2 = 2131427427;
+			// aapt resource value: 0x7f0b007b
+			public const int lblOnOffLine = 2131427451;
 			
 			// aapt resource value: 0x7f0b0067
-			public const int lblPrecoMedio = 2131427431;
+			public const int lblPcm = 2131427431;
 			
 			// aapt resource value: 0x7f0b0065
-			public const int lblPrecoUnico = 2131427429;
+			public const int lblPcu = 2131427429;
 			
-			// aapt resource value: 0x7f0b005b
-			public const int lblRef = 2131427419;
+			// aapt resource value: 0x7f0b0061
+			public const int lblPvp1 = 2131427425;
+			
+			// aapt resource value: 0x7f0b0063
+			public const int lblPvp2 = 2131427427;
+			
+			// aapt resource value: 0x7f0b0059
+			public const int lblRef = 2131427417;
 			
 			// aapt resource value: 0x7f0b0073
 			public const int line1 = 2131427443;
@@ -1618,11 +1621,11 @@ namespace App2
 			// aapt resource value: 0x7f0b0054
 			public const int linearLayout1 = 2131427412;
 			
-			// aapt resource value: 0x7f0b0055
-			public const int linearLayout2 = 2131427413;
+			// aapt resource value: 0x7f0b005b
+			public const int linearLayout2 = 2131427419;
 			
-			// aapt resource value: 0x7f0b0056
-			public const int linearLayout3 = 2131427414;
+			// aapt resource value: 0x7f0b005c
+			public const int linearLayout3 = 2131427420;
 			
 			// aapt resource value: 0x7f0b0009
 			public const int listMode = 2131427337;
@@ -1738,6 +1741,9 @@ namespace App2
 			// aapt resource value: 0x7f0b004c
 			public const int submit_area = 2131427404;
 			
+			// aapt resource value: 0x7f0b007c
+			public const int switch1 = 2131427452;
+			
 			// aapt resource value: 0x7f0b000b
 			public const int tabMode = 2131427339;
 			
@@ -1765,11 +1771,11 @@ namespace App2
 			// aapt resource value: 0x7f0b002e
 			public const int topPanel = 2131427374;
 			
-			// aapt resource value: 0x7f0b005a
-			public const int txtCodigo = 2131427418;
+			// aapt resource value: 0x7f0b0056
+			public const int txtCodBarras = 2131427414;
 			
 			// aapt resource value: 0x7f0b0058
-			public const int txtCodigoBarras = 2131427416;
+			public const int txtCodigo = 2131427416;
 			
 			// aapt resource value: 0x7f0b005e
 			public const int txtDescricao = 2131427422;
@@ -1780,23 +1786,23 @@ namespace App2
 			// aapt resource value: 0x7f0b0069
 			public const int txtNif = 2131427433;
 			
-			// aapt resource value: 0x7f0b0062
-			public const int txtPVP1 = 2131427426;
-			
-			// aapt resource value: 0x7f0b0064
-			public const int txtPVP2 = 2131427428;
-			
 			// aapt resource value: 0x7f0b006b
 			public const int txtPassword = 2131427435;
 			
 			// aapt resource value: 0x7f0b0068
-			public const int txtPrecoMedio = 2131427432;
+			public const int txtPcm = 2131427432;
 			
 			// aapt resource value: 0x7f0b0066
-			public const int txtPrecoUnico = 2131427430;
+			public const int txtPcu = 2131427430;
 			
-			// aapt resource value: 0x7f0b005c
-			public const int txtRef = 2131427420;
+			// aapt resource value: 0x7f0b0062
+			public const int txtPvp1 = 2131427426;
+			
+			// aapt resource value: 0x7f0b0064
+			public const int txtPvp2 = 2131427428;
+			
+			// aapt resource value: 0x7f0b005a
+			public const int txtRef = 2131427418;
 			
 			// aapt resource value: 0x7f0b006a
 			public const int txtUsername = 2131427434;
@@ -1976,9 +1982,6 @@ namespace App2
 			
 			// aapt resource value: 0x7f030028
 			public const int support_simple_spinner_dropdown_item = 2130903080;
-			
-			// aapt resource value: 0x7f030029
-			public const int test1 = 2130903081;
 			
 			static Layout()
 			{

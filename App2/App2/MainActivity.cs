@@ -5,6 +5,7 @@ using Android.Widget;
 using Android.OS;
 using Android.Preferences;
 using Android.Support.V7.App;
+using App2.Modal;
 using ZSProduct;
 using AlertDialog = Android.App.AlertDialog;
 
@@ -32,13 +33,11 @@ namespace App2
 
                 if (nif != "" && username != "" && password != "")
                 {
-                        var pref = Application.Context.GetSharedPreferences("UserInfo",
-                            FileCreationMode.Private);
-                        var edit = pref.Edit();
-                        edit.PutString("nif", nif);
-                        edit.PutString("username", username);
-                        edit.PutString("password", password);
-                        edit.Apply();
+                    var saveData = new ZsManager();
+                    saveData.AddItem(nif, "nif");
+                    saveData.AddItem(username, "username");
+                    saveData.AddItem(password, "password");
+                    saveData.AddItem("1", "mode");
                     var zsHandler = new ZSClient(username, password, 0, nif);
                     zsHandler.Login();
                     if (zsHandler.Login())

@@ -22,13 +22,13 @@ namespace App2
                  edit.Clear();
                  edit.Apply();
                  Toast.MakeText(this, "Sessão terminada com sucesso!", ToastLength.Short).Show();
-                 StartActivity(typeof(MainActivity));   
+                 StartActivity(typeof(MainActivity));
              };
         }
+        //public override void Finish()
+        //{
+        //    Toast.MakeText(this, "Fechar!", ToastLength.Short).Show();
+        //}
 
-        /*public override void Finish()
-        {
-            Toast.MakeText(this, "Fechar!", ToastLength.Short).Show();
-        }*/
     }
 }

@@ -68,6 +68,7 @@
     <Compile Include="Modal\Store.cs" />
     <Compile Include="Modal\Supplier.cs" />
     <Compile Include="Modal\ZSClient.cs" />
+    <Compile Include="Modal\ZSManager.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
@@ -77,16 +78,13 @@
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
-    <AndroidResource Include="Resources\layout\Dashboard.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
     <AndroidResource Include="Resources\layout\About.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\Settings.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\test1.axml">
+    <AndroidResource Include="Resources\layout\Dashboard.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
