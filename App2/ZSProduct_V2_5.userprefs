@@ -1,0 +1,19 @@
+﻿<Properties StartupItem="App2/ZSProduct_V2_5.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.0000583404150800" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="App2/Modal/ZSClient.cs">
+    <Files>
+      <File FileName="App2/Dashboard.cs" Line="86" Column="45" />
+      <File FileName="App2/Modal/ZSManager.cs" Line="17" Column="24" />
+      <File FileName="App2/Modal/ZSClient.cs" Line="315" Column="1" />
+      <File FileName="App2/Modal/Product.cs" Line="6" Column="22" />
+      <File FileName="App2/MainActivity.cs" Line="1" Column="1" />
+      <File FileName="App2/Settings.cs" Line="1" Column="1" />
+      <File FileName="App2/Properties/AndroidManifest.xml" Line="7" Column="12" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.ZSProduct__V2__5 AndroidDesignerPreferredDevice="Nexus 4" />
+</Properties>

@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <RelativeLayout
+        android:id="@+id/RelativeLayout01"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:minWidth="25px"
+            android:minHeight="25px">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:id="@+id/linearLayout1"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:paddingTop="8dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+                <ImageView
+                    android:src="@drawable/ic_language_black_18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageView1"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp" />
+                <TextView
+                    android:text="Código de Barras"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/lblCodBarras"
+                    android:textSize="16sp"
+                    android:layout_weight=".40"
+                    android:gravity="center_vertical"
+                    android:textStyle="bold" />
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="16sp"
+                    android:layout_weight=".40"
+                    android:id="@+id/txtCodBarras" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:id="@+id/linearLayout1"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:paddingTop="8dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+                <ImageView
+                    android:src="@drawable/ic_language_black_18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageView1"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp" />
+                <TextView
+                    android:text="Código"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/lblCodigo"
+                    android:textSize="16sp"
+                    android:layout_weight=".40"
+                    android:gravity="center_vertical"
+                    android:textStyle="bold" />
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="16sp"
+                    android:layout_weight=".40"
+                    android:id="@+id/txtCodigo" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:id="@+id/linearLayout1"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:paddingTop="8dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+                <ImageView
+                    android:src="@drawable/ic_language_black_18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageView1"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp" />
+                <TextView
+                    android:text="Referência"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/lblRef"
+                    android:textSize="16sp"
+                    android:layout_weight=".40"
+                    android:gravity="center_vertical"
+                    android:textStyle="bold" />
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="16sp"
+                    android:layout_weight=".40"
+                    android:id="@+id/txtRef" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:id="@+id/linearLayout1"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:paddingTop="8dp"
+                android:paddingLeft="16dp">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="383.0dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/linearLayout2"
+                    android:layout_marginBottom="13.0dp">
+                    <ImageView
+                        android:src="@drawable/ic_language_black_18dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/imageView1"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp" />
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="319.0dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/linearLayout3">
+                        <TextView
+                            android:text="Descrição"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/lblDescricao"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:layout_marginTop="8dp" />
+                        <TextView
+                            android:text="Descrição do Produto"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/txtDescricao"
+                            android:inputType="textMultiLine"
+                            android:textSize="14sp"
+                            android:paddingTop="8dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:id="@+id/linearLayout1"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:paddingTop="8dp"
+                android:paddingLeft="16dp">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="383.0dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/linearLayout2"
+                    android:layout_marginBottom="13.0dp">
+                    <ImageView
+                        android:src="@drawable/ic_language_black_18dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/imageView1"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp" />
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="319.0dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/linearLayout3">
+                        <TextView
+                            android:text="Fornecedor"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/lblFornecedor"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:layout_marginTop="8dp" />
+                        <TextView
+                            android:text="Fornecedor do Produto"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/txtFornecedor"
+                            android:inputType="textMultiLine"
+                            android:textSize="14sp"
+                            android:paddingTop="8dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:id="@+id/linearLayout1"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:paddingTop="8dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+                <ImageView
+                    android:src="@drawable/ic_language_black_18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageView1"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp" />
+                <TextView
+                    android:text="PVP 1"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/lblPvp1"
+                    android:textSize="16sp"
+                    android:layout_weight=".40"
+                    android:gravity="center_vertical"
+                    android:textStyle="bold" />
+                <TextView
+                    android:text="€ 0,00"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/txtPvp1"
+                    android:textSize="16sp"
+                    android:layout_weight=".40"
+                    android:gravity="center" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:id="@+id/linearLayout1"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:paddingTop="8dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+                <ImageView
+                    android:src="@drawable/ic_language_black_18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageView1"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp" />
+                <TextView
+                    android:text="PVP 2"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/lblPvp2"
+                    android:textSize="16sp"
+                    android:layout_weight=".40"
+                    android:gravity="center_vertical"
+                    android:textStyle="bold" />
+                <TextView
+                    android:text="€ 0,00"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/txtPvp2"
+                    android:textSize="16sp"
+                    android:layout_weight=".40"
+                    android:gravity="center" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:id="@+id/linearLayout1"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:paddingTop="8dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+                <ImageView
+                    android:src="@drawable/ic_language_black_18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageView1"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp" />
+                <TextView
+                    android:text="Preço de Custo Último"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/lblPcu"
+                    android:textSize="16sp"
+                    android:layout_weight=".40"
+                    android:gravity="center_vertical"
+                    android:textStyle="bold" />
+                <TextView
+                    android:text="€ 0,00"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/txtPcu"
+                    android:textSize="16sp"
+                    android:layout_weight=".40"
+                    android:gravity="center" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:id="@+id/linearLayout1"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:paddingTop="8dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+                <ImageView
+                    android:src="@drawable/ic_language_black_18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageView1"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp" />
+                <TextView
+                    android:text="Preço de Custo Medio"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/lblPcm"
+                    android:textSize="16sp"
+                    android:layout_weight=".40"
+                    android:gravity="center_vertical"
+                    android:textStyle="bold" />
+                <TextView
+                    android:text="€ 0,00"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/txtPcm"
+                    android:textSize="16sp"
+                    android:layout_weight=".40"
+                    android:gravity="center" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>
