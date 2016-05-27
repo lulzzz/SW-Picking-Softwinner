@@ -315,7 +315,7 @@ namespace ZSProduct
 			var responseBytes = wc.UploadData (new Uri ("https://api.zonesoft.org/v1.6/Products/getInstances"), "POST", dataBytes);
 			var responseString = Encoding.UTF8.GetString (responseBytes);
 			var element = JObject.Parse (responseString);
-			if (((int)element ["Response"] ["StatusCode"]) == 200) {
+			if ((int)element ["Response"] ["StatusCode"] == 200) {
 				Console.WriteLine ("Produto obtido com sucesso");
 				//Get the values and build Product object for each element
 				var array = JArray.Parse (element ["Response"] ["Content"] ["product"].ToString ());
