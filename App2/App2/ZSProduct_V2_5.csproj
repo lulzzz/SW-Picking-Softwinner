@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="About.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Modal\AdapterListView.cs" />
     <Compile Include="Modal\Product.cs" />
     <Compile Include="Modal\Store.cs" />
     <Compile Include="Modal\Supplier.cs" />
@@ -83,6 +84,9 @@
     </AndroidResource>
     <AndroidResource Include="Resources\layout\Dashboard.axml" />
     <AndroidResource Include="Resources\layout\Pdt.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ListViewRow.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
