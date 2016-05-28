@@ -9,12 +9,13 @@
         android:layout_height="49.0dp"
         android:id="@+id/linearLayout1">
         <EditText
-            android:layout_width="317.5dp"
+            android:layout_width="342.0dp"
             android:layout_height="match_parent"
             android:id="@+id/txtPdtCodBarras"
             android:hint="Código de Barras"
             android:inputType="number"
-            android:layout_marginLeft="20dp" />
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp" />
     </LinearLayout>
     <ListView
         android:minWidth="25px"

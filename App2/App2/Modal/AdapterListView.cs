@@ -26,6 +26,7 @@ namespace App2.Modal
             view.FindViewById<EditText>(Resource.Id.txtAdapterQtdProd).Text = "1";
             view.FindViewById<TextView>(Resource.Id.txtAdapterProdDesc).Text = item.description;
             view.FindViewById<TextView>(Resource.Id.txtAdapterBarCode).Text = item.barCode;
+            view.FindViewById<ImageButton>(Resource.Id.imageButton1).Id = position;
             return view;
         }
 

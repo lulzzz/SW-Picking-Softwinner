@@ -1,20 +1,17 @@
-using System;
 using System.Collections.Generic;
 using Android.App;
 using Android.OS;
 using Android.Support.V7.App;
-using Android.Views;
 using Android.Widget;
 using App2.Modal;
 using ZSProduct;
-using Keycode = Android.InputMethodServices.Keycode;
 
 namespace App2
 {
     [Activity(Label = "Pdt", Theme = "@style/Theme.AppCompat.Light")]
     public class Pdt : AppCompatActivity
     {
-        private readonly List<Product> _cenas = new List<Product>();
+        private readonly List<Product> _productsList = new List<Product>();
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -39,7 +36,7 @@ namespace App2
             var zsHandler = new ZSClient(getUsername, getPassword, 0, getNif);
             zsHandler.Login();
             var existe = false;
-            foreach (var item in _cenas)
+            foreach (var item in _productsList)
                 if (item.barCode == txtPdtCodBarras.Text)
                     existe = true;
 
@@ -48,19 +45,17 @@ namespace App2
                 var product = zsHandler.GetProductWithBarCode(txtPdtCodBarras.Text);
                 if (product != null)
                 {
-                    _cenas.Add(product);
-                    FindViewById<ListView>(Resource.Id.listView1).Adapter = new AdapterListView(this, _cenas);
+                    _productsList.Add(product);
+                    FindViewById<ListView>(Resource.Id.listView1).Adapter = new AdapterListView(this, _productsList);
                 }
                 else
                 {
                     Toast.MakeText(this, "Produto inexistente", ToastLength.Short).Show();
-                    txtPdtCodBarras.Text = "";
+                    txtPdtCodBarras.Text = "iuug";
                 }
             }
             else
-            {
-                Toast.MakeText(this, "Produto já existente", ToastLength.Short).Show();
-            }
+                Toast.MakeText(this, "Produto já adicionado", ToastLength.Short).Show();
 
         }
 
