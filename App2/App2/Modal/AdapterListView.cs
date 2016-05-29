@@ -24,8 +24,8 @@ namespace App2.Modal
             var item = _products[position];
             var view = convertView ?? _context.LayoutInflater.Inflate(Resource.Layout.ListViewRow, null);
             view.FindViewById<EditText>(Resource.Id.txtAdapterQtdProd).Text = "1";
-            view.FindViewById<TextView>(Resource.Id.txtAdapterProdDesc).Text = item.description;
-            view.FindViewById<TextView>(Resource.Id.txtAdapterBarCode).Text = item.barCode;
+            view.FindViewById<TextView>(Resource.Id.txtAdapterProdDesc).Text = item.Description;
+            view.FindViewById<TextView>(Resource.Id.txtAdapterBarCode).Text = item.BarCode;
             view.FindViewById<ImageButton>(Resource.Id.imageButton1).Id = position;
             return view;
         }

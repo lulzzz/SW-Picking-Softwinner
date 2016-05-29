@@ -24,14 +24,16 @@
                 android:minHeight="25px"
                 android:paddingTop="8dp"
                 android:paddingLeft="16dp"
+                android:weightSum="100"
                 android:paddingRight="16dp">
                 <ImageView
-                    android:src="@drawable/ic_language_black_18dp"
+                    android:src="@drawable/ic_barcode_black_24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/imageView1"
                     android:paddingLeft="16dp"
-                    android:paddingRight="16dp" />
+                    android:paddingRight="16dp"
+                    android:layout_marginRight="0.0dp" />
                 <TextView
                     android:text="Código de Barras"
                     android:textAppearance="?android:attr/textAppearanceSmall"
@@ -39,15 +41,16 @@
                     android:layout_height="match_parent"
                     android:id="@+id/lblCodBarras"
                     android:textSize="16sp"
-                    android:layout_weight=".40"
+                    android:layout_weight="47"
                     android:gravity="center_vertical"
                     android:textStyle="bold" />
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:textSize="16sp"
-                    android:layout_weight=".40"
-                    android:id="@+id/txtCodBarras" />
+                    android:layout_weight="47"
+                    android:id="@+id/txtCodBarras"
+                    android:paddingRight="0px" />
             </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"
@@ -60,7 +63,7 @@
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp">
                 <ImageView
-                    android:src="@drawable/ic_language_black_18dp"
+                    android:src="@drawable/ic_language_black_24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/imageView1"
@@ -94,7 +97,7 @@
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp">
                 <ImageView
-                    android:src="@drawable/ic_language_black_18dp"
+                    android:src="@drawable/ic_label_black_24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/imageView1"
@@ -133,7 +136,7 @@
                     android:id="@+id/linearLayout2"
                     android:layout_marginBottom="13.0dp">
                     <ImageView
-                        android:src="@drawable/ic_language_black_18dp"
+                        android:src="@drawable/ic_description_black_24dp"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:id="@+id/imageView1"
@@ -181,7 +184,7 @@
                     android:id="@+id/linearLayout2"
                     android:layout_marginBottom="13.0dp">
                     <ImageView
-                        android:src="@drawable/ic_language_black_18dp"
+                        android:src="@drawable/ic_supplier_black_24dp"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:id="@+id/imageView1"
@@ -224,7 +227,7 @@
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp">
                 <ImageView
-                    android:src="@drawable/ic_language_black_18dp"
+                    android:src="@drawable/ic_euro_symbol_black_24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/imageView1"
@@ -261,7 +264,7 @@
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp">
                 <ImageView
-                    android:src="@drawable/ic_language_black_18dp"
+                    android:src="@drawable/ic_euro_symbol_black_24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/imageView1"
@@ -298,7 +301,7 @@
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp">
                 <ImageView
-                    android:src="@drawable/ic_language_black_18dp"
+                    android:src="@drawable/ic_lastprice_black_24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/imageView1"
@@ -335,7 +338,7 @@
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp">
                 <ImageView
-                    android:src="@drawable/ic_language_black_18dp"
+                    android:src="@drawable/ic_assessment_black_24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/imageView1"

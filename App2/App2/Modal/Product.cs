@@ -1,63 +1,63 @@
 using System;
-using Android.Hardware.Usb;
 
 namespace ZSProduct
 {
 	public class Product
 	{
-		public uint productCode;
-		public uint productRef;
-		public uint store;
-		public uint stock;
-		public uint supplierId;
-		public readonly string barCode;
-		public readonly string description;
-		public readonly double priceOfSale;
-		public double pvp2;
-		public string reference;
-		public string pcu;
+		public uint ProductCode;
+		public uint ProductRef;
+		public uint Store;
+		public uint Stock;
+		public string Supplier;
+		public readonly string BarCode;
+		public readonly string Description;
+		public readonly double PriceOfSale;
+		public double Pvp2;
+		public string Reference;
+		public double Pcu;
 
-		public Product (string description, uint productCode, uint store, uint stock, string barCode, double price, double pvp2, string reference, string pcu)
+		public Product (string description, uint productCode, uint store, uint stock, string barCode, double price, double pvp2, string reference, double pcu, string supplier)
 		{
-			this.productCode = productCode;
-			this.description = description;
-			this.store = store;
-			this.stock = stock;
-			this.barCode = barCode;
-			this.priceOfSale = price;
-			this.pvp2 = pvp2;
-			this.reference = reference;
-			this.pcu = pcu;
-
+			ProductCode = productCode;
+			Description = description;
+			Store = store;
+			Stock = stock;
+			BarCode = barCode;
+			PriceOfSale = price;
+			Pvp2 = pvp2;
+			Reference = reference;
+			Pcu = pcu;
+		    Supplier = supplier;
 		}
 
-		public void printProductDetails ()
+		public void PrintProductDetails ()
 		{
 			Console.WriteLine ("ProductName:" +
-			this.description + "\n" +
-			"Store:" + this.store + "\n" +
-			"Stock:" + this.stock + "\n" +
-			"BarCode:" + this.barCode + "\n" +
-			"PriceOfSale:" + this.priceOfSale + "\n" +
-			"pvp2:" + this.pvp2 + "\n" +
-			"Reference:" + this.reference + "\n" +
-			"UnitPrice:" + this.pcu + "\n"
+			Description + "\n" +
+			"Store:" + Store + "\n" +
+			"Stock:" + Stock + "\n" +
+			"BarCode:" + BarCode + "\n" +
+			"PriceOfSale:" + PriceOfSale + "\n" +
+			"pvp2:" + Pvp2 + "\n" +
+			"Reference:" + Reference + "\n" +
+			"UnitPrice:" + Pcu + "\n"
 			);
 		}
 
-		public static void printProductDetails (Product singleProduct)
+		public static void PrintProductDetails (Product singleProduct)
 		{
 			Console.WriteLine ("ProductName:" +
-			singleProduct.description + "\n" +
-			"Store:" + singleProduct.store + "\n" +
-			"Stock:" + singleProduct.stock + "\n" +
-			"BarCode:" + singleProduct.barCode + "\n" +
-			"PriceOfSale:" + singleProduct.priceOfSale + "\n" +
-			"pvp2:" + singleProduct.pvp2 + "\n" +
-			"Reference:" + singleProduct.reference + "\n" +
-			"UnitPrice:" + singleProduct.pcu + "\n"
+			singleProduct.Description + "\n" +
+			"Store:" + singleProduct.Store + "\n" +
+			"Stock:" + singleProduct.Stock + "\n" +
+			"BarCode:" + singleProduct.BarCode + "\n" +
+			"PriceOfSale:" + singleProduct.PriceOfSale + "\n" +
+			"pvp2:" + singleProduct.Pvp2 + "\n" +
+			"Reference:" + singleProduct.Reference + "\n" +
+			"UnitPrice:" + singleProduct.Pcu + "\n"
 			);
 		}
+
 		//        public string GetBarCode() => barCode;
 		//
 		//        public uint GetProductCode() => productCode;

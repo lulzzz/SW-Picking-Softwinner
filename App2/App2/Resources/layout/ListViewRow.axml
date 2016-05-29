@@ -45,14 +45,13 @@
             android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/linearLayout3">
-            <EditText
-                android:inputType="number"
-                android:id="@+id/txtAdapterQtdProd"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="right" />
-        </LinearLayout>
+            android:id="@+id/linearLayout3" />
+        <EditText
+            android:inputType="number"
+            android:id="@+id/txtAdapterQtdProd"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right" />
         <ImageButton
             android:src="@drawable/ic_delete_black_24dp"
             android:layout_width="wrap_content"

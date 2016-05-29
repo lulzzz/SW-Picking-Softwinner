@@ -1590,13 +1590,21 @@ containing a value of this type.
         public static final int abc_textfield_search_material=0x7f020044;
         public static final int circle_icon_softwinner=0x7f020045;
         public static final int header_block=0x7f020046;
-        public static final int ic_delete_black_24dp=0x7f020047;
-        public static final int ic_language_black_18dp=0x7f020048;
-        public static final int icon=0x7f020049;
-        public static final int notification_template_icon_bg=0x7f02004d;
-        public static final int pdt=0x7f02004a;
-        public static final int stock=0x7f02004b;
-        public static final int unnamed=0x7f02004c;
+        public static final int ic_assessment_black_24dp=0x7f020047;
+        public static final int ic_barcode_black_24dp=0x7f020048;
+        public static final int ic_delete_black_24dp=0x7f020049;
+        public static final int ic_description_black_24dp=0x7f02004a;
+        public static final int ic_euro_symbol_black_24dp=0x7f02004b;
+        public static final int ic_history_black_24dp=0x7f02004c;
+        public static final int ic_label_black_24dp=0x7f02004d;
+        public static final int ic_language_black_24dp=0x7f02004e;
+        public static final int ic_lastprice_black_24dp=0x7f02004f;
+        public static final int ic_supplier_black_24dp=0x7f020050;
+        public static final int icon=0x7f020051;
+        public static final int notification_template_icon_bg=0x7f020055;
+        public static final int pdt=0x7f020052;
+        public static final int stock=0x7f020053;
+        public static final int unnamed=0x7f020054;
     }
     public static final class id {
         public static final int RelativeLayout01=0x7f0b0071;

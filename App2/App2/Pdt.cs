@@ -37,7 +37,7 @@ namespace App2
             zsHandler.Login();
             var existe = false;
             foreach (var item in _productsList)
-                if (item.barCode == txtPdtCodBarras.Text)
+                if (item.BarCode == txtPdtCodBarras.Text)
                     existe = true;
 
             if (!existe)

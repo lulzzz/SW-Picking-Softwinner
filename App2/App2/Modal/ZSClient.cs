@@ -19,24 +19,24 @@ namespace ZSProduct
     {
         public string hash { get; set; }
 
-        bool _isAutenticated;
-        string username;
-        string password;
-        string nif;
-        int store;
-        private List<Product> productInStore;
-        private List<Store> stores;
-        private List<Supplier> suppliers;
-        Product product;
+        private bool _isAutenticated;
+        private readonly string _username;
+        private readonly string _password;
+        private readonly string _nif;
+        private readonly int _store;
+        private List<Product> _productInStore;
+        private List<Store> _stores;
+        private List<Supplier> _suppliers;
+        private Product _product;
 
         //Constructor
         public ZSClient(string username, string password, int store, string nif)
         {
-            this.username = username;
-            this.password = password;
-            this.store = store;
-            this.nif = nif;
-            this.productInStore = new List<Product>();
+            _username = username;
+            _password = password;
+            _store = store;
+            _nif = nif;
+            _productInStore = new List<Product>();
         }
 
 
@@ -46,8 +46,8 @@ namespace ZSProduct
         {
             try
             {
-                String dataToPost = "{\"user\":{\"nif\":\"" + nif + "\",\"nome\":\"" + username + "\",\"password\":\"" +
-                                    password + "\",\"loja\":\"" + store + "\"}}";
+                String dataToPost = "{\"user\":{\"nif\":\"" + _nif + "\",\"nome\":\"" + _username + "\",\"password\":\"" +
+                                    _password + "\",\"loja\":\"" + _store + "\"}}";
                 byte[] dataBytes = Encoding.UTF8.GetBytes(dataToPost);
                 WebClient wc = new WebClient();
                 wc.Headers.Add(HttpRequestHeader.ContentType, "application/json; charset=utf-8");
@@ -58,7 +58,7 @@ namespace ZSProduct
 
                 //Parse the string to a JsonObject
                 var element = JObject.Parse(responseString);
-                if (((int) element["Response"]["StatusCode"]) == 200)
+                if (((int)element["Response"]["StatusCode"]) == 200)
                 {
                     Console.WriteLine("Autenticado com sucesso");
                     //Get the other values
@@ -100,7 +100,7 @@ namespace ZSProduct
 
                     //Parse the string to a JsonObject
                     var element = JObject.Parse(responseString);
-                    if (((int) element["Response"]["StatusCode"]) == 200)
+                    if (((int)element["Response"]["StatusCode"]) == 200)
                     {
                         Console.WriteLine("Produto obtido com sucesso");
                         //Get the other values
@@ -150,7 +150,7 @@ namespace ZSProduct
 
                         //Parse the string to a JsonObject
                         var element = JObject.Parse(responseString);
-                        if (((int) element["Response"]["StatusCode"]) == 200)
+                        if ((int)element["Response"]["StatusCode"] == 200)
                         {
                             Console.WriteLine("Produto obtido com sucesso");
                             //Get the values and build Product object for each element
@@ -159,19 +159,16 @@ namespace ZSProduct
                             foreach (var content in array)
                             {
                                 var singleProduct = new Product(content["descricaocurta"].ToString(),
-                                    (uint) content["codigo"],
-                                    (uint) content["loja"],
-                                    (uint) content["qtdstock"],
-                                    (string) content["codbarras"],
-                                    (double) content["precovenda"],
-                                    (double) content["pvp2"],
-                                    (string) content["referencia"],
-                                    (string) content["ultprecocompra"]);
-                                //Console.WriteLine("Código: " + content["codigo"] + ": \n" + "Loja: " + content["loja"] +
-                                //                  "\nStock: " + content["qtdstock"] + "\nCod. Barras : " +
-                                //                  content["codbarras"] + "\npreco venda: " + content["precovenda"] +
-                                //                  "\n pvp2: " + content["pvp2"]);
-                                productInStore.Add(singleProduct);
+                                    (uint)content["codigo"],
+                                    (uint)content["loja"],
+                                    (uint)content["qtdstock"],
+                                    (string)content["codbarras"],
+                                    (double)content["precovenda"],
+                                    (double)content["pvp2"],
+                                    (string)content["referencia"],
+                                    (double)content["ultprecocompra"],
+                                    (string)content["descforn"]);
+                                _productInStore.Add(singleProduct);
                                 nRespostas++;
                             }
                         }
@@ -196,7 +193,7 @@ namespace ZSProduct
 
         //-----------------------------------------------------------
 
-        public int GetProductsCount() => productInStore.Count;
+        public int GetProductsCount() => _productInStore.Count;
 
         //-----------------------------------------------------------
 
@@ -217,20 +214,20 @@ namespace ZSProduct
 
                     //Parse the string to a JsonObject
                     JObject element = JObject.Parse(responseString);
-                    if (((int) element["Response"]["StatusCode"]) == 200)
+                    if (((int)element["Response"]["StatusCode"]) == 200)
                     {
                         Console.WriteLine("Dados do fornecedor obtidos com sucesso");
                         //Get the values and build Product object for each element
                         var array = JArray.Parse(element["Response"]["Content"]["product"].ToString());
                         foreach (var content in array)
                         {
-                            var singleSupplier = new Supplier((uint) content["codigo"],
+                            var singleSupplier = new Supplier((uint)content["codigo"],
                                 content["nome"].ToString(),
                                 content["telefone"].ToString(),
                                 content["telemovel"].ToString(),
                                 content["web"].ToString(),
                                 content["email"].ToString());
-                            suppliers.Add(singleSupplier);
+                            _suppliers.Add(singleSupplier);
                         }
                     }
                     return null;
@@ -248,7 +245,7 @@ namespace ZSProduct
         //-----------------------------------------------------------
 
         public string GetSupplierNameWithId(int id)
-            => (from item in suppliers where item.GetId() == id select item.GetName()).FirstOrDefault();
+            => (from item in _suppliers where item.GetId() == id select item.GetName()).FirstOrDefault();
 
         //-----------------------------------------------------------
 
@@ -272,7 +269,7 @@ namespace ZSProduct
                     JObject element = JObject.Parse(responseString);
                     Console.WriteLine("\n\n\n\n AQUI \n\n\n");
                     Console.WriteLine(element);
-                    if (((int) element["Response"]["StatusCode"]) == 200)
+                    if (((int)element["Response"]["StatusCode"]) == 200)
                     {
                         Console.WriteLine("Loja obtida com sucesso");
                         //Get the values and build Product object for each element
@@ -280,12 +277,12 @@ namespace ZSProduct
                         //Console.WriteLine (array);
                         foreach (var content in array)
                         {
-                            Store singleProduct = new Store((uint) content["codigo"],
+                            Store singleProduct = new Store((uint)content["codigo"],
                                 content["descricao"].ToString(),
                                 content["designacao"].ToString(),
                                 content["morada"].ToString());
 
-                            stores.Add(singleProduct);
+                            _stores.Add(singleProduct);
                         }
                         return null;
 
@@ -304,7 +301,7 @@ namespace ZSProduct
 
         //-----------------------------------------------------------
 
-        public int GetStoresCount() => stores.Count;
+        public int GetStoresCount() => _stores.Count;
 
         //-----------------------------------------------------------
 
@@ -328,7 +325,7 @@ namespace ZSProduct
 
                     //Parse the string to a JsonObject
                     var element = JObject.Parse(responseString);
-                    if (((int) element["Response"]["StatusCode"]) == 200)
+                    if (((int)element["Response"]["StatusCode"]) == 200)
                     {
                         Console.WriteLine("Produto obtido com sucesso");
                         //Get the other values
@@ -351,47 +348,9 @@ namespace ZSProduct
             return null;
         }
 
+
+
         //-----------------------------------------------------------
-
-        public Product GetProductWithBarCode(string barCode)
-        {
-            var request = "{\"auth_hash\":\"" + hash + "\",\"product\":{\"condition\":\"codbarras='" + barCode + "'\"}}";
-            var dataBytes = Encoding.UTF8.GetBytes(request);
-            var wc = new WebClient();
-            wc.Headers.Add(HttpRequestHeader.ContentType, "application/json; charset=utf-8");
-            var responseBytes = wc.UploadData(new Uri("https://api.zonesoft.org/v1.6/Products/getInstances"), "POST",
-                dataBytes);
-            var responseString = Encoding.UTF8.GetString(responseBytes);
-            if (responseString != "")
-            {
-                var element = JObject.Parse(responseString);
-                if ((int) element["Response"]["StatusCode"] == 200)
-                {
-                    Console.WriteLine("Produto obtido com sucesso");
-                    //Get the values and build Product object for each element
-                    var array = JArray.Parse(element["Response"]["Content"]["product"].ToString());
-                    Console.WriteLine(array);
-                    product = new Product(array[0]["descricaocurta"].ToString(),
-                        (uint) array[0]["codigo"],
-                        (uint) array[0]["loja"],
-                        (uint) array[0]["qtdstock"],
-                        (string) array[0]["codbarras"],
-                        (double) array[0]["precovenda"],
-                        (double) array[0]["pvp2"],
-                        (string) array[0]["referencia"],
-                        (string) array[0]["ultprecocompra"]);
-                    return product;
-                }
-            }
-            else
-            {
-                return null;
-            }
-            return null;
-
-        }
-
-    //-----------------------------------------------------------
 
         public int TotalStores()
         {
@@ -416,5 +375,139 @@ namespace ZSProduct
             } while (continuar);
             return nLojas - 2; //Shop 0 and last store are added, but do not count
         }
+
+        #region mode0Offline
+        #endregion
+
+        #region mode1Online
+        //-----------------------------------------------------------
+        public Product GetProductWithBarCode(string barCode)
+        {
+            var request = "{\"auth_hash\":\"" + hash + "\",\"product\":{\"condition\":\"codbarras='" + barCode + "'\"}}";
+            var dataBytes = Encoding.UTF8.GetBytes(request);
+            var wc = new WebClient();
+            wc.Headers.Add(HttpRequestHeader.ContentType, "application/json; charset=utf-8");
+            var responseBytes = wc.UploadData(new Uri("https://api.zonesoft.org/v1.6/Products/getInstances"), "POST",
+                dataBytes);
+            var responseString = Encoding.UTF8.GetString(responseBytes);
+            if (responseString != "")
+            {
+                var element = JObject.Parse(responseString);
+                if ((int)element["Response"]["StatusCode"] == 200)
+                {
+                    Console.WriteLine("Produto obtido com sucesso");
+                    //Get the values and build Product object for each element
+                    var array = JArray.Parse(element["Response"]["Content"]["product"].ToString());
+                    //Console.WriteLine(array);
+                    _product = new Product(array[0]["descricaocurta"].ToString(),
+                        (uint)array[0]["codigo"],
+                        (uint)array[0]["loja"],
+                        (uint)array[0]["qtdstock"],
+                        (string)array[0]["codbarras"],
+                        (double)array[0]["precovenda"],
+                        (double)array[0]["pvp2"],
+                        (string)array[0]["referencia"],
+                        (double)array[0]["ultprecocompra"],
+                        (string)array[0]["descforn"]);
+                    return _product;
+                }
+            }
+            else
+            {
+                return null;
+            }
+            return null;
+
+        }
+
+        //-----------------------------------------------------------
+        public Product GetProductWithRef(string refe)
+        {
+            var request = "{\"auth_hash\":\"" + hash + "\",\"product\":{\"condition\":\"referencia='" + refe + "'\"}}";
+            var dataBytes = Encoding.UTF8.GetBytes(request);
+            var wc = new WebClient();
+            wc.Headers.Add(HttpRequestHeader.ContentType, "application/json; charset=utf-8");
+            var responseBytes = wc.UploadData(new Uri("https://api.zonesoft.org/v1.6/Products/getInstances"), "POST",
+                dataBytes);
+            var responseString = Encoding.UTF8.GetString(responseBytes);
+            if (responseString != "")
+            {
+                var element = JObject.Parse(responseString);
+                if ((int)element["Response"]["StatusCode"] == 200)
+                {
+                    Console.WriteLine("Produto obtido com sucesso");
+                    //Get the values and build Product object for each element
+                    var array = JArray.Parse(element["Response"]["Content"]["product"].ToString());
+                    //Console.WriteLine(array);
+                    _product = new Product(array[0]["descricaocurta"].ToString(),
+                        (uint)array[0]["codigo"],
+                        (uint)array[0]["loja"],
+                        (uint)array[0]["qtdstock"],
+                        (string)array[0]["codbarras"],
+                        (double)array[0]["precovenda"],
+                        (double)array[0]["pvp2"],
+                        (string)array[0]["referencia"],
+                        (double)array[0]["ultprecocompra"],
+                        (string)array[0]["descforn"]);
+                    return _product;
+                }
+            }
+            else
+            {
+                return null;
+            }
+            return null;
+
+        }
+
+        //-----------------------------------------------------------
+        public Product GetProductWithCode(string code)
+        {
+            try
+            {
+                var request = "{\"auth_hash\":\"" + hash + "\",\"product\":{\"codigo\":\"" + code + "\"}}";
+                var dataBytes = Encoding.UTF8.GetBytes(request);
+                var wc = new WebClient();
+                wc.Headers.Add(HttpRequestHeader.ContentType, "application/json; charset=utf-8");
+                Console.WriteLine(request);
+                var responseBytes = wc.UploadData(new Uri("https://api.zonesoft.org/v1.6/Products/getInstance"), "POST", dataBytes);
+                var responseString = Encoding.UTF8.GetString(responseBytes);
+
+                //Parse the string to a JsonObject
+                var element = JObject.Parse(responseString);
+                Console.WriteLine(element);
+                if ((int)element["Response"]["StatusCode"] == 200)
+                {
+                    Console.WriteLine("Produto obtido com sucesso");
+                    //Get the values and build Product object for each element
+                    var array = JArray.Parse(element["Response"]["Content"]["product"].ToString());
+                    //Console.WriteLine (array);
+                    foreach (var content in array)
+                    {
+                        var singleProduct = new Product(content["descricaocurta"].ToString(),
+                            (uint)content["codigo"],
+                            (uint)content["loja"],
+                            (uint)content["qtdstock"],
+                            (string)content["codbarras"],
+                            (double)content["precovenda"],
+                            (double)content["pvp2"],
+                            (string)content["referencia"],
+                            (double)content["ultprecocompra"],
+                            (string)content["descforn"]);
+                        _productInStore.Add(singleProduct);
+                    }
+                }
+                else
+                {
+                    return null;
+                }
+                return null;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+        #endregion
     }
 }

@@ -1417,25 +1417,49 @@ namespace App2
 			public const int header_block = 2130837574;
 			
 			// aapt resource value: 0x7f020047
-			public const int ic_delete_black_24dp = 2130837575;
+			public const int ic_assessment_black_24dp = 2130837575;
 			
 			// aapt resource value: 0x7f020048
-			public const int ic_language_black_18dp = 2130837576;
+			public const int ic_barcode_black_24dp = 2130837576;
 			
 			// aapt resource value: 0x7f020049
-			public const int Icon = 2130837577;
-			
-			// aapt resource value: 0x7f02004d
-			public const int notification_template_icon_bg = 2130837581;
+			public const int ic_delete_black_24dp = 2130837577;
 			
 			// aapt resource value: 0x7f02004a
-			public const int PDT = 2130837578;
+			public const int ic_description_black_24dp = 2130837578;
 			
 			// aapt resource value: 0x7f02004b
-			public const int stock = 2130837579;
+			public const int ic_euro_symbol_black_24dp = 2130837579;
 			
 			// aapt resource value: 0x7f02004c
-			public const int unnamed = 2130837580;
+			public const int ic_history_black_24dp = 2130837580;
+			
+			// aapt resource value: 0x7f02004d
+			public const int ic_label_black_24dp = 2130837581;
+			
+			// aapt resource value: 0x7f02004e
+			public const int ic_language_black_24dp = 2130837582;
+			
+			// aapt resource value: 0x7f02004f
+			public const int ic_lastprice_black_24dp = 2130837583;
+			
+			// aapt resource value: 0x7f020050
+			public const int ic_supplier_black_24dp = 2130837584;
+			
+			// aapt resource value: 0x7f020051
+			public const int Icon = 2130837585;
+			
+			// aapt resource value: 0x7f020055
+			public const int notification_template_icon_bg = 2130837589;
+			
+			// aapt resource value: 0x7f020052
+			public const int PDT = 2130837586;
+			
+			// aapt resource value: 0x7f020053
+			public const int stock = 2130837587;
+			
+			// aapt resource value: 0x7f020054
+			public const int unnamed = 2130837588;
 			
 			static Drawable()
 			{

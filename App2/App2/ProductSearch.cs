@@ -1,5 +1,5 @@
+using System;
 using Android.App;
-using Android.Content;
 using Android.OS;
 using Android.Support.V7.App;
 using Android.Views;
@@ -28,7 +28,10 @@ namespace App2
             var username = manager.GetItem("username");
             var password = manager.GetItem("password");
             var mode = manager.GetItem("mode");
-            ClearFields();
+            var searchingByBarCode = false;
+            var searchingByProductCode = false;
+            var searchingByReference = false;
+            ClearFields("all");
             //Testing ...
             //manager.DownloadStoreAsync ();
             //manager.zsClient.Login ();
@@ -47,40 +50,104 @@ namespace App2
             var txtPcu = FindViewById<TextView>(Resource.Id.txtPcu);
             var zsHandler = new ZSClient(username, password, 0, nif);
             zsHandler.Login();
+
             //-----------------------------------------------------------
             txtCodBarras.TextChanged += (sender, e) =>
             {
-                //zsHandler.GetProductDetailsWithBarCode("1000000700497");
-                //if (manager.GetItem("mode") == "0")
-                //{
-                //    if (zsHandler.GetProductWithBarCode(txtCodBarras.Text) != null)
-                //    {
-                //        zsHandler.GetProducts();
-                //        var product = zsHandler.GetProductWithBarCode(txtCodBarras.Text);
-                //        txtCodigo.Text = product.GetProductCode().ToString();
-                //        txtReferencia.Text = product.GetReference();
-                //        txtDescricao.Text = product.GetDescription().ToString();
-                //        txtFornecedor.Text = product.GetSupplier().ToString();
-                //        txtPvp1.Text = $"?{product.GetPriceOfSale():f2}";
-                //        txtPvp2.Text = $"?{product.GetPvp2():f2}";
-                //        txtPcu.Text = product.GetPcu();
-                //    }
-                //    else
-                //        ClearFields();
-                //}
-                //else if (manager.GetItem("mode") == "1")
-                //{
+                if (!searchingByProductCode && !searchingByProductCode)
+                {
+                    Console.WriteLine("\n\n\n\n\n AQUI:: txtCodBarras.TextChanged \n\n\n\n\n");
+                    searchingByBarCode = true;
+                    if (mode == "0")
+                    {
 
-                //}
+                    }
+                    else if (mode == "1")
+                    {
+                        if (txtCodBarras.Text != "" && zsHandler.GetProductWithBarCode(txtCodBarras.Text) != null)
+                        {
+                            var product = zsHandler.GetProductWithBarCode(txtCodBarras.Text);
+                            txtCodigo.Text = product.ProductCode.ToString();
+                            txtReferencia.Text = product.Reference.ToString();
+                            txtDescricao.Text = product.Description;
+                            txtFornecedor.Text = product.Supplier; //TO SUPPLIER NAME
+                            txtPvp1.Text = $"€{product.PriceOfSale:f2}";
+                            txtPvp2.Text = $"€{product.Pvp2:f2}";
+                            txtPcu.Text = $"€{product.Pcu:f2}";
+                            searchingByBarCode = false;
+                        }
+                        else
+                            ClearFields("codBarras");
+                    }
+                }
+            };
+
+            txtCodigo.TextChanged += (sender, e) =>
+            {
+                if (!searchingByBarCode && !searchingByReference)
+                {
+                    Console.WriteLine("\n\n\n\n\n AQUI:: txtCodigo.TextChanged \n\n\n\n\n");
+                    searchingByProductCode = true;
+                    if (mode == "0")
+                    {
+
+                    }
+                    else if (mode == "1")
+                    {
+                        if (txtCodigo.Text != "" && zsHandler.GetProductWithCode(txtCodigo.Text) != null)
+                        {
+                            var product = zsHandler.GetProductWithCode(txtCodigo.Text);
+                            txtCodBarras.Text = product.BarCode;
+                            txtReferencia.Text = product.Reference.ToString();
+                            txtDescricao.Text = product.Description;
+                            txtFornecedor.Text = product.Supplier.ToString(); //TO SUPPLIER NAME
+                            txtPvp1.Text = $"€{product.PriceOfSale:f2}";
+                            txtPvp2.Text = $"€{product.Pvp2:f2}";
+                            txtPcu.Text = $"€{product.Pcu:f2}";
+                            searchingByProductCode = false;
+                        }
+                        else
+                            ClearFields("codigo");
+                    }
+                }
+            };
+
+            txtReferencia.TextChanged += (sender, e) =>
+            {
+                if (!searchingByBarCode && !searchingByBarCode)
+                {
+                    Console.WriteLine("\n\n\n\n\n AQUI:: txtReferencia.TextChanged \n\n\n\n\n");
+                    searchingByReference = true;
+                    if (mode == "0")
+                    {
+
+                    }
+                    else if (mode == "1")
+                    {
+                        if (txtReferencia.Text != "" && zsHandler.GetProductWithRef(txtReferencia.Text) != null)
+                        {
+                            var product = zsHandler.GetProductWithRef(txtReferencia.Text);
+                            txtCodBarras.Text = product.BarCode;
+                            txtCodigo.Text = product.ProductCode.ToString();
+                            txtDescricao.Text = product.Description;
+                            txtFornecedor.Text = product.Supplier.ToString(); //TO SUPPLIER NAME
+                            txtPvp1.Text = $"?{product.PriceOfSale:f2}";
+                            txtPvp2.Text = $"?{product.Pvp2:f2}";
+                            txtPcu.Text = $"?{product.Pcu:f2}";
+                            searchingByReference = false;
+                        }
+                        else
+                            ClearFields("ref");
+                    }
+                }
             };
         }
 
         //-----------------------------------------------------------
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            menu.Add(new Java.Lang.String("Configuracoes"));
-            menu.Add(new Java.Lang.String("Test"));
-            menu.Add(new Java.Lang.String("Acerca"));
+            menu.Add(new Java.Lang.String("Configurações"));
+            menu.Add(new Java.Lang.String("Sobre"));
             return true;
         }
 
@@ -90,24 +157,40 @@ namespace App2
         {
             switch (item.TitleFormatted.ToString())
             {
-                case "Settings":
-                    var settings = new Intent(this, typeof(Settings));
-                    StartActivity(settings);
+                case "Configurações":
+                    StartActivity(typeof(Settings));
                     break;
-                case "About":
-                    var about = new Intent(this, typeof(About));
-                    StartActivity(about);
+                case "Sobre":
+                    StartActivity(typeof(About));
                     break;
             }
             return true;
         }
 
         //-----------------------------------------------------------
-        private void ClearFields()
+        private void ClearFields(string from)
         {
-            FindViewById<EditText>(Resource.Id.txtCodBarras).Text = "";
-            FindViewById<TextView>(Resource.Id.txtCodigo).Text = "";
-            FindViewById<TextView>(Resource.Id.txtRef).Text = "";
+            switch (from)
+            {
+                case "codBarras":
+                    FindViewById<TextView>(Resource.Id.txtCodigo).Text = "";
+                    FindViewById<TextView>(Resource.Id.txtRef).Text = "";
+                    break;
+                case "codigo":
+                    FindViewById<EditText>(Resource.Id.txtCodBarras).Text = "";
+                    FindViewById<TextView>(Resource.Id.txtRef).Text = "";
+                    break;
+                case "ref":
+                    FindViewById<EditText>(Resource.Id.txtCodBarras).Text = "";
+                    FindViewById<TextView>(Resource.Id.txtCodigo).Text = "";
+                    break;
+                default:
+                    FindViewById<EditText>(Resource.Id.txtCodBarras).Text = "";
+                    FindViewById<TextView>(Resource.Id.txtCodigo).Text = "";
+                    FindViewById<TextView>(Resource.Id.txtRef).Text = "";
+                    break;
+            }
+
             FindViewById<TextView>(Resource.Id.txtDescricao).Text = "";
             FindViewById<TextView>(Resource.Id.txtFornecedor).Text = "";
             FindViewById<TextView>(Resource.Id.txtPvp1).Text = "";
