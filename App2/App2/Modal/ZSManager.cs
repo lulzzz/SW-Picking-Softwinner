@@ -9,31 +9,29 @@ namespace App2.Modal
 	public class ZsManager
 	{
 		//-----------------------------------------------------------
-		private readonly ISharedPreferences _pref = Application.Context.GetSharedPreferences ("UserInfo", FileCreationMode.Private);
+		public readonly ISharedPreferences preferences = Application.Context.GetSharedPreferences ("UserInfo", FileCreationMode.Private);
 		private readonly string _nif;
 		private readonly string _username;
 		private readonly string _password;
 		private readonly uint _storeCounter;
-		NetworkingMode _mode;
-		public  ZSClient zsClient;
+		private NetworkingMode _mode;
+		public ZSClient zsClient;
 
 		public enum NetworkingMode
 		{
 			OFFLINE = 0,
 			ONLINE = 1
 		}
-		//Destructor
-		~ZsManager ()
-		{ 
-			Console.WriteLine ("Object dealocated from memory");
-		}
+
+		//public ZsManager() { }
 
 		public ZsManager (/*string userName, string password, string nif*/)
 		{
 			_nif = GetItem ("nif");
 			_username = GetItem ("username");
 			_password = GetItem ("password");
-			_mode = GetItem ("mode") == "1" ? NetworkingMode.ONLINE : NetworkingMode.OFFLINE;
+			_mode = (NetworkingMode)preferences.GetInt ("mode", 1);
+			//_mode = GetItem ("mode") ? NetworkingMode.ONLINE : NetworkingMode.OFFLINE;
 			zsClient = new ZSClient (_username, _password, 0, _nif);
 		}
 
@@ -52,15 +50,16 @@ namespace App2.Modal
 		}
 
 		//-----------------------------------------------------------
-		public void AddItem (string data, string name) => _pref.Edit().PutString(name, data).Apply();
+		public void AddItem (string data, string name) => preferences.Edit().PutString(name, data).Apply();
 
 		//-----------------------------------------------------------
-		public void AddItem (int data, string name) => _pref.Edit().PutInt(name, data).Apply();
+		public void AddItem (int data, string name) => preferences.Edit().PutInt(name, data).Apply();
 
 		//-----------------------------------------------------------
-		public void AddItem (bool data, string name) => _pref.Edit().PutBoolean(name, data).Apply();
+		public void AddItem (bool data, string name) => preferences.Edit().PutBoolean(name, data).Apply();
 
 		//-----------------------------------------------------------
-		public string GetItem (string name) => _pref.GetString(name, string.Empty);
+		public string GetItem (string name) => preferences.GetString(name, string.Empty);
+
 	}
 }

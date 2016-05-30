@@ -10,29 +10,29 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace ZSProduct.Modal
+namespace ZSProduct
 {
-    class Store
-    {
-        private uint code;
-        private string description;
-        private string name;
-        private string address;
+	public class Store
+	{
+		public uint code;
+		public string description;
+		public string name;
+		public string address;
 
-        public Store(uint code, string description, string name, string address)
-        {
-            this.code = code;
-            this.description = description;
-            this.name = name;
-            this.address = address;
-        }
+		public Store (uint code, string description, string name, string address)
+		{
+			this.code = code;
+			this.description = description;
+			this.name = name;
+			this.address = address;
+		}
 
-        public uint GetCode() => code;
+		public uint GetCode () => code;
 
-        public string GetDescription() => description;
+		public string GetDescription () => description;
 
-        public string GetName() => name;
+		public string GetName () => name;
 
-        public string GetAddress() => address;
-    }
+		public string GetAddress () => address;
+	}
 }

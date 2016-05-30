@@ -27,7 +27,7 @@ namespace App2
 			var nif = manager.GetItem ("nif");
 			var username = manager.GetItem ("username");
 			var password = manager.GetItem ("password");
-			var mode = manager.GetItem ("mode");
+			//var mode = manager.GetItem("mode");
 			ClearFields ();
 			//Testing ...
 			//manager.DownloadStoreAsync ();
@@ -37,48 +37,41 @@ namespace App2
 			//simpleProduct.printProductDetails ();
 			//Product.printProductDetails (simpleProduct);
 
+			var txtCodBarras = FindViewById<EditText> (Resource.Id.txtCodBarras);
+			var txtCodigo = FindViewById<TextView> (Resource.Id.txtCodigo);
+			var txtReferencia = FindViewById<TextView> (Resource.Id.txtRef);
+			var txtDescricao = FindViewById<TextView> (Resource.Id.txtDescricao);
+			var txtFornecedor = FindViewById<TextView> (Resource.Id.txtFornecedor);
+			var txtPvp1 = FindViewById<TextView> (Resource.Id.txtPvp1);
+			var txtPvp2 = FindViewById<TextView> (Resource.Id.txtPvp2);
+			var txtPcu = FindViewById<TextView> (Resource.Id.txtPcu);
+			var zsHandler = new ZSClient (username, password, 0, nif);
+			zsHandler.Login ();
+			//-----------------------------------------------------------
+			txtCodBarras.TextChanged += (sender, e) => {
+				//zsHandler.GetProductDetailsWithBarCode("1000000700497");
+				//if (manager.GetItem("mode") == "0")
+				//{
+				//    if (zsHandler.GetProductWithBarCode(txtCodBarras.Text) != null)
+				//    {
+				//        zsHandler.GetProducts();
+				//        var product = zsHandler.GetProductWithBarCode(txtCodBarras.Text);
+				//        txtCodigo.Text = product.GetProductCode().ToString();
+				//        txtReferencia.Text = product.GetReference();
+				//        txtDescricao.Text = product.GetDescription().ToString();
+				//        txtFornecedor.Text = product.GetSupplier().ToString();
+				//        txtPvp1.Text = $"?{product.GetPriceOfSale():f2}";
+				//        txtPvp2.Text = $"?{product.GetPvp2():f2}";
+				//        txtPcu.Text = product.GetPcu();
+				//    }
+				//    else
+				//        ClearFields();
+				//}
+				//else if (manager.GetItem("mode") == "1")
+				//{
 
-
-
-			if (username == string.Empty || password == string.Empty || nif == string.Empty || mode == string.Empty)
-				StartActivity (new Intent (this, typeof(MainActivity)));
-			else {
-				var txtCodBarras = FindViewById<EditText> (Resource.Id.txtCodBarras);
-				var txtCodigo = FindViewById<TextView> (Resource.Id.txtCodigo);
-				var txtReferencia = FindViewById<TextView> (Resource.Id.txtRef);
-				var txtDescricao = FindViewById<TextView> (Resource.Id.txtDescricao);
-				var txtFornecedor = FindViewById<TextView> (Resource.Id.txtFornecedor);
-				var txtPvp1 = FindViewById<TextView> (Resource.Id.txtPvp1);
-				var txtPvp2 = FindViewById<TextView> (Resource.Id.txtPvp2);
-				var txtPcu = FindViewById<TextView> (Resource.Id.txtPcu);
-				var zsHandler = new ZSClient (username, password, 0, nif);
-				zsHandler.Login ();
-				//-----------------------------------------------------------
-				txtCodBarras.TextChanged += (sender, e) => {
-					//zsHandler.GetProductDetailsWithBarCode("1000000700497");
-					//if (manager.GetItem("mode") == "0")
-					//{
-					//    if (zsHandler.GetProductWithBarCode(txtCodBarras.Text) != null)
-					//    {
-					//        zsHandler.GetProducts();
-					//        var product = zsHandler.GetProductWithBarCode(txtCodBarras.Text);
-					//        txtCodigo.Text = product.GetProductCode().ToString();
-					//        txtReferencia.Text = product.GetReference();
-					//        txtDescricao.Text = product.GetDescription().ToString();
-					//        txtFornecedor.Text = product.GetSupplier().ToString();
-					//        txtPvp1.Text = $"?{product.GetPriceOfSale():f2}";
-					//        txtPvp2.Text = $"?{product.GetPvp2():f2}";
-					//        txtPcu.Text = product.GetPcu();
-					//    }
-					//    else
-					//        ClearFields();
-					//}
-					//else if (manager.GetItem("mode") == "1")
-					//{
-                        
-					//}
-				};
-			}
+				//}
+			};
 		}
 
 		//-----------------------------------------------------------

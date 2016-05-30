@@ -6,15 +6,40 @@ using Android.Widget;
 
 namespace App2
 {
-	[Activity (Label = "Settings", Theme = "@style/Theme.AppCompat.Light")]
+	[Activity (Label = "Configura??es", Theme = "@style/Theme.AppCompat.Light")]
 	public class Settings : AppCompatActivity
 	{
+
 		protected override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
 
 			SetContentView (Resource.Layout.Settings);
-			var btnLogout = FindViewById<Button> (Resource.Id.btnTerminarSessao);
+			ISharedPreferences preferences = Application.Context.GetSharedPreferences ("UserInfo", FileCreationMode.Private);
+			var onlineButton = FindViewById<RadioButton> (Resource.Id.radioButtonOnline);
+			var offlineButton = FindViewById<RadioButton> (Resource.Id.radioButtonOffline);
+			var btnLogout = FindViewById<Button> (Resource.Id.btnEndSession);
+			var saveSettings = FindViewById<Button> (Resource.Id.btnSave);
+
+			int mode = preferences.GetInt ("mode", 1);
+			if (mode == 1) {
+				onlineButton.Checked = true;
+			} else {
+				offlineButton.Checked = true;
+			}
+			//
+			onlineButton.Click += (sender, e) => {
+				offlineButton.Checked = false;
+				preferences.Edit ().PutInt ("mode", 1).Apply ();
+
+			};
+			offlineButton.Click += (sender, e) => {
+				onlineButton.Checked = false;
+				preferences.Edit ().PutInt ("mode", 0).Apply ();
+			};
+			saveSettings.Click += (sender, e) => {
+				
+			};
 			btnLogout.Click += (sender, e) => {
 				var pref = Application.Context.GetSharedPreferences ("UserInfo", FileCreationMode.Private);
 				var edit = pref.Edit ();

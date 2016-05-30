@@ -12,7 +12,7 @@ namespace ZSProduct
 		public uint supplierId;
 		public readonly string barCode;
 		public readonly string description;
-		public readonly double priceOfSale;
+		public double pvp1;
 		public double pvp2;
 		public string reference;
 		public string pcu;
@@ -24,7 +24,7 @@ namespace ZSProduct
 			this.store = store;
 			this.stock = stock;
 			this.barCode = barCode;
-			this.priceOfSale = price;
+			this.pvp1 = price;
 			this.pvp2 = pvp2;
 			this.reference = reference;
 			this.pcu = pcu;
@@ -38,7 +38,7 @@ namespace ZSProduct
 			"Store:" + this.store + "\n" +
 			"Stock:" + this.stock + "\n" +
 			"BarCode:" + this.barCode + "\n" +
-			"PriceOfSale:" + this.priceOfSale + "\n" +
+			"PriceOfSale:" + this.pvp1 + "\n" +
 			"pvp2:" + this.pvp2 + "\n" +
 			"Reference:" + this.reference + "\n" +
 			"UnitPrice:" + this.pcu + "\n"
@@ -52,7 +52,7 @@ namespace ZSProduct
 			"Store:" + singleProduct.store + "\n" +
 			"Stock:" + singleProduct.stock + "\n" +
 			"BarCode:" + singleProduct.barCode + "\n" +
-			"PriceOfSale:" + singleProduct.priceOfSale + "\n" +
+			"PriceOfSale:" + singleProduct.pvp1 + "\n" +
 			"pvp2:" + singleProduct.pvp2 + "\n" +
 			"Reference:" + singleProduct.reference + "\n" +
 			"UnitPrice:" + singleProduct.pcu + "\n"

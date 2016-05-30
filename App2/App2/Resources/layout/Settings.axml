@@ -4,38 +4,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="66.5dp"
-        android:id="@+id/linearLayout1"
-        android:layout_marginLeft="50px"
-        android:layout_marginRight="50px">
-        <TextView
-            android:text="Offline/Online:"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_width="162.5dp"
-            android:layout_height="match_parent"
-            android:id="@+id/lblOnOffLine"
-            android:layout_gravity="center"
-            android:layout_marginTop="30px" />
-        <Switch
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/switch1"
-            android:checked="true" />
-    </LinearLayout>
-    <Button
-        android:text="Guardar"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnGuardar"
-        android:layout_marginLeft="50px"
-        android:layout_marginRight="50px" />
+        android:id="@+id/linearLayout2">
+        <TextView
+            android:text="Modo Operação"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView1" />
+        <RadioButton
+            android:text="Online"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButtonOnline" />
+        <RadioButton
+            android:text="Offline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButtonOffline" />
+    </LinearLayout>
     <Button
         android:text="Terminar Sessão"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnTerminarSessao"
+        android:id="@+id/btnEndSession"
+        android:layout_marginLeft="50px"
+        android:layout_marginRight="50px" />
+    <Button
+        android:text="Guardar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSave"
         android:layout_marginLeft="50px"
         android:layout_marginRight="50px" />
 </LinearLayout>

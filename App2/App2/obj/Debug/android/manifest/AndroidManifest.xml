@@ -12,9 +12,11 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <activity android:label="Settings" android:theme="@style/Theme.AppCompat.Light" android:name="md506f5d8d470dc445d621c844165e4e6c3.Settings" />
+    <activity android:label="Contagem de Stock " android:theme="@style/Theme.AppCompat.Light" android:name="md506f5d8d470dc445d621c844165e4e6c3.Pdt" />
+    <activity android:label="Configura??es" android:theme="@style/Theme.AppCompat.Light" android:name="md506f5d8d470dc445d621c844165e4e6c3.Settings" />
     <activity android:icon="@drawable/icon" android:label="Detalhes de Produto" android:theme="@style/Theme.AppCompat.Light" android:name="md506f5d8d470dc445d621c844165e4e6c3.ProductSearch" />
     <activity android:label="Menu Principal" android:theme="@style/Theme.AppCompat.Light" android:name="md506f5d8d470dc445d621c844165e4e6c3.Dashboard" />
+    <activity android:label="Procurar Produtos" android:name="md506f5d8d470dc445d621c844165e4e6c3.ProductFinder" />
     <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="ZSProduct_V2_5.ZSProduct_V2_5.mono.MonoRuntimeProvider.__mono_init__" />
     <!--suppress ExportedReceiver-->
     <receiver android:name="mono.android.Seppuku">

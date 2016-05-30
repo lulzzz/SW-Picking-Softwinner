@@ -1,20 +1,13 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
+﻿using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Support.V7.App;
 
 namespace App2
 {
-	[Activity (Label = "Menu Principal", Theme = "@style/Theme.AppCompat.Light")]			
+	[Activity (Label = "Menu Principal", Theme = "@style/Theme.AppCompat.Light")]
 	public class Dashboard : AppCompatActivity
 	{
 		protected override void OnCreate (Bundle savedInstanceState)
@@ -22,27 +15,33 @@ namespace App2
 			base.OnCreate (savedInstanceState);
 			SetContentView (Resource.Layout.Dashboard);
 
-	
+			FindViewById<ImageButton> (Resource.Id.btnConsultarDetalhes).Click += (sender, e) => {
+				StartActivity (typeof(ProductSearch));
+			};
 
+			FindViewById<ImageButton> (Resource.Id.btnPdt).Click += (sender, e) => {
+				StartActivity (typeof(Pdt));
+			};
+			FindViewById<ImageButton> (Resource.Id.btnFindStock).Click += (sender, e) => {
+				StartActivity (typeof(ProductFinder));
+			};
 		}
 
 		public override bool OnCreateOptionsMenu (IMenu menu)
 		{
-			menu.Add (new Java.Lang.String ("Configuracoes"));
-			menu.Add (new Java.Lang.String ("Acerca"));
+			menu.Add (new Java.Lang.String ("Configurações"));
+			menu.Add (new Java.Lang.String ("Sobre"));
 			return true;
 		}
 
 		public override bool OnOptionsItemSelected (IMenuItem item)
 		{
 			switch (item.TitleFormatted.ToString ()) {
-			case "Configuracoes":
-				var settings = new Intent (this, typeof(Settings));
-				StartActivity (settings);
+			case "Configurações":
+				StartActivity (typeof(Settings));
 				break;
-			case "Acerca":
-				var about = new Intent (this, typeof(About));
-				StartActivity (about);
+			case "Sobre":
+				StartActivity (typeof(About));
 				break;
 			}
 			return true;
