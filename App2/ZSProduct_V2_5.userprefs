@@ -1,14 +1,14 @@
 ﻿<Properties StartupItem="App2/ZSProduct_V2_5.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.0000583404150800" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="App2/Modal/ZSClient.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Xamarin_Android_API_23" />
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="App2/Dashboard.cs" Line="86" Column="45" />
-      <File FileName="App2/Modal/ZSManager.cs" Line="17" Column="24" />
-      <File FileName="App2/Modal/ZSClient.cs" Line="315" Column="1" />
-      <File FileName="App2/Modal/Product.cs" Line="6" Column="22" />
-      <File FileName="App2/MainActivity.cs" Line="1" Column="1" />
-      <File FileName="App2/Settings.cs" Line="1" Column="1" />
-      <File FileName="App2/Properties/AndroidManifest.xml" Line="7" Column="12" />
+      <File FileName="App2/ProductSearch.cs" Line="12" Column="106" />
+      <File FileName="App2/MainActivity.cs" Line="14" Column="134" />
+      <File FileName="App2/Dashboard.cs" Line="43" Column="18" />
+      <File FileName="App2/Resources/values/Strings.xml" Line="3" Column="24" />
+      <File FileName="App2/Modal/ZSManager.cs" Line="27" Column="5" />
+      <File FileName="App2/Settings.cs" Line="23" Column="56" />
+      <File FileName="App2/Modal/ZSClient.cs" Line="310" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

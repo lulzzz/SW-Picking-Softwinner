@@ -22,3 +22,6 @@
 /Users/HugoSantos/Desktop/App2/App2/bin/Debug/Xamarin.Android.Support.v7.AppCompat.dll
 /Users/HugoSantos/Desktop/App2/App2/obj/Debug/res/layout/options.xml
 /Users/HugoSantos/Desktop/App2/App2/obj/Debug/res/layout/productsearch.xml
+/Users/HugoSantos/Desktop/App2/App2/obj/Debug/res/drawable/pdt.png
+/Users/HugoSantos/Desktop/App2/App2/obj/Debug/res/drawable/stock.png
+/Users/HugoSantos/Desktop/App2/App2/obj/Debug/res/drawable/unnamed.png

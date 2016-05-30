@@ -12,7 +12,6 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <activity android:label="Pdt" android:theme="@style/Theme.AppCompat.Light" android:name="md506f5d8d470dc445d621c844165e4e6c3.Pdt" />
     <activity android:label="Settings" android:theme="@style/Theme.AppCompat.Light" android:name="md506f5d8d470dc445d621c844165e4e6c3.Settings" />
     <activity android:icon="@drawable/icon" android:label="Detalhes de Produto" android:theme="@style/Theme.AppCompat.Light" android:name="md506f5d8d470dc445d621c844165e4e6c3.ProductSearch" />
     <activity android:label="Menu Principal" android:theme="@style/Theme.AppCompat.Light" android:name="md506f5d8d470dc445d621c844165e4e6c3.Dashboard" />
