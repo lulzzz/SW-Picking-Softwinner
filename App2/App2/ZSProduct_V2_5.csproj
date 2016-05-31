@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="About.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Modal\AdapterListViewProductFinder.cs" />
     <Compile Include="Modal\AdapterListView.cs" />
     <Compile Include="Modal\AddProducttoListView.cs" />
     <Compile Include="Modal\DialogQtdPdt.cs" />
@@ -94,6 +95,12 @@
     </AndroidResource>
     <AndroidResource Include="Resources\layout\ProductFinder.axml" />
     <AndroidResource Include="Resources\layout\chooseQtd.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ListViewRow_ProductFinder.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\StockOnStoresDetails.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -138,6 +145,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\ic_remove_circle_outline_black_24dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_delete_black_24dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_create_black_24dp.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

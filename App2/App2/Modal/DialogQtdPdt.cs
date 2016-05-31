@@ -4,8 +4,10 @@ using Android.OS;
 using Android.Views;
 using Android.Widget;
 
+//-----------------------------------------------------------
 namespace App2.Modal
 {
+    //-----------------------------------------------------------
     public class OnSetQtdEventArgs : EventArgs
     {
         public string QtdSeted { get; set; }
@@ -16,52 +18,58 @@ namespace App2.Modal
         }
     }
 
-    class DialogQtdPdt : DialogFragment
+    //-----------------------------------------------------------
+    internal class DialogQtdPdt : DialogFragment
     {
-        private ImageButton mImgBtnLess;
-        private ImageButton mImgBtnPlus;
-        private Button mBtnOk;
-        private EditText mtxtQtd;
-
+        //----------------------------------------------------------- 
         public EventHandler<OnSetQtdEventArgs> OnChangedComplete;
 
+        //-----------------------------------------------------------
+        private ImageButton _mImgBtnLess;
+        private ImageButton _mImgBtnPlus;
+        private Button _mBtnOk;
+        private EditText _mtxtQtd;
+
+        //-----------------------------------------------------------
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             base.OnCreateView(inflater, container, savedInstanceState);
 
             var view = inflater.Inflate(Resource.Layout.chooseQtd, container, false);
-            mImgBtnLess = view.FindViewById<ImageButton>(Resource.Id.imgBtnChooseQtdLess);
-            mImgBtnPlus = view.FindViewById<ImageButton>(Resource.Id.imgBtnChooseQtdPlus);
-            mBtnOk = view.FindViewById<Button>(Resource.Id.btnChooseOk);
-            mtxtQtd = view.FindViewById<EditText>(Resource.Id.txtChooseQtd);
+            _mImgBtnLess = view.FindViewById<ImageButton>(Resource.Id.imgBtnChooseQtdLess);
+            _mImgBtnPlus = view.FindViewById<ImageButton>(Resource.Id.imgBtnChooseQtdPlus);
+            _mBtnOk = view.FindViewById<Button>(Resource.Id.btnChooseOk);
+            _mtxtQtd = view.FindViewById<EditText>(Resource.Id.txtChooseQtd);
 
-            var qtd = Convert.ToInt32(mtxtQtd.Text);
-            mImgBtnLess.Click += (sender, args) =>
+            var qtd = Convert.ToInt32(_mtxtQtd.Text);
+            _mImgBtnLess.Click += (sender, args) =>
             {
                 if (qtd > 0)
-                    mtxtQtd.Text = qtd--.ToString();
+                    _mtxtQtd.Text = (--qtd).ToString();
             };
 
-            mImgBtnPlus.Click += (sender, args) =>
+            _mImgBtnPlus.Click += (sender, args) =>
             {
-                    mtxtQtd.Text = qtd++.ToString();
+                _mtxtQtd.Text = (++qtd).ToString();
             };
 
-            mBtnOk.Click += BtnOk_Click;
+            _mBtnOk.Click += BtnOk_Click;
 
             return view;
         }
 
-        private void BtnOk_Click(object sender, EventArgs e)
-        {
-            OnChangedComplete.Invoke(this, new OnSetQtdEventArgs(mtxtQtd.Text));
-            Dismiss();
-        }
-
+        //-----------------------------------------------------------
         public override void OnActivityCreated(Bundle savedInstanceState)
         {
             Dialog.Window.RequestFeature(WindowFeatures.NoTitle);
             base.OnActivityCreated(savedInstanceState);
+        }
+
+        //-----------------------------------------------------------
+        private void BtnOk_Click(object sender, EventArgs e)
+        {
+            OnChangedComplete.Invoke(this, new OnSetQtdEventArgs(_mtxtQtd.Text));
+            Dismiss();
         }
     }
 }

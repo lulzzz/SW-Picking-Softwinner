@@ -26,6 +26,10 @@ App2.ProductFinder, App2;md506f5d8d470dc445d621c844165e4e6c3.ProductFinder
 App2.ProductFinder, App2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md506f5d8d470dc445d621c844165e4e6c3.ProductFinder
 App2.ProductFinder;md506f5d8d470dc445d621c844165e4e6c3.ProductFinder
 app2.ProductFinder;md506f5d8d470dc445d621c844165e4e6c3.ProductFinder
+App2.Modal.AdapterListViewProductFinder, App2;md53ed92ac57debf4033057399242ab3784.AdapterListViewProductFinder
+App2.Modal.AdapterListViewProductFinder, App2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53ed92ac57debf4033057399242ab3784.AdapterListViewProductFinder
+App2.Modal.AdapterListViewProductFinder;md53ed92ac57debf4033057399242ab3784.AdapterListViewProductFinder
+app2.modal.AdapterListViewProductFinder;md53ed92ac57debf4033057399242ab3784.AdapterListViewProductFinder
 App2.Modal.AdapterListView, App2;md53ed92ac57debf4033057399242ab3784.AdapterListView
 App2.Modal.AdapterListView, App2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53ed92ac57debf4033057399242ab3784.AdapterListView
 App2.Modal.AdapterListView;md53ed92ac57debf4033057399242ab3784.AdapterListView

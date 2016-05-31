@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ff3e2723">
+    android:layout_height="match_parent">
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"
@@ -18,11 +17,12 @@
             android:id="@+id/imageView1"
             android:scaleType="fitCenter" />
         <EditText
-            android:layout_width="317.5dp"
+            android:layout_width="292.5dp"
             android:layout_height="42.5dp"
             android:id="@+id/txtPdtCodBarras"
             android:hint="Código de Barras"
             android:inputType="number"
+            android:digits="0123456789"
             android:layout_marginLeft="20.0dp" />
     </LinearLayout>
     <LinearLayout
@@ -70,11 +70,6 @@
             android:layout_height="match_parent"
             android:id="@+id/textView4" />
     </LinearLayout>
-    <Button
-        android:text="Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button1" />
     <ListView
         android:minWidth="25px"
         android:minHeight="25px"

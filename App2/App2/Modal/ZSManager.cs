@@ -9,18 +9,18 @@ namespace App2.Modal
 	public class ZsManager
 	{
 		//-----------------------------------------------------------
-		public readonly ISharedPreferences preferences = Application.Context.GetSharedPreferences ("UserInfo", FileCreationMode.Private);
+		public readonly ISharedPreferences Preferences = Application.Context.GetSharedPreferences ("UserInfo", FileCreationMode.Private);
 		private readonly string _nif;
 		private readonly string _username;
 		private readonly string _password;
 		//private readonly uint _storeCounter;
 		//private NetworkingMode _mode;
-		public ZSClient zsClient;
+		public ZSClient ZsClient;
 
 		public enum NetworkingMode
 		{
-			OFFLINE = 0,
-			ONLINE = 1
+			Offline = 0,
+			Online = 1
 		}
 
 		//public ZsManager() { }
@@ -32,7 +32,7 @@ namespace App2.Modal
 			_password = GetItem ("password");
 			//_mode = (NetworkingMode)preferences.GetInt ("mode", 1);
 			//_mode = GetItem ("mode") ? NetworkingMode.ONLINE : NetworkingMode.OFFLINE;
-			zsClient = new ZSClient (_username, _password, 0, _nif);
+			ZsClient = new ZSClient (_username, _password, 0, _nif);
 		}
 
 		public void DownloadStoreAsync ()
@@ -50,16 +50,16 @@ namespace App2.Modal
 		}
 
 		//-----------------------------------------------------------
-		public void AddItem (string data, string name) => preferences.Edit().PutString(name, data).Apply();
+		public void AddItem (string data, string name) => Preferences.Edit().PutString(name, data).Apply();
 
 		//-----------------------------------------------------------
-		public void AddItem (int data, string name) => preferences.Edit().PutInt(name, data).Apply();
+		public void AddItem (int data, string name) => Preferences.Edit().PutInt(name, data).Apply();
 
 		//-----------------------------------------------------------
-		public void AddItem (bool data, string name) => preferences.Edit().PutBoolean(name, data).Apply();
+		public void AddItem (bool data, string name) => Preferences.Edit().PutBoolean(name, data).Apply();
 
 		//-----------------------------------------------------------
-		public string GetItem (string name) => preferences.GetString(name, string.Empty);
+		public string GetItem (string name) => Preferences.GetString(name, string.Empty);
 
 	}
 }

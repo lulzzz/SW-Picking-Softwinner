@@ -2,7 +2,6 @@
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
-using Android.Media;
 using Android.Widget;
 using Android.OS;
 using Android.Support.V7.App;
@@ -73,9 +72,9 @@ namespace App2
 					var txtNif = FindViewById<EditText> (Resource.Id.txtNif);
 					var txtUsename = FindViewById<EditText> (Resource.Id.txtUsername);
 					var txtPassword = FindViewById<EditText> (Resource.Id.txtPassword);
-					txtNif.Text = "509545700";
-					txtUsename.Text = "hugo";
-					txtPassword.Text = "hugo123";
+					txtNif.Text = "xxx";
+					txtUsename.Text = "xxx";
+					txtPassword.Text = "xxx";
 				};
 			}
 		}
