@@ -13,8 +13,8 @@ namespace App2.Modal
 		private readonly string _nif;
 		private readonly string _username;
 		private readonly string _password;
-		private readonly uint _storeCounter;
-		private NetworkingMode _mode;
+		//private readonly uint _storeCounter;
+		//private NetworkingMode _mode;
 		public ZSClient zsClient;
 
 		public enum NetworkingMode
@@ -30,7 +30,7 @@ namespace App2.Modal
 			_nif = GetItem ("nif");
 			_username = GetItem ("username");
 			_password = GetItem ("password");
-			_mode = (NetworkingMode)preferences.GetInt ("mode", 1);
+			//_mode = (NetworkingMode)preferences.GetInt ("mode", 1);
 			//_mode = GetItem ("mode") ? NetworkingMode.ONLINE : NetworkingMode.OFFLINE;
 			zsClient = new ZSClient (_username, _password, 0, _nif);
 		}

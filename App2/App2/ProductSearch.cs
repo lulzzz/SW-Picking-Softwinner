@@ -1,5 +1,6 @@
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Support.V7.App;
 using Android.Views;
@@ -9,7 +10,7 @@ using ZSProduct;
 
 namespace App2
 {
-	[Activity (Label = "Detalhes de Produto", Icon = "@drawable/icon", Theme = "@style/Theme.AppCompat.Light")]
+	[Activity (Label = "Detalhes de Produto", Icon = "@drawable/icon", Theme = "@style/Theme.AppCompat.Light", ScreenOrientation = ScreenOrientation.Portrait)]
 	public class ProductSearch : AppCompatActivity
 	{
 		protected override void OnCreate (Bundle savedInstanceState)

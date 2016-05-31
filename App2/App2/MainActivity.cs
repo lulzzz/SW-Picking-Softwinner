@@ -1,6 +1,8 @@
 ﻿using System;
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
+using Android.Media;
 using Android.Widget;
 using Android.OS;
 using Android.Support.V7.App;
@@ -11,15 +13,16 @@ using AlertDialog = Android.App.AlertDialog;
 //Add Features
 namespace App2
 {
-	[Activity (Label = "ZSProduct_V2_5", Icon = "@drawable/icon", MainLauncher = true, Theme = "@style/Theme.AppCompat.Light.NoActionBar")]
+	[Activity (Label = "ZSProduct_V2_5", Icon = "@drawable/icon", MainLauncher = true, Theme = "@style/Theme.AppCompat.Light.NoActionBar", ScreenOrientation = ScreenOrientation.Portrait)]
 	public class MainActivity : AppCompatActivity
 	{
 		protected override void OnCreate (Bundle bundle)
-		{
+		{   
 			base.OnCreate (bundle);
 
 			SetContentView (Resource.Layout.Main);
-			var manager = new ZsManager ();
+
+            var manager = new ZsManager ();
 			//manager.preferences.Edit ().Clear ().Apply ();
 			var getNif = manager.GetItem ("nif");
 			var getUsername = manager.GetItem ("username");

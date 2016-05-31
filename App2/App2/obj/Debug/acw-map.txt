@@ -6,10 +6,6 @@ App2.MainActivity, App2;md506f5d8d470dc445d621c844165e4e6c3.MainActivity
 App2.MainActivity, App2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md506f5d8d470dc445d621c844165e4e6c3.MainActivity
 App2.MainActivity;md506f5d8d470dc445d621c844165e4e6c3.MainActivity
 app2.MainActivity;md506f5d8d470dc445d621c844165e4e6c3.MainActivity
-App2.Modal.AdapterListView, App2;md53ed92ac57debf4033057399242ab3784.AdapterListView
-App2.Modal.AdapterListView, App2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53ed92ac57debf4033057399242ab3784.AdapterListView
-App2.Modal.AdapterListView;md53ed92ac57debf4033057399242ab3784.AdapterListView
-app2.modal.AdapterListView;md53ed92ac57debf4033057399242ab3784.AdapterListView
 App2.Pdt, App2;md506f5d8d470dc445d621c844165e4e6c3.Pdt
 App2.Pdt, App2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md506f5d8d470dc445d621c844165e4e6c3.Pdt
 App2.Pdt;md506f5d8d470dc445d621c844165e4e6c3.Pdt
@@ -30,6 +26,14 @@ App2.ProductFinder, App2;md506f5d8d470dc445d621c844165e4e6c3.ProductFinder
 App2.ProductFinder, App2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md506f5d8d470dc445d621c844165e4e6c3.ProductFinder
 App2.ProductFinder;md506f5d8d470dc445d621c844165e4e6c3.ProductFinder
 app2.ProductFinder;md506f5d8d470dc445d621c844165e4e6c3.ProductFinder
+App2.Modal.AdapterListView, App2;md53ed92ac57debf4033057399242ab3784.AdapterListView
+App2.Modal.AdapterListView, App2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53ed92ac57debf4033057399242ab3784.AdapterListView
+App2.Modal.AdapterListView;md53ed92ac57debf4033057399242ab3784.AdapterListView
+app2.modal.AdapterListView;md53ed92ac57debf4033057399242ab3784.AdapterListView
+App2.Modal.DialogQtdPdt, App2;md53ed92ac57debf4033057399242ab3784.DialogQtdPdt
+App2.Modal.DialogQtdPdt, App2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53ed92ac57debf4033057399242ab3784.DialogQtdPdt
+App2.Modal.DialogQtdPdt;md53ed92ac57debf4033057399242ab3784.DialogQtdPdt
+app2.modal.DialogQtdPdt;md53ed92ac57debf4033057399242ab3784.DialogQtdPdt
 Android.Support.V4.View.ViewPager/IOnPageChangeListenerImplementor, Xamarin.Android.Support.v4;mono.android.support.v4.view.ViewPager_OnPageChangeListenerImplementor
 Android.Support.V4.View.ViewPager+IOnPageChangeListenerImplementor, Xamarin.Android.Support.v4, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.android.support.v4.view.ViewPager_OnPageChangeListenerImplementor
 Android.Support.V4.View.ViewPager.IOnPageChangeListenerImplementor;mono.android.support.v4.view.ViewPager_OnPageChangeListenerImplementor

@@ -1,12 +1,13 @@
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Support.V7.App;
 using Android.Widget;
 
 namespace App2
 {
-	[Activity (Label = "Configura??es", Theme = "@style/Theme.AppCompat.Light")]
+	[Activity (Label = "Configura??es", Theme = "@style/Theme.AppCompat.Light", ScreenOrientation = ScreenOrientation.Portrait)]
 	public class Settings : AppCompatActivity
 	{
 

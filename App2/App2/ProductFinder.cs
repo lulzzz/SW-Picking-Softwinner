@@ -12,11 +12,12 @@ using Android.Views;
 using Android.Widget;
 using ZSProduct;
 using System.Runtime.InteropServices;
+using Android.Content.PM;
 using App2.Modal;
 
 namespace App2
 {
-	[Activity (Label = "Procurar Produtos")]			
+	[Activity (Label = "Procurar Produtos", ScreenOrientation = ScreenOrientation.Portrait)]			
 	public class ProductFinder : Activity
 	{
 		ZSClient zsClient;
