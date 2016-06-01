@@ -34,6 +34,10 @@ App2.Modal.AdapterListView, App2;md53ed92ac57debf4033057399242ab3784.AdapterList
 App2.Modal.AdapterListView, App2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53ed92ac57debf4033057399242ab3784.AdapterListView
 App2.Modal.AdapterListView;md53ed92ac57debf4033057399242ab3784.AdapterListView
 app2.modal.AdapterListView;md53ed92ac57debf4033057399242ab3784.AdapterListView
+App2.Modal.DialogShowStocks, App2;md53ed92ac57debf4033057399242ab3784.DialogShowStocks
+App2.Modal.DialogShowStocks, App2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53ed92ac57debf4033057399242ab3784.DialogShowStocks
+App2.Modal.DialogShowStocks;md53ed92ac57debf4033057399242ab3784.DialogShowStocks
+app2.modal.DialogShowStocks;md53ed92ac57debf4033057399242ab3784.DialogShowStocks
 App2.Modal.DialogQtdPdt, App2;md53ed92ac57debf4033057399242ab3784.DialogQtdPdt
 App2.Modal.DialogQtdPdt, App2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53ed92ac57debf4033057399242ab3784.DialogQtdPdt
 App2.Modal.DialogQtdPdt;md53ed92ac57debf4033057399242ab3784.DialogQtdPdt

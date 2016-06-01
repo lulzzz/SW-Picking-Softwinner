@@ -59,6 +59,7 @@
     <Compile Include="Modal\AdapterListViewProductFinder.cs" />
     <Compile Include="Modal\AdapterListView.cs" />
     <Compile Include="Modal\AddProducttoListView.cs" />
+    <Compile Include="Modal\DialogShowStocks.cs" />
     <Compile Include="Modal\DialogQtdPdt.cs" />
     <Compile Include="Modal\Product.cs" />
     <Compile Include="Modal\Store.cs" />

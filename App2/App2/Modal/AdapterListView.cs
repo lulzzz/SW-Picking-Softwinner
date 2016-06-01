@@ -23,6 +23,17 @@ namespace App2.Modal
         }
 
         //-----------------------------------------------------------
+        public class OnEditClickEventArgs : EventArgs
+        {
+            public int Position { get; set; }
+
+            public OnEditClickEventArgs(int pos)
+            {
+                Position = pos;
+            }
+        }
+
+        //-----------------------------------------------------------
         public AdapterListView(Activity context, List<AddProducttoListView> products)
         {
             _context = context;
@@ -34,6 +45,7 @@ namespace App2.Modal
         private readonly Activity _context;
         public override long GetItemId(int position) => position;
         public EventHandler<OnDeleteClickEventArgs> OnDeleteClick;
+        public EventHandler<OnDeleteClickEventArgs> OnEditClick;
 
         //-----------------------------------------------------------
         public override View GetView(int position, View convertView, ViewGroup parent)
@@ -50,6 +62,12 @@ namespace App2.Modal
             {
                 //   _products.RemoveAt(position);
                 OnDeleteClick.Invoke(this, new OnDeleteClickEventArgs(position));
+            };
+
+            view.FindViewById<ImageButton>(Resource.Id.imgBtnChooseEdit).Click += (sender, args) =>
+            {
+                //   _products.RemoveAt(position);
+                OnEditClick.Invoke(this, new OnDeleteClickEventArgs(position));
             };
             return view;
         }
