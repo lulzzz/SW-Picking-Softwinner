@@ -84,7 +84,7 @@
                 android:minWidth="25px"
                 android:minHeight="25px"
                 android:layout_width="match_parent"
-                android:layout_height="348.5dp"
+                android:layout_height="358.5dp"
                 android:id="@+id/listView1" />
             <Button
                 android:text="Exportar para CSV »"

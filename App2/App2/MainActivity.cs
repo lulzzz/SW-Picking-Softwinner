@@ -5,6 +5,7 @@ using Android.Content.PM;
 using Android.Widget;
 using Android.OS;
 using Android.Support.V7.App;
+using Android.Views;
 using App2.Modal;
 using ZSProduct;
 using AlertDialog = Android.App.AlertDialog;

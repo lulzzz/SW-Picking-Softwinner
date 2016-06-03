@@ -17,7 +17,7 @@
     <activity android:label="Configura??es" android:screenOrientation="portrait" android:theme="@style/Theme.AppCompat.Light" android:name="md506f5d8d470dc445d621c844165e4e6c3.Settings" />
     <activity android:icon="@drawable/icon" android:label="Detalhes de Produto" android:screenOrientation="portrait" android:theme="@style/Theme.AppCompat.Light" android:name="md506f5d8d470dc445d621c844165e4e6c3.ProductSearch" />
     <activity android:label="Menu Principal" android:screenOrientation="portrait" android:theme="@style/Theme.AppCompat.Light" android:name="md506f5d8d470dc445d621c844165e4e6c3.Dashboard" />
-    <activity android:label="Detalhes de  Produtos" android:name="md506f5d8d470dc445d621c844165e4e6c3.ProductFinder" />
+    <activity android:label="Detalhes de  Produtos" android:screenOrientation="portrait" android:name="md506f5d8d470dc445d621c844165e4e6c3.ProductFinder" />
     <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="ZSProduct_V2_5.ZSProduct_V2_5.mono.MonoRuntimeProvider.__mono_init__" />
     <!--suppress ExportedReceiver-->
     <receiver android:name="mono.android.Seppuku">

@@ -1,40 +1,31 @@
 using System;
-using System.Linq;
+using System.Collections.Generic;
 using Android.App;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
-using ZSProduct;
 
 //-----------------------------------------------------------
 namespace App2.Modal
 {
     //-----------------------------------------------------------
-    /*public class OnSetQtdEventArgs : EventArgs
-    {
-        public string QtdSeted { get; set; }
-
-        public OnSetQtdEventArgs(string qtdSeted)
-        {
-            QtdSeted = qtdSeted;
-        }
-    }*/
-
-    //-----------------------------------------------------------
     internal class DialogShowStocks : DialogFragment
     {
-        //----------------------------------------------------------- 
-        //public EventHandler<OnSetQtdEventArgs> OnChangedComplete;
+        private Dictionary<string, int> _stocks;
+        public DialogShowStocks(Dictionary<string, int> stocks)
+        {
+            _stocks = stocks;
+        }
+        //-----------------------------------------------------------
+        private AdapterListViewProductFinder _view;
 
         //-----------------------------------------------------------
- //-----------------------------------------------------------
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
+            _view = new AdapterListViewProductFinder(Activity, _stocks);
             base.OnCreateView(inflater, container, savedInstanceState);
-
+           
             var view = inflater.Inflate(Resource.Layout.StockOnStoresDetails, container, false);
-            //view.FindViewById<ListView>(Resource.Id.lstStoresStock)
-
             return view;
         }
 

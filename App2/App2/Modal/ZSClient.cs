@@ -171,7 +171,7 @@ namespace ZSProduct
                                                         (double)content["precovenda"],
                                                         (double)content["pvp2"],
                                                         (string)content["referencia"],
-                                                        (string)content["ultprecocompra"]);
+                                                        (string)content["ultimoprecocompra"]);
                                 //Console.WriteLine("Código: " + content["codigo"] + ": \n" + "Loja: " + content["loja"] +
                                 //                  "\nStock: " + content["qtdstock"] + "\nCod. Barras : " +
                                 //                  content["codbarras"] + "\npreco venda: " + content["precovenda"] +
@@ -337,17 +337,24 @@ namespace ZSProduct
 
                     //Parse the string to a JsonObject
                     var element = JObject.Parse(responseString);
-                    if (((int)element["Response"]["StatusCode"]) == 200)
+                    if ((int)element["Response"]["StatusCode"] == 200)
                     {
                         Console.WriteLine("Stock obtido com sucesso");
                         //Get the other values
-                        var container = (element["Response"]["Content"]["productstock"]);
+                        var container = element["Response"]["Content"]["productstock"];
                         //Loop all the values to get the stock
-
                         foreach (var singleStore in container)
                         {
-
-                            stockInStores.Add(singleStore["loja"].ToString(), (int)singleStore["stock"]);
+                            int stockProd;
+                            try
+                            {
+                                stockProd = (int)singleStore["stock"];
+                            }
+                            catch (Exception)
+                            {
+                                stockProd = 0;
+                            }
+                            stockInStores.Add(singleStore["loja"].ToString(), stockProd);
                             //stockContainer.Add
                         }
 

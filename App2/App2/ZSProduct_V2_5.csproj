@@ -58,6 +58,7 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Modal\AdapterListViewProductFinder.cs" />
     <Compile Include="Modal\AdapterListView.cs" />
+    <Compile Include="Modal\AddItemtoStockListView.cs" />
     <Compile Include="Modal\AddProducttoListView.cs" />
     <Compile Include="Modal\DialogShowStocks.cs" />
     <Compile Include="Modal\DialogQtdPdt.cs" />
