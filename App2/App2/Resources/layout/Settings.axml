@@ -6,24 +6,24 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout2">
+        android:layout_height="65.5dp"
+        android:id="@+id/linearLayout1">
         <TextView
-            android:text="Modo Operação"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Email para envio do ficheiro CSV"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView1" />
-        <RadioButton
-            android:text="Online"
+            android:id="@+id/textView1"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp" />
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/radioButtonOnline" />
-        <RadioButton
-            android:text="Offline"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/radioButtonOffline" />
+            android:id="@+id/txtSettingsEmail"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:hint="Email" />
     </LinearLayout>
     <Button
         android:text="Terminar Sessão"

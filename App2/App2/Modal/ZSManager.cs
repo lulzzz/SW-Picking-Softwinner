@@ -1,65 +1,115 @@
+using System;
 using Android.App;
 using Android.Content;
-using System;
-using Java.Lang;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading;
+using Android.Net;
 using ZSProduct;
+using Android.OS;
+using Android.Support.V7.App;
+using Android.Widget;
 
 namespace App2.Modal
 {
-	public class ZsManager
-	{
-		//-----------------------------------------------------------
-		public readonly ISharedPreferences Preferences = Application.Context.GetSharedPreferences ("UserInfo", FileCreationMode.Private);
-		private readonly string _nif;
-		private readonly string _username;
-		private readonly string _password;
-		//private readonly uint _storeCounter;
-		//private NetworkingMode _mode;
-		public ZSClient ZsClient;
+    [Activity]
+    public class ZsManager : AppCompatActivity
+    {
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+            SetContentView(Resource.Layout.Pdt);
+        }
 
-		public enum NetworkingMode
-		{
-			Offline = 0,
-			Online = 1
-		}
+        //-----------------------------------------------------------
+        public readonly ISharedPreferences Preferences = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
+        private readonly string _nif;
+        private readonly string _username;
+        private readonly string _password;
+        private Context _context;
+        private ConnectivityManager _connectivityManager;
+        public ZSClient ZsClient;
 
-		//public ZsManager() { }
+        public enum NetworkingMode
+        {
+            Offline = 0,
+            Online = 1
+        }
 
-		public ZsManager (/*string userName, string password, string nif*/)
-		{
-			_nif = GetItem ("nif");
-			_username = GetItem ("username");
-			_password = GetItem ("password");
-			//_mode = (NetworkingMode)preferences.GetInt ("mode", 1);
-			//_mode = GetItem ("mode") ? NetworkingMode.ONLINE : NetworkingMode.OFFLINE;
-			ZsClient = new ZSClient (_username, _password, 0, _nif);
-		}
+        public ZsManager(Context context)
+        {
+            _context = context;
+        }
 
-		public void DownloadStoreAsync ()
-		{
-			var task = new Thread (() => {
-				Console.WriteLine ("Connecting to ZS...");
-				//Do long run
-				var zsHandler = new ZSClient (_username, _password, 0, _nif);
-				zsHandler.Login ();
-				//zsHandler.GetProducts();
-				Console.WriteLine ("\n\n\n\n CONCLUIDO \n\n\n\n");
-				//zsHandler.TotalStores();
-			});
-			task.Start ();
-		}
+        public ZsManager()
+        {
+            _nif = GetItem("nif");
+            _username = GetItem("username");
+            _password = GetItem("password");
+            ZsClient = new ZSClient(_username, _password, 0, _nif);
+        }
 
-		//-----------------------------------------------------------
-		public void AddItem (string data, string name) => Preferences.Edit().PutString(name, data).Apply();
+        public void DownloadStoreAsync()
+        {
+            var task = new Thread(() =>
+            {
+                Console.WriteLine("Connecting to ZS...");
+                //Do long run
+                var zsHandler = new ZSClient(_username, _password, 0, _nif);
+                zsHandler.Login();
+                //zsHandler.GetProducts();
+                Console.WriteLine("\n\n\n\n CONCLUIDO \n\n\n\n");
+                //zsHandler.TotalStores();
+            });
+            task.Start();
+        }
 
-		//-----------------------------------------------------------
-		public void AddItem (int data, string name) => Preferences.Edit().PutInt(name, data).Apply();
+        //-----------------------------------------------------------
+        public void SaveData(List<AddProducttoListView> _prodList)
+        {
+            var downloadsFolder = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDownloads);
+            var filePath = Path.Combine(downloadsFolder.Path, "export.csv");
 
-		//-----------------------------------------------------------
-		public void AddItem (bool data, string name) => Preferences.Edit().PutBoolean(name, data).Apply();
+            using (var streamWriter = new StreamWriter(filePath, false))
+            {
+                foreach (var item in _prodList)
+                {
+                    streamWriter.WriteLine(item.description + ";" + item.qtd);
+                }
+                streamWriter.Close();
+            }
+        }
 
-		//-----------------------------------------------------------
-		public string GetItem (string name) => Preferences.GetString(name, string.Empty);
+        //-----------------------------------------------------------
+        public bool HasEmail()
+        {
+            if (GetItem("emailToCSV") != "")
+                return true;
+            return false;
+        }
 
-	}
+        //public bool HasInternet()
+        //{
+        //    _connectivityManager = (ConnectivityManager)GetSystemService(ConnectivityService);
+        //    var activeConnection = _connectivityManager.ActiveNetworkInfo;
+        //    var isOnline = (activeConnection != null) && activeConnection.IsConnected;
+        //    if (isOnline)
+        //        return true;
+        //    Toast.MakeText(_context, "Verifique conexão à rede", ToastLength.Long);
+        //    return false;
+        //}
+
+        //-----------------------------------------------------------
+        public void AddItem(string data, string name) => Preferences.Edit().PutString(name, data).Apply();
+
+        //-----------------------------------------------------------
+        public void AddItem(int data, string name) => Preferences.Edit().PutInt(name, data).Apply();
+
+        //-----------------------------------------------------------
+        public void AddItem(bool data, string name) => Preferences.Edit().PutBoolean(name, data).Apply();
+
+        //-----------------------------------------------------------
+        public string GetItem(string name) => Preferences.GetString(name, string.Empty);
+
+    }
 }

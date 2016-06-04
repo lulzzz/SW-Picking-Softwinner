@@ -4,10 +4,11 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Support.V7.App;
 using Android.Widget;
+using App2.Modal;
 
 namespace App2
 {
-	[Activity (Label = "Configura??es", Theme = "@style/Theme.AppCompat.Light", ScreenOrientation = ScreenOrientation.Portrait)]
+	[Activity (Label = "Configurações", Theme = "@style/Theme.AppCompat.Light", ScreenOrientation = ScreenOrientation.Portrait)]
 	public class Settings : AppCompatActivity
 	{
 
@@ -16,31 +17,20 @@ namespace App2
 			base.OnCreate (savedInstanceState);
 
 			SetContentView (Resource.Layout.Settings);
-			ISharedPreferences preferences = Application.Context.GetSharedPreferences ("UserInfo", FileCreationMode.Private);
-			var onlineButton = FindViewById<RadioButton> (Resource.Id.radioButtonOnline);
-			var offlineButton = FindViewById<RadioButton> (Resource.Id.radioButtonOffline);
+			var manager= new ZsManager();
 			var btnLogout = FindViewById<Button> (Resource.Id.btnEndSession);
 			var saveSettings = FindViewById<Button> (Resource.Id.btnSave);
+		    var txtEmail = FindViewById<TextView>(Resource.Id.txtSettingsEmail);
 
-			int mode = preferences.GetInt ("mode", 1);
-			if (mode == 1) {
-				onlineButton.Checked = true;
-			} else {
-				offlineButton.Checked = true;
-			}
-			//
-			onlineButton.Click += (sender, e) => {
-				offlineButton.Checked = false;
-				preferences.Edit ().PutInt ("mode", 1).Apply ();
+		    if (manager.HasEmail())
+		        txtEmail.Text = manager.GetItem("emailToCSV");
 
-			};
-			offlineButton.Click += (sender, e) => {
-				onlineButton.Checked = false;
-				preferences.Edit ().PutInt ("mode", 0).Apply ();
-			};
+			//int mode = preferences.GetInt ("mode", 1);
+			
 			saveSettings.Click += (sender, e) => {
-				
-			};
+               manager.AddItem(txtEmail.Text, "emailToCSV");
+                StartActivity(typeof(MainActivity));
+            };
 			btnLogout.Click += (sender, e) => {
 				var pref = Application.Context.GetSharedPreferences ("UserInfo", FileCreationMode.Private);
 				var edit = pref.Edit ();

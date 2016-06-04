@@ -42,6 +42,10 @@ App2.Modal.DialogQtdPdt, App2;md53ed92ac57debf4033057399242ab3784.DialogQtdPdt
 App2.Modal.DialogQtdPdt, App2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53ed92ac57debf4033057399242ab3784.DialogQtdPdt
 App2.Modal.DialogQtdPdt;md53ed92ac57debf4033057399242ab3784.DialogQtdPdt
 app2.modal.DialogQtdPdt;md53ed92ac57debf4033057399242ab3784.DialogQtdPdt
+App2.Modal.ZsManager, App2;md53ed92ac57debf4033057399242ab3784.ZsManager
+App2.Modal.ZsManager, App2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53ed92ac57debf4033057399242ab3784.ZsManager
+App2.Modal.ZsManager;md53ed92ac57debf4033057399242ab3784.ZsManager
+app2.modal.ZsManager;md53ed92ac57debf4033057399242ab3784.ZsManager
 Android.Support.V4.View.ViewPager/IOnPageChangeListenerImplementor, Xamarin.Android.Support.v4;mono.android.support.v4.view.ViewPager_OnPageChangeListenerImplementor
 Android.Support.V4.View.ViewPager+IOnPageChangeListenerImplementor, Xamarin.Android.Support.v4, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.android.support.v4.view.ViewPager_OnPageChangeListenerImplementor
 Android.Support.V4.View.ViewPager.IOnPageChangeListenerImplementor;mono.android.support.v4.view.ViewPager_OnPageChangeListenerImplementor

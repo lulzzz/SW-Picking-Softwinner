@@ -45,6 +45,7 @@ C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwi
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\App2\App2\obj\Debug\res\layout\chooseqtd.xml
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\App2\App2\obj\Debug\res\layout\listviewrow_productfinder.xml
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\App2\App2\obj\Debug\res\layout\stockonstoresdetails.xml
+C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\App2\App2\obj\Debug\res\layout\layout1.xml
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\App2\App2\obj\Debug\res\layout\main.xml
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\App2\App2\obj\Debug\res\values\strings.xml
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\App2\App2\obj\Debug\res\drawable\circle_icon_softwinner.png
@@ -60,6 +61,5 @@ C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwi
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\App2\App2\obj\Debug\res\drawable\ic_create_black_24dp.png
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\App2\App2\obj\Debug\R.cs.flag
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\App2\App2\obj\Debug\uploadflags.txt
-C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\App2\App2\obj\Debug\ZSProduct_V2_5.csprojResolveAssemblyReference.cache
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\App2\App2\obj\Debug\App2.dll.mdb
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\App2\App2\bin\Debug\App2.dll.mdb
