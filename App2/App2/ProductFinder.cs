@@ -11,144 +11,166 @@ using App2.Modal;
 
 namespace App2
 {
-    [Activity(Label = "Detalhes de  Produtos", ScreenOrientation = ScreenOrientation.Portrait)]
-    public class ProductFinder : Activity
-    {
-        ZSClient zsClient;
-        int selectedStore;
-        string nif;
-        string username;
-        string password;
-        Dictionary<string, int> stock;
+	[Activity (Label = "Detalhes de  Produtos", ScreenOrientation = ScreenOrientation.Portrait)]
+	public class ProductFinder : Activity
+	{
+		public const int ETICADATA = -1;
+		ZSClient zsClient;
+		int selectedStore;
+		string nif;
+		string username;
+		string password;
+		Dictionary<string, int> stock;
+		ZsManager manager = new ZsManager ();
 
-        protected override void OnCreate(Bundle savedInstanceState)
-        {
-            base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.ProductFinder);
-            var manager = new ZsManager();
-            nif = manager.GetItem("nif");
-            username = manager.GetItem("username");
-            password = manager.GetItem("password");
+		protected override void OnCreate (Bundle savedInstanceState)
+		{
+			base.OnCreate (savedInstanceState);
+			SetContentView (Resource.Layout.ProductFinder);
+			manager = new ZsManager ();
+			nif = manager.GetItem ("nif");
+			username = manager.GetItem ("username");
+			password = manager.GetItem ("password");
 
-            buildSpinner();
-            EditText txtBarCode = FindViewById<EditText>(Resource.Id.txtBarCode);
-            TextView searchedBarCode = FindViewById<TextView>(Resource.Id.barCode);
-            TextView txtCode = FindViewById<TextView>(Resource.Id.productCode);
-            TextView txtRef = FindViewById<TextView>(Resource.Id.productRef);
-            TextView txtDesc = FindViewById<TextView>(Resource.Id.productDescription);
-            TextView txtSupplier = FindViewById<TextView>(Resource.Id.productSupplier);
-            TextView txtPvp1 = FindViewById<TextView>(Resource.Id.productPVP1);
-            TextView txtPvp2 = FindViewById<TextView>(Resource.Id.productPVP2);
-            TextView txtPcu = FindViewById<TextView>(Resource.Id.textView7);
-            TextView txtstock = FindViewById<TextView>(Resource.Id.stock);
-            TextView txtTotalstock = FindViewById<TextView>(Resource.Id.totalStockInStores);
+			buildSpinner ();
+			EditText txtBarCode = FindViewById<EditText> (Resource.Id.txtBarCode);
+			TextView searchedBarCode = FindViewById<TextView> (Resource.Id.barCode);
+			TextView txtCode = FindViewById<TextView> (Resource.Id.productCode);
+			TextView txtRef = FindViewById<TextView> (Resource.Id.productRef);
+			TextView txtDesc = FindViewById<TextView> (Resource.Id.productDescription);
+			TextView txtSupplier = FindViewById<TextView> (Resource.Id.productSupplier);
+			TextView txtPvp1 = FindViewById<TextView> (Resource.Id.productPVP1);
+			TextView txtPvp2 = FindViewById<TextView> (Resource.Id.productPVP2);
+			TextView txtPcu = FindViewById<TextView> (Resource.Id.textView7);
+			TextView txtstock = FindViewById<TextView> (Resource.Id.stock);
+			TextView txtTotalstock = FindViewById<TextView> (Resource.Id.totalStockInStores);
 
-            txtBarCode.TextChanged += (sender, e) =>
-            {
-                if (e.Text.Contains('\n') || e.Text.Contains('%'))
-                {
-                    string barCodeEntered = e.Text.ToString();
-                    barCodeEntered = barCodeEntered.Remove(barCodeEntered.Count() - 1);
-                    Console.WriteLine("Searching for barcode {0}", barCodeEntered);
-                    //Clear the textField to the new search
+			txtBarCode.TextChanged += (sender, e) => {
+				if (e.Text.Contains ('\n') || e.Text.Contains ('%')) {
+					string barCodeEntered = e.Text.ToString ();
+					barCodeEntered = barCodeEntered.Remove (barCodeEntered.Count () - 1);
+					Console.WriteLine ("Searching for barcode {0}", barCodeEntered);
+					//Clear the textField to the new search
 
-                    var myProgressBar = new ProgressBar(this);
-                    myProgressBar.Animate();
+					var myProgressBar = new ProgressBar (this);
+					myProgressBar.Animate ();
 
-                    zsClient = new ZSClient(username, password, selectedStore, nif);
-                    zsClient.Login();
-                    var product = zsClient.GetProductWithBarCode(barCodeEntered);
+					if (selectedStore == ETICADATA) {
+						//Search in eticadata
+						manager.checkEticadataIntegration ();
+						Console.WriteLine ("Searching in eticadata SQL Server");
+						Console.WriteLine (manager.eticadata.username);
+						Console.WriteLine (manager.eticadata.password);
+						Console.WriteLine (manager.eticadata.serverAddress);
+						var etiConn = new EtiClient ("xx", "xxx", "192.168.174");
 
-                    if (product != null)
-                    {
-                        stock = zsClient.GetStockInStoresWithProductCode(product.productCode.ToString());
-                        searchedBarCode.Text = barCodeEntered;
-                        txtCode.Text = product.productCode.ToString();
-                        txtRef.Text = product.reference.ToString();
-                        txtDesc.Text = product.description.ToString();
-                        txtSupplier.Text = product.supplierId.ToString();
-                        txtPvp1.Text = product.pvp1.ToString() + " €";
-                        txtPvp2.Text = product.pvp2.ToString() + " €";
-                        txtPcu.Text = product.pcu + " €";
-                        txtBarCode.Text = "";
-                        try
-                        {
-                            txtstock.Text = stock.ElementAt(selectedStore).Value.ToString();
-                        }
-                        catch (Exception err)                                                                                                                                                                                                                                                                                    
-                        {
-                            Toast.MakeText(this, "ERRO: " + err.Message, ToastLength.Long).Show();
-                        }
-                        txtTotalstock.Text = stock.Sum(pos => pos.Value).ToString();
-                    }
-                    else
-                    {
-                        txtBarCode.Text = "";
-                        Toast.MakeText(this, "Producto não encontrado!", ToastLength.Long).Show();
+						txtTotalstock.Text = etiConn.GetStockForProductWithBarCode (barCodeEntered);
+					} else {
+						//Search in the zonesoft cloud
+						Console.WriteLine ("Searching in zonesoft cloud");
+						zsClient = new ZSClient (username, password, selectedStore, nif);
+						zsClient.Login ();
+						var product = zsClient.GetProductWithBarCode (barCodeEntered);
 
-                    }
+						if (product != null) {
+							stock = zsClient.GetStockInStoresWithProductCode (product.productCode.ToString ());
+							searchedBarCode.Text = barCodeEntered;
+							txtCode.Text = product.productCode.ToString ();
+							txtRef.Text = product.reference.ToString ();
+							txtDesc.Text = product.description.ToString ();
+							txtSupplier.Text = product.supplierId.ToString ();
+							txtPvp1.Text = product.pvp1.ToString () + " €";
+							txtPvp2.Text = product.pvp2.ToString () + " €";
+							txtPcu.Text = product.pcu + " €";
+							txtBarCode.Text = "";
+							try {
+								txtstock.Text = stock.ElementAt (selectedStore).Value.ToString ();
+							} catch (Exception err) {
+								Toast.MakeText (this, "ERRO: " + err.Message, ToastLength.Long).Show ();
+							}
+							//txtTotalstock.Text = stock.Sum (pos => pos.Value).ToString ();
+						} else {
+							txtBarCode.Text = "";
+							Toast.MakeText (this, "Producto não encontrado!", ToastLength.Long).Show ();
 
-                }
-            };
+						}
+					}
 
-            FindViewById<TextView>(Resource.Id.totalStockInStores).Click += (sender, args) =>
-            {
-                var transaction = FragmentManager.BeginTransaction();
-                var dialogFragment = new DialogShowStocks(stock);
-                dialogFragment.Show(transaction, "dialog_fragment");
-            };
-        }
-        //Build the spinner dinamic
-        private void buildSpinner()
-        {
-            zsClient = new ZSClient(username, password, 0, nif);
-            zsClient.Login();
-            var stores = zsClient.GetStoresList();
-            var items = new List<string>();
-            foreach (var store in stores)
-            {
-                items.Add(store.description);
-            }
 
-            var adapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleSpinnerItem, items);
-            var spinner = FindViewById<Spinner>(Resource.Id.storeSpinner);
-            spinner.Adapter = adapter;
-            spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinner_ItemSelected);
-        }
-        //Handler for the drop down list
-        private void spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
-        {
-            Spinner spinner = (Spinner)sender;
-            selectedStore = e.Position;
-            clearScreen();
-            string toast = string.Format("Loja  {0} selecionada", spinner.GetItemAtPosition(e.Position));
-            Toast.MakeText(this, toast, ToastLength.Long).Show();
-        }
+				}
+			};
 
-        private void clearScreen()
-        {
-            EditText txtBarCode = FindViewById<EditText>(Resource.Id.txtBarCode);
-            TextView searchedBarCode = FindViewById<TextView>(Resource.Id.barCode);
-            TextView txtCode = FindViewById<TextView>(Resource.Id.productCode);
-            TextView txtRef = FindViewById<TextView>(Resource.Id.productRef);
-            TextView txtDesc = FindViewById<TextView>(Resource.Id.productDescription);
-            TextView txtSupplier = FindViewById<TextView>(Resource.Id.productSupplier);
-            TextView txtPvp1 = FindViewById<TextView>(Resource.Id.productPVP1);
-            TextView txtPvp2 = FindViewById<TextView>(Resource.Id.productPVP2);
-            TextView txtstock = FindViewById<TextView>(Resource.Id.stock);
-            TextView txtTotalstock = FindViewById<TextView>(Resource.Id.totalStockInStores);
-            searchedBarCode.Text = "";
-            txtCode.Text = "";
-            txtRef.Text = "";
-            txtDesc.Text = "";
-            txtSupplier.Text = "";
-            txtPvp1.Text = "";
-            txtPvp2.Text = "";
-            txtBarCode.Text = "";
-            txtstock.Text = "";
-            txtTotalstock.Text = "";
-        }
+			FindViewById<TextView> (Resource.Id.totalStockInStores).Click += (sender, args) => {
+				var transaction = FragmentManager.BeginTransaction ();
+				var dialogFragment = new DialogShowStocks (stock);
+				dialogFragment.Show (transaction, "dialog_fragment");
+			};
+		}
+		//Build the spinner dinamic
+		private void buildSpinner ()
+		{
+			zsClient = new ZSClient (username, password, 0, nif);
+			zsClient.Login ();
+			var stores = zsClient.GetStoresList ();
+			var items = new List<string> ();
+			//Chech if ZSManager has eticadata integration
+			if (manager.hasEticadataIntegration) {
+				items.Add ("Servidor Eticadata");
+			}
+			foreach (var store in stores) {
+				items.Add (store.description);
+			}
 
-    }
+			var adapter = new ArrayAdapter<String> (this, Android.Resource.Layout.SimpleSpinnerItem, items);
+			var spinner = FindViewById<Spinner> (Resource.Id.storeSpinner);
+			spinner.Adapter = adapter;
+			spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs> (spinner_ItemSelected);
+		}
+		//Handler for the drop down list
+		private void spinner_ItemSelected (object sender, AdapterView.ItemSelectedEventArgs e)
+		{
+			Spinner spinner = (Spinner)sender;
+			string storeTitle = spinner.GetItemAtPosition (e.Position).ToString ();
+			if (storeTitle.Contains ("Servidor Eticadata")) {
+				selectedStore = ETICADATA;	
+				Console.WriteLine (storeTitle);
+				clearScreen ();
+				string toast = string.Format ("Loja  {0} selecionada", spinner.GetItemAtPosition (e.Position));
+				Toast.MakeText (this, toast, ToastLength.Long).Show ();
+			} else {
+				selectedStore = e.Position;
+				clearScreen ();
+				string toast = string.Format ("Loja  {0} selecionada", spinner.GetItemAtPosition (e.Position));
+				Toast.MakeText (this, toast, ToastLength.Long).Show ();
+			}
+
+
+		}
+
+		private void clearScreen ()
+		{
+			EditText txtBarCode = FindViewById<EditText> (Resource.Id.txtBarCode);
+			TextView searchedBarCode = FindViewById<TextView> (Resource.Id.barCode);
+			TextView txtCode = FindViewById<TextView> (Resource.Id.productCode);
+			TextView txtRef = FindViewById<TextView> (Resource.Id.productRef);
+			TextView txtDesc = FindViewById<TextView> (Resource.Id.productDescription);
+			TextView txtSupplier = FindViewById<TextView> (Resource.Id.productSupplier);
+			TextView txtPvp1 = FindViewById<TextView> (Resource.Id.productPVP1);
+			TextView txtPvp2 = FindViewById<TextView> (Resource.Id.productPVP2);
+			TextView txtstock = FindViewById<TextView> (Resource.Id.stock);
+			TextView txtTotalstock = FindViewById<TextView> (Resource.Id.totalStockInStores);
+			searchedBarCode.Text = "";
+			txtCode.Text = "";
+			txtRef.Text = "";
+			txtDesc.Text = "";
+			txtSupplier.Text = "";
+			txtPvp1.Text = "";
+			txtPvp2.Text = "";
+			txtBarCode.Text = "";
+			txtstock.Text = "";
+			txtTotalstock.Text = "";
+		}
+
+	}
 }
 

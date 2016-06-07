@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ApplicationName">ZSProduct</string>
+  <string name="AboutPortugal">
+"<b>\bPORTUGAL</b>" 
+"Rua da Eirinha, n.º 108 R/C Dtº" 
+"Abraveses" 
+"3515-124 Viseu \n" 
+"Telefone:  +351 304 500 605" 
+"Telemóvel: +351 925 351 645\n"
+"suporte@softwinner.pt"
+  </string>
+  <string name="AboutAngola">
+"<b>\bANGOLA</b>"
+"Rua Vasco da Gama, nº 5 1º Andar"
+"Lobito - Benguela \n "
+"Telefone:  +244 934 560 883 "
+"Telemóvel: +244 924 851 364 \n" 
+"suporte@softwinner.net\n"
+  </string>
+</resources>

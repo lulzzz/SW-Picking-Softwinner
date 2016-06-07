@@ -4,6 +4,109 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout3">
+        <ImageView
+            android:src="@drawable/eticadatalogo"
+            android:layout_width="61.5dp"
+            android:layout_height="36.0dp"
+            android:id="@+id/imageView1"
+            android:scaleType="fitCenter"
+            android:layout_marginTop="4.0dp"
+            android:layout_marginRight="3.5dp"
+            android:layout_marginBottom="4.0dp"
+            android:layout_marginLeft="5.5dp" />
+        <TextView
+            android:text="Integração  Eticadata"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/textView2"
+            android:layout_marginRight="6.5dp" />
+        <ToggleButton
+            android:layout_width="76.5dp"
+            android:layout_height="match_parent"
+            android:id="@+id/integratorSwith"
+            android:textOff="Não"
+            android:textOn="Sim"
+            android:layout_marginRight="5.5dp"
+            android:layout_marginLeft="3.5dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/linearLayoutEticadata">
+            <TextView
+                android:text="Endereço Servidor Eticadata:"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="204.5dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView3"
+                android:layout_marginRight="47.0dp"
+                android:layout_marginLeft="16dp" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/serverAddress"
+                android:layout_marginLeft="16dp"
+                android:hint="IP ou DNS" />
+            <TextView
+                android:text="Utilizador API:"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView4"
+                android:layout_marginLeft="16dp" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/usernameAPI"
+                android:layout_marginLeft="16dp"
+                android:hint="username" />
+            <TextView
+                android:text="Password:"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView5"
+                android:layout_marginLeft="16dp" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/passwordAPI"
+                android:layout_marginLeft="16dp"
+                android:hint="password"
+                android:password="true" />
+            <TextView
+                android:text="Porta WebService"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView6"
+                android:layout_marginLeft="16dp" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editText1"
+                android:layout_marginLeft="16dp"
+                android:hint="8080" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="65.5dp"
@@ -26,17 +129,23 @@
             android:hint="Email" />
     </LinearLayout>
     <Button
-        android:text="Terminar Sessão"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnEndSession"
-        android:layout_marginLeft="50px"
-        android:layout_marginRight="50px" />
-    <Button
         android:text="Guardar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnSave"
         android:layout_marginLeft="50px"
-        android:layout_marginRight="50px" />
+        android:layout_marginRight="50px"
+        android:background="#ff00c853"
+        android:layout_marginTop="10.0dp"
+        android:layout_marginBottom="10.0dp" />
+    <Button
+        android:text="Terminar Sessão"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnEndSession"
+        android:layout_marginLeft="50px"
+        android:layout_marginRight="50px"
+        android:background="#fff44336"
+        android:layout_marginBottom="10.0dp"
+        android:layout_marginTop="10.0dp" />
 </LinearLayout>

@@ -1,0 +1,16 @@
+C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZSProduct\ZSProduct\obj\Debug\assemblies\ZSProduct.dll
+C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZSProduct\ZSProduct\obj\Debug\assemblies\Mono.Android.dll
+C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZSProduct\ZSProduct\obj\Debug\assemblies\mscorlib.dll
+C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZSProduct\ZSProduct\obj\Debug\assemblies\Newtonsoft.Json.dll
+C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZSProduct\ZSProduct\obj\Debug\assemblies\System.Core.dll
+C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZSProduct\ZSProduct\obj\Debug\assemblies\System.dll
+C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZSProduct\ZSProduct\obj\Debug\assemblies\System.Xml.dll
+C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZSProduct\ZSProduct\obj\Debug\assemblies\System.Xml.Linq.dll
+C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZSProduct\ZSProduct\obj\Debug\assemblies\Xamarin.Android.Support.Animated.Vector.Drawable.dll
+C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZSProduct\ZSProduct\obj\Debug\assemblies\Xamarin.Android.Support.Design.dll
+C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZSProduct\ZSProduct\obj\Debug\assemblies\Xamarin.Android.Support.v4.dll
+C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZSProduct\ZSProduct\obj\Debug\assemblies\Xamarin.Android.Support.v7.AppCompat.dll
+C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZSProduct\ZSProduct\obj\Debug\assemblies\Xamarin.Android.Support.v7.RecyclerView.dll
+C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZSProduct\ZSProduct\obj\Debug\assemblies\Xamarin.Android.Support.Vector.Drawable.dll
+C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZSProduct\ZSProduct\obj\Debug\assemblies\System.Runtime.Serialization.dll
+C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZSProduct\ZSProduct\obj\Debug\assemblies\System.ServiceModel.Internals.dll

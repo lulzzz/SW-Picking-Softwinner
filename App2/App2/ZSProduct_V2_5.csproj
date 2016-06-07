@@ -74,6 +74,7 @@
     <Compile Include="ProductSearch.cs" />
     <Compile Include="Dashboard.cs" />
     <Compile Include="ProductFinder.cs" />
+    <Compile Include="Modal\EtiClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -108,6 +109,7 @@
     <AndroidResource Include="Resources\layout\layout1.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\eticadataLogo.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />

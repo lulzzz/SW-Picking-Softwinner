@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal"
+    android:padding="5dp"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="145.0dp"
+        android:layout_marginEnd="25px"
+        android:layout_marginLeft="25px"
+        android:id="@+id/lnlaDashboardProdDetails"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/menuCard">
+        <ImageView
+            android:src="@drawable/stock"
+            android:layout_width="132.5dp"
+            android:layout_height="match_parent"
+            android:id="@+id/imgDashboardCardDetails"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="227.0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/linearLayout2">
+            <TextView
+                android:text="Detalhes do Produto"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="202.5dp"
+                android:layout_height="29.5dp"
+                android:id="@+id/textView1"
+                android:textColor="#000"
+                android:layout_marginTop="32dp"
+                android:layout_marginLeft="8dp" />
+            <TextView
+                android:text="Consultar Códigos de Barras, Descrição e Stock"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="203.0dp"
+                android:layout_height="61.5dp"
+                android:id="@+id/textView2"
+                android:textColor="#000"
+                android:layout_marginLeft="8dp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="145.0dp"
+        android:layout_marginEnd="25px"
+        android:layout_marginLeft="25px"
+        android:id="@+id/lnlaDashboardPdt"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/menuCard">
+        <ImageView
+            android:src="@drawable/unnamed"
+            android:layout_width="132.5dp"
+            android:layout_height="match_parent"
+            android:id="@+id/imgDashboardCardPdt"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="227.0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/linearLayout2">
+            <TextView
+                android:text="PDT"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="202.5dp"
+                android:layout_height="29.5dp"
+                android:id="@+id/textView1"
+                android:textColor="#000"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="8dp" />
+            <TextView
+                android:text="Extraia um ficheiro .CSV com informação acerca do produto e a quantidade que pretende adquirir"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="201.0dp"
+                android:layout_height="75.5dp"
+                android:id="@+id/textView2"
+                android:textColor="#000"
+                android:layout_marginLeft="8dp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

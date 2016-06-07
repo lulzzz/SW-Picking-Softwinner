@@ -1589,17 +1589,18 @@ containing a value of this type.
         public static final int abc_textfield_search_default_mtrl_alpha=0x7f020043;
         public static final int abc_textfield_search_material=0x7f020044;
         public static final int circle_icon_softwinner=0x7f020045;
-        public static final int header_block=0x7f020046;
-        public static final int ic_add_circle_outline_black_24dp=0x7f020047;
-        public static final int ic_create_black_24dp=0x7f020048;
-        public static final int ic_delete_black_24dp=0x7f020049;
-        public static final int ic_language_black_18dp=0x7f02004a;
-        public static final int ic_remove_circle_outline_black_24dp=0x7f02004b;
-        public static final int icon=0x7f02004c;
-        public static final int notification_template_icon_bg=0x7f020050;
-        public static final int pdt=0x7f02004d;
-        public static final int stock=0x7f02004e;
-        public static final int unnamed=0x7f02004f;
+        public static final int eticadatalogo=0x7f020046;
+        public static final int header_block=0x7f020047;
+        public static final int ic_add_circle_outline_black_24dp=0x7f020048;
+        public static final int ic_create_black_24dp=0x7f020049;
+        public static final int ic_delete_black_24dp=0x7f02004a;
+        public static final int ic_language_black_18dp=0x7f02004b;
+        public static final int ic_remove_circle_outline_black_24dp=0x7f02004c;
+        public static final int icon=0x7f02004d;
+        public static final int notification_template_icon_bg=0x7f020051;
+        public static final int pdt=0x7f02004e;
+        public static final int stock=0x7f02004f;
+        public static final int unnamed=0x7f020050;
     }
     public static final class id {
         public static final int RelativeLayout01=0x7f0b0078;
@@ -1625,24 +1626,26 @@ containing a value of this type.
         public static final int beginning=0x7f0b0018;
         public static final int btnChooseOk=0x7f0b0059;
         public static final int btnConsultarDetalhes=0x7f0b005d;
-        public static final int btnEndSession=0x7f0b00b0;
+        public static final int btnEndSession=0x7f0b00b9;
         public static final int btnFindStock=0x7f0b005b;
         public static final int btnLogin=0x7f0b0069;
         public static final int btnPdt=0x7f0b005c;
         public static final int btnPdtExportCsv=0x7f0b0082;
         public static final int btnPreencher=0x7f0b006a;
-        public static final int btnSave=0x7f0b00b1;
+        public static final int btnSave=0x7f0b00b8;
         public static final int buttonPanel=0x7f0b002b;
         public static final int cancel_action=0x7f0b006c;
         public static final int checkbox=0x7f0b0039;
         public static final int chronometer=0x7f0b0072;
         public static final int collapseActionView=0x7f0b001c;
+        public static final int container=0x7f0b00b0;
         public static final int contentPanel=0x7f0b0031;
         public static final int custom=0x7f0b0037;
         public static final int customPanel=0x7f0b0036;
         public static final int decor_content_parent=0x7f0b003f;
         public static final int default_activity_button=0x7f0b0027;
         public static final int disableHome=0x7f0b000c;
+        public static final int editText1=0x7f0b00b6;
         public static final int edit_query=0x7f0b0043;
         public static final int end=0x7f0b0019;
         public static final int end_padder=0x7f0b0077;
@@ -1661,6 +1664,7 @@ containing a value of this type.
         public static final int imgBtnChooseQtdPlus=0x7f0b0057;
         public static final int imgLogoSoftWinner=0x7f0b0052;
         public static final int info=0x7f0b0076;
+        public static final int integratorSwith=0x7f0b00af;
         public static final int lblChooseQtdSelecioneQtd=0x7f0b0054;
         public static final int lblCodBarras=0x7f0b009d;
         public static final int lblCodigo=0x7f0b009f;
@@ -1683,10 +1687,11 @@ containing a value of this type.
         public static final int linearLayout7=0x7f0b0091;
         public static final int linearLayout8=0x7f0b0093;
         public static final int linearLayout9=0x7f0b0087;
+        public static final int linearLayoutEticadata=0x7f0b00b1;
         public static final int listMode=0x7f0b0009;
         public static final int listView1=0x7f0b0081;
         public static final int list_item=0x7f0b0028;
-        public static final int lstStoresStock=0x7f0b00b2;
+        public static final int lstStoresStock=0x7f0b00ba;
         public static final int media_actions=0x7f0b006e;
         public static final int middle=0x7f0b001a;
         public static final int multiply=0x7f0b0013;
@@ -1694,6 +1699,7 @@ containing a value of this type.
         public static final int none=0x7f0b000e;
         public static final int normal=0x7f0b000a;
         public static final int parentPanel=0x7f0b002d;
+        public static final int passwordAPI=0x7f0b00b5;
         public static final int productCode=0x7f0b008a;
         public static final int productDescription=0x7f0b008e;
         public static final int productPVP1=0x7f0b0092;
@@ -1718,6 +1724,7 @@ containing a value of this type.
         public static final int search_src_text=0x7f0b004a;
         public static final int search_voice_btn=0x7f0b004e;
         public static final int select_dialog_listview=0x7f0b004f;
+        public static final int serverAddress=0x7f0b00b2;
         public static final int shortcut=0x7f0b003a;
         public static final int showCustom=0x7f0b000f;
         public static final int showHome=0x7f0b0010;
@@ -1746,6 +1753,7 @@ containing a value of this type.
         public static final int textView2=0x7f0b007c;
         public static final int textView3=0x7f0b007e;
         public static final int textView4=0x7f0b0080;
+        public static final int textView5=0x7f0b00b4;
         public static final int textView6=0x7f0b008b;
         public static final int textView7=0x7f0b0095;
         public static final int textView8=0x7f0b0088;
@@ -1775,10 +1783,11 @@ containing a value of this type.
         public static final int txtPvp1=0x7f0b00a8;
         public static final int txtPvp2=0x7f0b00aa;
         public static final int txtRef=0x7f0b00a2;
-        public static final int txtSettingsEmail=0x7f0b00af;
+        public static final int txtSettingsEmail=0x7f0b00b7;
         public static final int txtUsername=0x7f0b0067;
         public static final int up=0x7f0b0008;
         public static final int useLogo=0x7f0b0012;
+        public static final int usernameAPI=0x7f0b00b3;
         public static final int withText=0x7f0b001f;
         public static final int wrap_content=0x7f0b0020;
     }
