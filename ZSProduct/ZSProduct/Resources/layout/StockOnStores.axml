@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout1">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="41.5dp"
+            android:id="@+id/linearLayout2"
+            android:weightSum="100"
+            android:background="#BCD146">
+            <TextView
+                android:text="LOJA"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="90"
+                android:id="@+id/textView1"
+                android:layout_marginLeft="35px"
+                android:textSize="9pt"
+                android:gravity="center_vertical"
+                android:textStyle="bold" />
+            <TextView
+                android:text="STOCK"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:id="@+id/textView2"
+                android:textSize="9pt"
+                android:gravity="center"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <ListView
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/lstStocks" />
+    </LinearLayout>
+</LinearLayout>

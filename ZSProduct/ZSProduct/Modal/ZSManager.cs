@@ -30,20 +30,21 @@ namespace ZSProduct.Modal
         }
 
         //-----------------------------------------------------------
-        //public void SaveData(List<AddProducttoListView> _prodList)
-        //{
-        //    var downloadsFolder = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDownloads);
-        //    var filePath = Path.Combine(downloadsFolder.Path, "export.csv");
+        public void SaveData(List<AddProducttoListView> _prodList)
+        {
+            //var downloadsFolder = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDownloads);
+            var downloadsFolder = "/storage/emulated/0/ZSProduct";
+            var filePath = Path.Combine(downloadsFolder/*.Path*/, "export.csv");
 
-        //    using (var streamWriter = new StreamWriter(filePath, false))
-        //    {
-        //        foreach (var item in _prodList)
-        //        {
-        //            streamWriter.WriteLine(item.description + ";" + item.qtd);
-        //        }
-        //        streamWriter.Close();
-        //    }
-        //}
+            using (var streamWriter = new StreamWriter(filePath, false))
+            {
+                foreach (var item in _prodList)
+                {
+                    streamWriter.WriteLine(item.Description + ";" + item.qtd);
+                }
+                streamWriter.Close();
+            }
+        }
 
         public struct EticadataSettings
         {

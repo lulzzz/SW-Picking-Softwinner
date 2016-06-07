@@ -1,12 +1,14 @@
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Support.V7.App;
+using Android.Views;
 using Android.Widget;
 
 namespace ZSProduct
 {
-    [Activity(Label = "Sobre", Theme = "@style/Theme.AppCompat.Light")]
+    [Activity(Label = "Sobre", Theme = "@style/Theme.AppCompat.Light", ScreenOrientation = ScreenOrientation.Portrait)]
     public class About : AppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -18,6 +20,23 @@ namespace ZSProduct
                 var intent = new Intent(Intent.ActionView, uri);
                 StartActivity(intent);
             };
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            menu.Add(new Java.Lang.String("Configurações"));
+            return true;
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.TitleFormatted.ToString())
+            {
+                case "Configurações":
+                    StartActivity(typeof(Settings));
+                    break;
+            }
+            return true;
         }
     }
 }

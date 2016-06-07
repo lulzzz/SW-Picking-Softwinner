@@ -14,6 +14,10 @@ ZSProduct.AdapterListView, ZSProduct;md5cc2b321e93bfa5be8efd8aa79e8cad01.Adapter
 ZSProduct.AdapterListView, ZSProduct, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5cc2b321e93bfa5be8efd8aa79e8cad01.AdapterListView
 ZSProduct.AdapterListView;md5cc2b321e93bfa5be8efd8aa79e8cad01.AdapterListView
 zsproduct.AdapterListView;md5cc2b321e93bfa5be8efd8aa79e8cad01.AdapterListView
+ZSProduct.AdapterListViewStock, ZSProduct;md5cc2b321e93bfa5be8efd8aa79e8cad01.AdapterListViewStock
+ZSProduct.AdapterListViewStock, ZSProduct, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5cc2b321e93bfa5be8efd8aa79e8cad01.AdapterListViewStock
+ZSProduct.AdapterListViewStock;md5cc2b321e93bfa5be8efd8aa79e8cad01.AdapterListViewStock
+zsproduct.AdapterListViewStock;md5cc2b321e93bfa5be8efd8aa79e8cad01.AdapterListViewStock
 ZSProduct.DialogQtdPdt, ZSProduct;md5cc2b321e93bfa5be8efd8aa79e8cad01.DialogQtdPdt
 ZSProduct.DialogQtdPdt, ZSProduct, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5cc2b321e93bfa5be8efd8aa79e8cad01.DialogQtdPdt
 ZSProduct.DialogQtdPdt;md5cc2b321e93bfa5be8efd8aa79e8cad01.DialogQtdPdt
@@ -30,6 +34,10 @@ ZSProduct.Settings, ZSProduct;md5cc2b321e93bfa5be8efd8aa79e8cad01.Settings
 ZSProduct.Settings, ZSProduct, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5cc2b321e93bfa5be8efd8aa79e8cad01.Settings
 ZSProduct.Settings;md5cc2b321e93bfa5be8efd8aa79e8cad01.Settings
 zsproduct.Settings;md5cc2b321e93bfa5be8efd8aa79e8cad01.Settings
+ZSProduct.StockOnStores, ZSProduct;md5cc2b321e93bfa5be8efd8aa79e8cad01.StockOnStores
+ZSProduct.StockOnStores, ZSProduct, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5cc2b321e93bfa5be8efd8aa79e8cad01.StockOnStores
+ZSProduct.StockOnStores;md5cc2b321e93bfa5be8efd8aa79e8cad01.StockOnStores
+zsproduct.StockOnStores;md5cc2b321e93bfa5be8efd8aa79e8cad01.StockOnStores
 Android.Support.Design.Widget.Snackbar/SnackbarActionClickImplementor, Xamarin.Android.Support.Design;android.support.design.widget.Snackbar_SnackbarActionClickImplementor
 Android.Support.Design.Widget.Snackbar+SnackbarActionClickImplementor, Xamarin.Android.Support.Design, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;android.support.design.widget.Snackbar_SnackbarActionClickImplementor
 Android.Support.Design.Widget.Snackbar.SnackbarActionClickImplementor;android.support.design.widget.Snackbar_SnackbarActionClickImplementor

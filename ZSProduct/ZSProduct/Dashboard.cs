@@ -1,4 +1,5 @@
 using Android.App;
+using Android.Content.PM;
 using Android.OS;
 using Android.Support.V7.App;
 using Android.Views;
@@ -6,7 +7,7 @@ using Android.Widget;
 
 namespace ZSProduct
 {
-    [Activity(Label = "Dashboard", Theme = "@style/Theme.AppCompat.Light")]
+    [Activity(Label = "Dashboard", Theme = "@style/Theme.AppCompat.Light", ScreenOrientation = ScreenOrientation.Portrait)]
     public class Dashboard : AppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -14,7 +15,9 @@ namespace ZSProduct
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Dashboard);
 
-
+            Dialog d = new Dialog(this);
+            d.SetContentView(Resource.Layout.Settings);
+            d.Show();
             FindViewById<LinearLayout>(Resource.Id.lnlaDashboardProdDetails).Click += (sender, args) => { StartActivity(typeof(ProductFinder)); };
             FindViewById<LinearLayout>(Resource.Id.lnlaDashboardPdt).Click += (sender, args) => { StartActivity(typeof(Pdt)); };
         }

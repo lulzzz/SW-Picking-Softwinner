@@ -19,6 +19,15 @@
         android:minHeight="50px"
         android:minWidth="50px"
         android:layout_marginLeft="0.0dp" />
+    <TextView
+        android:text="@string/Author"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtAboutSWPT"
+        android:layout_marginRight="50px"
+        android:layout_marginLeft="50px"
+        android:layout_marginBottom="50px" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -51,5 +60,13 @@
             android:layout_marginRight="50px"
             android:layout_marginLeft="50px"
             android:clickable="true" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText1"
+            android:clickable="false"
+            android:editable="false"
+            android:focusable="false"
+            android:inputType="text" />
     </LinearLayout>
 </LinearLayout>

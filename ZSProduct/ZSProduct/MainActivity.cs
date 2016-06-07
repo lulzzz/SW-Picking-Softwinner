@@ -1,5 +1,6 @@
 ﻿using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
@@ -9,7 +10,7 @@ using ZSProduct.Modal;
 
 namespace ZSProduct
 {
-    [Activity(Label = "ZSProduct", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.DesignDemo")]
+    [Activity(Label = "ZSProduct", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.DesignDemo", ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : AppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
@@ -41,6 +42,7 @@ namespace ZSProduct
                     saveData.AddItem(txtNif.Text, "nif");
                     saveData.AddItem(txtUsername.Text, "username");
                     saveData.AddItem(txtPassword.Text, "password");
+                    saveData.AddItem(0, "storeToPdt");
                     var zsHandler = new ZsClient(txtUsername.Text, txtPassword.Text, 0, txtNif.Text);
                     zsHandler.Login();
                     if (zsHandler.Login())

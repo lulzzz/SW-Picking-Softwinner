@@ -288,6 +288,83 @@ namespace ZSProduct
 
         //-----------------------------------------------------------
 
+        public Product GetProductWithCode(string code)
+        {
+            _product = null;
+            //             auth_hash\":\"" + Hash + "\",\"product\":{\"codigo\":70043}}'
+            _request = "{\"auth_hash\":\"" + Hash + "\",\"product\":{\"codigo\":\"" + code + "\"}}";
+            Console.WriteLine("\n\n\n" + _request);
+            Console.WriteLine("GET PRODUCT WITH CODE: " + _request);
+            _dataBytes = Encoding.UTF8.GetBytes(_request);
+            _wc = new WebClient();
+            _wc.Headers.Add(HttpRequestHeader.ContentType, "application/json; charset=utf-8");
+            _responseBytes = _wc.UploadData(new Uri("https://api.zonesoft.org/v1.5/Products/getInstance"), "POST", _dataBytes);
+            _responseString = Encoding.UTF8.GetString(_responseBytes);
+            if (_responseString != "")
+            {
+                var element = JObject.Parse(_responseString);
+                Console.WriteLine(element);
+                if ((int)element["Response"]["StatusCode"] == 200)
+                {
+                    Console.WriteLine("Produto obtido com sucesso");
+                    //Get the values and build Product object for each element
+                    //var array = JArray.Parse(element["Response"]["Content"]["product"].ToString());
+                    _product = new Product((string)element["Response"]["Content"]["product"]["descricao"],
+                        (uint)element["Response"]["Content"]["product"]["codigo"],
+                        (uint)element["Response"]["Content"]["product"]["loja"],
+                        (uint)element["Response"]["Content"]["product"]["qtdstock"],
+                        (string)element["Response"]["Content"]["product"]["codbarras"],
+                        (double)element["Response"]["Content"]["product"]["precovenda"],
+                        (double)element["Response"]["Content"]["product"]["pvp2"],
+                        (string)element["Response"]["Content"]["product"]["referencia"],
+                        (string)element["Response"]["Content"]["product"]["ultimoprecocompra"]);
+                    return _product;
+                }
+                return null;
+            }
+            return null;
+        }
+
+        //-----------------------------------------------------------
+
+        public Product GetProductWithReference(string reference)
+        {
+            _product = null;
+            _request = "{\"auth_hash\":\"" + Hash + "\",\"product\":{\"condition\":\"referencia='" + reference + "'\"}}";
+            Console.WriteLine("\n\n\n" + _request);
+            Console.WriteLine("GET PRODUCT WITH BAR CODE: " + _request);
+            _dataBytes = Encoding.UTF8.GetBytes(_request);
+            _wc = new WebClient();
+            _wc.Headers.Add(HttpRequestHeader.ContentType, "application/json; charset=utf-8");
+            _responseBytes = _wc.UploadData(new Uri("https://api.zonesoft.org/v1.6/Products/getInstances"), "POST", _dataBytes);
+            _responseString = Encoding.UTF8.GetString(_responseBytes);
+            if (_responseString != "")
+            {
+                var element = JObject.Parse(_responseString);
+                Console.WriteLine(element);
+                if ((int)element["Response"]["StatusCode"] == 200)
+                {
+                    Console.WriteLine("Produto obtido com sucesso");
+                    //Get the values and build Product object for each element
+                    var array = JArray.Parse(element["Response"]["Content"]["product"].ToString());
+                    _product = new Product((string)array[0]["descricao"],
+                        (uint)array[0]["codigo"],
+                        (uint)array[0]["loja"],
+                        (uint)array[0]["qtdstock"],
+                        (string)array[0]["codbarras"],
+                        (double)array[0]["precovenda"],
+                        (double)array[0]["pvp2"],
+                        (string)array[0]["referencia"],
+                        (string)array[0]["ultimoprecocompra"]);
+                    return _product;
+                }
+                return null;
+            }
+            return null;
+        }
+
+        //-----------------------------------------------------------
+
         public int StoreCount()
         {
             if (this.IsAutenticated)

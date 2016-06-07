@@ -3,14 +3,21 @@ using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Support.V7.App;
+using Android.Views;
 using Android.Widget;
 using ZSProduct.Modal;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ZSProduct
 {
     [Activity(Label = "Configurações", Theme = "@style/Theme.AppCompat.Light", ScreenOrientation = ScreenOrientation.Portrait)]
     public class Settings : AppCompatActivity
     {
+        private readonly ZsManager _manager = new ZsManager();
+        private ZsClient _zsClient;
+        private int _selectedStore;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -21,7 +28,7 @@ namespace ZSProduct
             var btnLogout = FindViewById<Button>(Resource.Id.btnSettingsEndSession);
             var saveSettings = FindViewById<Button>(Resource.Id.btnSettingsSave);
             var txtEmail = FindViewById<TextView>(Resource.Id.txtSettingsEmail);
-
+            BuildSpinner();
             //Eticadata Settings
 
             var serverAddress = FindViewById<EditText>(Resource.Id.txtSettingsServerAddress);
@@ -61,9 +68,10 @@ namespace ZSProduct
 
 
             //************************************Events handling*****************************************
-            eticadataIntegratorSwitch.Click += (sender, e) => {
-                ToggleButton button = (ToggleButton)sender;
-                System.Console.WriteLine(button.Checked);
+            eticadataIntegratorSwitch.Click += (sender, e) =>
+            {
+                var button = (ToggleButton)sender;
+                Console.WriteLine(button.Checked);
                 if (button.Checked)
                 {
 
@@ -84,7 +92,8 @@ namespace ZSProduct
                 }
 
             };
-            saveSettings.Click += (sender, e) => {
+            saveSettings.Click += (sender, e) =>
+            {
                 //Check the required parametersfor eticadata integration
                 if (eticadataIntegratorSwitch.Checked && serverAddress.Text.Length > 0 && username.Text.Length > 0 && password.Text.Length > 0)
                 {
@@ -93,6 +102,7 @@ namespace ZSProduct
                     manager.AddItem(username.Text, "eticadataUsernameAPI");
                     manager.AddItem(password.Text, "eticadataPasswordAPI");
                     manager.AddItem(txtEmail.Text, "emailToCSV");
+                    manager.AddItem(manager.HasEticadataIntegration ? _selectedStore--.ToString() : _selectedStore.ToString(), "storeToPdt");
                     Toast.MakeText(this, "Integração com sucesso", ToastLength.Short).Show();
                     StartActivity(typeof(MainActivity));
                 }
@@ -108,8 +118,8 @@ namespace ZSProduct
 
             };
 
-
-            btnLogout.Click += (sender, e) => {
+            btnLogout.Click += (sender, e) =>
+            {
                 var pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
                 var edit = pref.Edit();
                 edit.Clear();
@@ -117,6 +127,51 @@ namespace ZSProduct
                 Toast.MakeText(this, "Sessão terminada com sucesso!", ToastLength.Short).Show();
                 StartActivity(typeof(MainActivity));
             };
+        }
+
+        private void BuildSpinner()
+        {
+            _zsClient = new ZsClient(_manager.GetItem("username"), _manager.GetItem("password"), 0, _manager.GetItem("nif"));
+            _zsClient.Login();
+            var stores = _zsClient.GetStoresList();
+            var items = new List<string>();
+            //Chech if ZSManager has eticadata integration
+            if (_manager.HasEticadataIntegration)
+                items.Add("Servidor Eticadata");
+            items.AddRange(stores.Select(store => store.description));
+
+            var adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, items);
+            var spinner = FindViewById<Spinner>(Resource.Id.optProdFinderStores);
+            spinner.Adapter = adapter;
+            spinner.ItemSelected += spinner_ItemSelected;
+        }
+
+        //Handler for the drop down list
+        private void spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+            var spinner = (Spinner)sender;
+            _selectedStore = e.Position;
+            Toast.MakeText(this, $"Loja  {spinner.GetItemAtPosition(_selectedStore)} selecionada", ToastLength.Long).Show();
+
+        }
+
+
+        //****************************************** MENU ***************************************\\
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            menu.Add(new Java.Lang.String("Sobre"));
+            return true;
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.TitleFormatted.ToString())
+            {
+                case "Sobre":
+                    StartActivity(typeof(About));
+                    break;
+            }
+            return true;
         }
     }
 }

@@ -7,13 +7,16 @@ using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
 using Android.Content;
+using Android.Support.Design.Widget;
 using ZSProduct.Modal;
+using System.IO;
 using Console = System.Console;
 using Thread = System.Threading.Thread;
+using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace ZSProduct
 {
-    [Activity(Label = "Pdt", Theme = "@style/Theme.DesignDemo", ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "PDT", Theme = "@style/Theme.DesignDemo", ScreenOrientation = ScreenOrientation.Portrait)]
     public class Pdt : AppCompatActivity
     {
         //-----------------------------------------------------------
@@ -30,6 +33,12 @@ namespace ZSProduct
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Pdt);
+            var toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBar);
+            SetSupportActionBar(toolBar);
+            var ab = SupportActionBar;
+            ab.SetHomeAsUpIndicator(Resource.Drawable.ic_arrow_back_white_18dp);
+            ab.SetDisplayHomeAsUpEnabled(true);
+
             _view = new AdapterListView(this, _productList);
             FindViewById<EditText>(Resource.Id.txtPdtBarCode).KeyPress += (sender, e) =>
             {
@@ -48,21 +57,20 @@ namespace ZSProduct
 
             _view.OnEditClick += (sender, e) =>
             {
-                Toast.MakeText(this, "clicked :)", ToastLength.Short);
                 _clicked = e.Position;
                 var t = new Thread(EditProductofList);
                 t.Start();
             };
 
-            //FindViewById<Button>(Resource.Id.btnPdtExportCsv).Click += (sender, args) =>
-            //{
-            //    _manager.SaveData(_productList);
-            //    Toast.MakeText(this, "Exportado com sucesso!", ToastLength.Short).Show();
-            //    if (_manager.HasEmail())
-            //        SendEmail(Path.Combine(Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDownloads).Path, "export.csv"));
-            //    else
-            //        Toast.MakeText(this, "Guardado em " + Path.Combine(Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDownloads).Path, "export.csv"), ToastLength.Short).Show();
-            //};
+            FindViewById<FloatingActionButton>(Resource.Id.fabPdt).Click += (sender, args) =>
+            {
+                _manager.SaveData(_productList);
+                Toast.MakeText(this, "Exportado com sucesso!", ToastLength.Short).Show();
+                if (_manager.HasEmail())
+                    SendEmail(Path.Combine(Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDownloads).Path, "export.csv"));
+                else
+                    Toast.MakeText(this, "Guardado em " + Path.Combine(Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDownloads).Path, "export.csv"), ToastLength.Short).Show();
+            };
         }
 
         //-----------------------------------------------------------
@@ -138,45 +146,62 @@ namespace ZSProduct
                 var getNif = _manager.GetItem("nif");
                 var getUsername = _manager.GetItem("username");
                 var getPassword = _manager.GetItem("password");
-                var zsHandler = new ZsClient(getUsername, getPassword, 0, getNif);
+                var getWarehouse = _manager.GetItem("storeToPdt");
+                Toast.MakeText(this, "bla: " + getWarehouse, ToastLength.Short).Show();
+                var zsHandler = new ZsClient(getUsername, getPassword, Convert.ToInt32(getWarehouse), getNif);
                 zsHandler.Login();
                 Console.WriteLine("AddItem started " + zsHandler.StoreCount());
                 var txtPdtCodBarras = FindViewById<EditText>(Resource.Id.txtPdtBarCode);
                 var barCode = txtPdtCodBarras.Text;
-                var totalStores = zsHandler.StoreCount();
                 var existe = false;
                 foreach (var item in _productList)
-                    if (item.barCode == txtPdtCodBarras.Text)
+                    if (item.BarCode == txtPdtCodBarras.Text)
                         existe = true;
-                for (var i = 0; i < totalStores; i++)
+                zsHandler.Login();
+                if (!existe)
                 {
-                    Console.WriteLine("FOR LOJA " + i);
-                    zsHandler = new ZsClient(getUsername, getPassword, i, getNif);
-                    zsHandler.Login();
-                    if (!existe)
+                    var product = zsHandler.GetProductWithBarCode(barCode);
+                    if (product != null)
                     {
-                        var product = zsHandler.GetProductWithBarCode(barCode);
-                        if (product != null)
-                        {
-                            _productList.Add(new AddProducttoListView(product.description, product.productCode,
-                                product.store, product.stock, product.barCode, product.pvp1, product.pvp2,
-                                product.reference, product.pcu, Qtd));
-                            FindViewById<ListView>(Resource.Id.lstPdtProducts).Adapter = _view;
-                            txtPdtCodBarras.Text = "";
-                            break;
-                        }
-                        if (i != totalStores - 1) continue;
-                        Toast.MakeText(this, "Produto inexistente", ToastLength.Long).Show();
+                        _productList.Add(new AddProducttoListView(product.Description, product.ProductCode,
+                            product.Store, product.Stock, product.BarCode, product.Pvp1, product.Pvp2,
+                            product.Reference, product.Pcu, Qtd));
+                        FindViewById<ListView>(Resource.Id.lstPdtProducts).Adapter = _view;
                         txtPdtCodBarras.Text = "";
                     }
                     else
                     {
-                        Toast.MakeText(this, "Produto já adicionado", ToastLength.Long).Show();
+                        Toast.MakeText(this, "Produto inexistente", ToastLength.Long).Show();
                         txtPdtCodBarras.Text = "";
-                        break;
                     }
                 }
+                else
+                {
+                    Toast.MakeText(this, "Produto já adicionado", ToastLength.Long).Show();
+                    txtPdtCodBarras.Text = "";
+                }
             });
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            menu.Add(new Java.Lang.String("Configurações"));
+            menu.Add(new Java.Lang.String("Sobre"));
+            return true;
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.TitleFormatted.ToString())
+            {
+                case "Configurações":
+                    StartActivity(typeof(Settings));
+                    break;
+                case "Sobre":
+                    StartActivity(typeof(About));
+                    break;
+            }
+            return true;
         }
     }
 }
