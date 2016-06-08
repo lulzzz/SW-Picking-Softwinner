@@ -138,7 +138,7 @@ namespace ZSProduct
             //Chech if ZSManager has eticadata integration
             if (_manager.HasEticadataIntegration)
                 items.Add("Servidor Eticadata");
-            items.AddRange(stores.Select(store => store.description));
+            items.AddRange(stores.Select(store => store.Description));
 
             var adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, items);
             var spinner = FindViewById<Spinner>(Resource.Id.optProdFinderStores);

@@ -5,7 +5,7 @@ using Android.Views;
 using Android.Widget;
 
 //-----------------------------------------------------------
-namespace ZSProduct
+namespace ZSProduct.Modal
 {
     //-----------------------------------------------------------
     public class OnSetQtdEventArgs : EventArgs

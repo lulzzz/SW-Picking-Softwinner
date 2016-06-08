@@ -5,7 +5,7 @@ namespace ZSProduct.Modal
         public string Loja;
         public string Stock;
 
-        public AddStockStore(string loja, string stock)
+        public AddStockStore(string stock, string loja)
         {
             Loja = loja;
             Stock = stock;

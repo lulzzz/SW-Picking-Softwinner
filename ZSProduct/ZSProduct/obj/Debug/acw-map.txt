@@ -10,18 +10,6 @@ ZSProduct.MainActivity, ZSProduct;md5cc2b321e93bfa5be8efd8aa79e8cad01.MainActivi
 ZSProduct.MainActivity, ZSProduct, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5cc2b321e93bfa5be8efd8aa79e8cad01.MainActivity
 ZSProduct.MainActivity;md5cc2b321e93bfa5be8efd8aa79e8cad01.MainActivity
 zsproduct.MainActivity;md5cc2b321e93bfa5be8efd8aa79e8cad01.MainActivity
-ZSProduct.AdapterListView, ZSProduct;md5cc2b321e93bfa5be8efd8aa79e8cad01.AdapterListView
-ZSProduct.AdapterListView, ZSProduct, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5cc2b321e93bfa5be8efd8aa79e8cad01.AdapterListView
-ZSProduct.AdapterListView;md5cc2b321e93bfa5be8efd8aa79e8cad01.AdapterListView
-zsproduct.AdapterListView;md5cc2b321e93bfa5be8efd8aa79e8cad01.AdapterListView
-ZSProduct.AdapterListViewStock, ZSProduct;md5cc2b321e93bfa5be8efd8aa79e8cad01.AdapterListViewStock
-ZSProduct.AdapterListViewStock, ZSProduct, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5cc2b321e93bfa5be8efd8aa79e8cad01.AdapterListViewStock
-ZSProduct.AdapterListViewStock;md5cc2b321e93bfa5be8efd8aa79e8cad01.AdapterListViewStock
-zsproduct.AdapterListViewStock;md5cc2b321e93bfa5be8efd8aa79e8cad01.AdapterListViewStock
-ZSProduct.DialogQtdPdt, ZSProduct;md5cc2b321e93bfa5be8efd8aa79e8cad01.DialogQtdPdt
-ZSProduct.DialogQtdPdt, ZSProduct, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5cc2b321e93bfa5be8efd8aa79e8cad01.DialogQtdPdt
-ZSProduct.DialogQtdPdt;md5cc2b321e93bfa5be8efd8aa79e8cad01.DialogQtdPdt
-zsproduct.DialogQtdPdt;md5cc2b321e93bfa5be8efd8aa79e8cad01.DialogQtdPdt
 ZSProduct.Pdt, ZSProduct;md5cc2b321e93bfa5be8efd8aa79e8cad01.Pdt
 ZSProduct.Pdt, ZSProduct, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5cc2b321e93bfa5be8efd8aa79e8cad01.Pdt
 ZSProduct.Pdt;md5cc2b321e93bfa5be8efd8aa79e8cad01.Pdt
@@ -38,6 +26,22 @@ ZSProduct.StockOnStores, ZSProduct;md5cc2b321e93bfa5be8efd8aa79e8cad01.StockOnSt
 ZSProduct.StockOnStores, ZSProduct, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5cc2b321e93bfa5be8efd8aa79e8cad01.StockOnStores
 ZSProduct.StockOnStores;md5cc2b321e93bfa5be8efd8aa79e8cad01.StockOnStores
 zsproduct.StockOnStores;md5cc2b321e93bfa5be8efd8aa79e8cad01.StockOnStores
+ZSProduct.Modal.AdapterListView, ZSProduct;md502f9f3d6b14c1c28d55665b227da2281.AdapterListView
+ZSProduct.Modal.AdapterListView, ZSProduct, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md502f9f3d6b14c1c28d55665b227da2281.AdapterListView
+ZSProduct.Modal.AdapterListView;md502f9f3d6b14c1c28d55665b227da2281.AdapterListView
+zsproduct.modal.AdapterListView;md502f9f3d6b14c1c28d55665b227da2281.AdapterListView
+ZSProduct.Modal.AdapterListViewStock, ZSProduct;md502f9f3d6b14c1c28d55665b227da2281.AdapterListViewStock
+ZSProduct.Modal.AdapterListViewStock, ZSProduct, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md502f9f3d6b14c1c28d55665b227da2281.AdapterListViewStock
+ZSProduct.Modal.AdapterListViewStock;md502f9f3d6b14c1c28d55665b227da2281.AdapterListViewStock
+zsproduct.modal.AdapterListViewStock;md502f9f3d6b14c1c28d55665b227da2281.AdapterListViewStock
+ZSProduct.Modal.DialogQtdPdt, ZSProduct;md502f9f3d6b14c1c28d55665b227da2281.DialogQtdPdt
+ZSProduct.Modal.DialogQtdPdt, ZSProduct, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md502f9f3d6b14c1c28d55665b227da2281.DialogQtdPdt
+ZSProduct.Modal.DialogQtdPdt;md502f9f3d6b14c1c28d55665b227da2281.DialogQtdPdt
+zsproduct.modal.DialogQtdPdt;md502f9f3d6b14c1c28d55665b227da2281.DialogQtdPdt
+ZSProduct.Modal.DialogStock, ZSProduct;md502f9f3d6b14c1c28d55665b227da2281.DialogStock
+ZSProduct.Modal.DialogStock, ZSProduct, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md502f9f3d6b14c1c28d55665b227da2281.DialogStock
+ZSProduct.Modal.DialogStock;md502f9f3d6b14c1c28d55665b227da2281.DialogStock
+zsproduct.modal.DialogStock;md502f9f3d6b14c1c28d55665b227da2281.DialogStock
 Android.Support.Design.Widget.Snackbar/SnackbarActionClickImplementor, Xamarin.Android.Support.Design;android.support.design.widget.Snackbar_SnackbarActionClickImplementor
 Android.Support.Design.Widget.Snackbar+SnackbarActionClickImplementor, Xamarin.Android.Support.Design, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;android.support.design.widget.Snackbar_SnackbarActionClickImplementor
 Android.Support.Design.Widget.Snackbar.SnackbarActionClickImplementor;android.support.design.widget.Snackbar_SnackbarActionClickImplementor

@@ -1,6 +1,4 @@
-using ZSProduct;
-
-namespace ZSProduct
+namespace ZSProduct.Modal
 {
     public class AddProducttoListView : Product
     {

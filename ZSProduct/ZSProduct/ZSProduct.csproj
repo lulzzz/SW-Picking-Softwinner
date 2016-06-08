@@ -87,6 +87,7 @@
     <Compile Include="Modal\AddProducttoListView.cs" />
     <Compile Include="Modal\AddStockStore.cs" />
     <Compile Include="Modal\DialogQtdPdt.cs" />
+    <Compile Include="Modal\DialogStock.cs" />
     <Compile Include="Modal\EtiClient.cs" />
     <Compile Include="Modal\Product.cs" />
     <Compile Include="Modal\Store.cs" />
@@ -200,7 +201,9 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\ic_send_white_24dp.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\background.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -2,22 +2,27 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Android.App;
-using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Support.Design.Widget;
 using Android.Support.V7.App;
 using Android.Views;
+using Android.Views.InputMethods;
 using Android.Widget;
 using ZSProduct.Modal;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 
+//-----------------------------------------------------------
 namespace ZSProduct
 {
+    //-----------------------------------------------------------
     [Activity(Label = "Detalhes do Produto", Theme = "@style/Theme.DesignDemo", ScreenOrientation = ScreenOrientation.Portrait)]
     public class ProductFinder : AppCompatActivity
     {
-        public const int ETICADATA = -1;
+        //-----------------------------------------------------------
+        public const int Eticadata = -1;
+
+        //-----------------------------------------------------------
         private readonly ZsManager _manager = new ZsManager();
         private ZsClient _zsClient;
         private string _nif;
@@ -34,14 +39,15 @@ namespace ZSProduct
         private TextView _txtPcm;
         private TextView _txtTotalStock;
         private int _selectedStore;
-        private readonly IList<AddStockStore> _stockList = new List<AddStockStore>();
+        private bool _searchingByBarCode;
+        private bool _searchingByCode;
+        private bool _searchingByReference;
+        private List<AddStockStore> _listStocks;
+        public Dictionary<string, int> _stock;
 
+        //-----------------------------------------------------------
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            var searchingByBarCode = false;
-            var searchingByCode = false;
-            var searchingByReference = false;
-            _stockList.Add(new AddStockStore("o", "a"));
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.ProductFinder);
             var toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBar);
@@ -55,7 +61,7 @@ namespace ZSProduct
             _password = _manager.GetItem("password");
             _zsClient = new ZsClient(_username, _password, 0, _nif);
             _zsClient.Login();
-            //BuildSpinner();
+
             _txtBarCode = FindViewById<EditText>(Resource.Id.txtProdFinderBarCode);
             _txtCode = FindViewById<TextView>(Resource.Id.txtProdFinderProductCode);
             _txtRef = FindViewById<TextView>(Resource.Id.txtProdFinderProductReference);
@@ -67,19 +73,19 @@ namespace ZSProduct
             _txtPcm = FindViewById<TextView>(Resource.Id.txtProdFinderPcm);
             _txtTotalStock = FindViewById<TextView>(Resource.Id.txtProdFinderStockTotal);
 
-            _txtBarCode.FocusChange += (sender, args) => { if (args.HasFocus) _txtBarCode.Text = ""; };
+            _txtBarCode.Click += (sender, args) => _txtBarCode.Text = "";
 
-            _txtCode.FocusChange += (sender, args) => { if (args.HasFocus) _txtCode.Text = ""; };
+            _txtCode.Click += (sender, args) => _txtCode.Text = "";
 
-            _txtRef.FocusChange += (sender, args) => { if (args.HasFocus) _txtRef.Text = ""; };
+            _txtRef.Click += (sender, args) => _txtRef.Text = "";
 
             _txtBarCode.KeyPress += (sender, e) =>
             {
-                if (searchingByCode || searchingByReference) return;
-                searchingByBarCode = true;
+                if (_searchingByCode || _searchingByReference) return;
+                _searchingByBarCode = true;
                 e.Handled = false;
                 if (e.Event.Action != KeyEventActions.Down || e.KeyCode != Keycode.Enter) return;
-                if (_selectedStore == ETICADATA)
+                if (_selectedStore == Eticadata)
                 {
                     //Search in eticadata
                     _manager.CheckEticadataIntegration();
@@ -106,7 +112,7 @@ namespace ZSProduct
                         var product = zsHandler.GetProductWithBarCode(barCode);
                         if (product != null)
                         {
-                            var stock = _zsClient.GetStockInStoresWithProductCode(product.ProductCode.ToString());
+                            _stock = zsHandler.GetStockInStoresWithProductCode(product.ProductCode.ToString());
                             _txtBarCode.Text = product.BarCode.ToString();
                             _txtCode.Text = product.ProductCode.ToString();
                             _txtRef.Text = product.Reference.ToString();
@@ -116,29 +122,29 @@ namespace ZSProduct
                             _txtPvp2.Text = product.Pvp2 == null ? "-" : product.Pvp2 + " €";
                             _txtPcu.Text = product.Pcu == null ? "-" : product.Pcu + " €";
                             _txtPcm.Text = product.Pcm ?? "-";
-                            for (int j = 0; j < totalStores; j++)
-                                //_stockList.Add(new AddStockStore(i.ToString(), stock.ElementAt(i).ToString()));
-                                _stockList.Add(new AddStockStore(i.ToString(), i.ToString()));
-                            try { _txtTotalStock.Text = stock.Sum(pos => pos.Value).ToString(); }
+                            for (var x = 0; x > totalStores; x++)
+                                _listStocks.Add(new AddStockStore(x.ToString(), x.ToString()));
+                            try { _txtTotalStock.Text = _stock.Sum(pos => pos.Value).ToString(); }
                             catch (Exception) { _txtTotalStock.Text = "0"; }
+                            //_stock = stock;
                             break;
                         }
                         if (i != totalStores - 1) continue;
                         Toast.MakeText(this, "Produto não encontrado", ToastLength.Long).Show();
-                        ClearFields();
+                        ClearFields("barCode");
                     }
                 }
                 e.Handled = true;
-                searchingByBarCode = false;
+                _searchingByBarCode = false;
             };
 
             _txtCode.KeyPress += (sender, e) =>
             {
-                if (searchingByBarCode && searchingByReference) return;
-                searchingByCode = true;
+                if (_searchingByBarCode && _searchingByReference) return;
+                _searchingByCode = true;
                 e.Handled = false;
                 if (e.Event.Action != KeyEventActions.Down || e.KeyCode != Keycode.Enter) return;
-                if (_selectedStore == ETICADATA)
+                if (_selectedStore == Eticadata)
                 {
                     //Search in eticadata
                     _manager.CheckEticadataIntegration();
@@ -181,20 +187,20 @@ namespace ZSProduct
                         }
                         if (i != totalStores - 1) continue;
                         Toast.MakeText(this, "Produto não encontrado", ToastLength.Long).Show();
-                        ClearFields();
+                        ClearFields("from");
                     }
                 }
-                searchingByCode = false;
+                _searchingByCode = false;
                 e.Handled = true;
             };
 
             _txtRef.KeyPress += (sender, e) =>
             {
-                if (searchingByCode || searchingByBarCode) return;
-                searchingByReference = true;
+                if (_searchingByCode || _searchingByBarCode) return;
+                _searchingByReference = true;
                 e.Handled = false;
                 if (e.Event.Action != KeyEventActions.Down || e.KeyCode != Keycode.Enter) return;
-                if (_selectedStore == ETICADATA)
+                if (_selectedStore == Eticadata)
                 {
                     //Search in eticadata
                     _manager.CheckEticadataIntegration();
@@ -227,8 +233,8 @@ namespace ZSProduct
                             _txtRef.Text = product.Reference.ToString();
                             _txtDesc.Text = product.Description.ToString();
                             _txtSupplier.Text = product.SupplierId.ToString();
-                            _txtPvp1.Text = product.Pvp1 == null ? "-" : product.Pvp1 + " €";
-                            _txtPvp2.Text = product.Pvp2 == null ? "-" : product.Pvp2 + " €";
+                            _txtPvp1.Text = product.Pvp1 + " €";
+                            _txtPvp2.Text = product.Pvp2 + " €";
                             _txtPcu.Text = product.Pcu == null ? "-" : product.Pcu + " €";
                             _txtPcm.Text = product.Pcm ?? "-";
                             try { _txtTotalStock.Text = stock.Sum(pos => pos.Value).ToString(); }
@@ -237,73 +243,30 @@ namespace ZSProduct
                         }
                         if (i != totalStores - 1) continue;
                         Toast.MakeText(this, "Produto não encontrado", ToastLength.Long).Show();
-                        ClearFields();
+                        ClearFields("ref");
                     }
                 }
                 e.Handled = true;
-                searchingByReference = false;
+                _searchingByReference = false;
             };
 
             FindViewById<FloatingActionButton>(Resource.Id.fab).Click += (sender, args) =>
             {
-                /*var stockOnStoresActivity = new Intent(this, typeof(StockOnStores));
-                StartActivity(stockOnStoresActivity);*/
-
-                //var d = new Dialog(this);
-                //d.SetContentView(S);
-                ////FindViewById<ListView>(Resource.Id.lstStocks).Adapter = new AdapterListViewStock(this, _stockList);
-                //d.Show();
+                var transition = FragmentManager.BeginTransaction();
+                var showStocks = new DialogStock(_stock);
+                showStocks.Show(transition, "dialog fragment");
             };
         }
 
-        //Build the spinner dinamic
-        /*private void BuildSpinner()
+        //-----------------------------------------------------------
+        private void ClearFields(string from)
         {
-            _zsClient = new ZsClient(_username, _password, 0, _nif);
-            _zsClient.Login();
-            var stores = _zsClient.GetStoresList();
-            var items = new List<string>();
-            //Chech if ZSManager has eticadata integration
-            if (_manager.HasEticadataIntegration)
-            {
-                items.Add("Servidor Eticadata");
-            }
-            foreach (var store in stores)
-            {
-                items.Add(store.description);
-            }
-
-            var adapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, items);
-            var spinner = FindViewById<Spinner>(Resource.Id.optProdFinderStores);
-            spinner.Adapter = adapter;
-            spinner.ItemSelected += spinner_ItemSelected;
-        }
-
-        //Handler for the drop down list
-        private void spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
-        {
-            var spinner = (Spinner)sender;
-            var storeTitle = spinner.GetItemAtPosition(e.Position).ToString();
-            if (storeTitle.Contains("Servidor Eticadata"))
-            {
-                _selectedStore = ETICADATA;
-                Console.WriteLine(storeTitle);
-                ClearFields();
-                Toast.MakeText(this, $"Loja  {spinner.GetItemAtPosition(e.Position)} selecionada", ToastLength.Long).Show();
-            }
-            else
-            {
-                _selectedStore = e.Position;
-                ClearFields();
-                Toast.MakeText(this, $"Loja  {spinner.GetItemAtPosition(e.Position)} selecionada", ToastLength.Long).Show();
-            }
-        }*/
-
-        private void ClearFields()
-        {
-            _txtBarCode.Text = "";
-            _txtCode.Text = "";
-            _txtRef.Text = "";
+            if (from != "barCode")
+                _txtBarCode.Text = "";
+            if (from != "code")
+                _txtCode.Text = "";
+            if (from != "ref")
+                _txtRef.Text = "";
             _txtDesc.Text = "";
             _txtSupplier.Text = "";
             _txtPvp1.Text = "";
@@ -312,6 +275,7 @@ namespace ZSProduct
             _txtTotalStock.Text = "";
         }
 
+        //-----------------------------------------------------------
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             menu.Add(new Java.Lang.String("Configurações"));
@@ -319,6 +283,7 @@ namespace ZSProduct
             return true;
         }
 
+        //-----------------------------------------------------------
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             switch (item.TitleFormatted.ToString())

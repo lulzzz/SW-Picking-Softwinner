@@ -1,30 +1,30 @@
 using System;
-using System.Text;
 using System.Net;
+using System.Text;
 using Newtonsoft.Json.Linq;
 
-namespace ZSProduct
+namespace ZSProduct.Modal
 {
     public class EtiClient
     {
-        public string username;
-        public string password;
-        public string sqlServerAddress;
-        public bool isOnline;
-        public uint port;
+        public string Username;
+        public string Password;
+        public string SqlServerAddress;
+        public bool IsOnline;
+        public uint Port;
 
         public EtiClient(string username, string password, string adress)
         {
-            this.username = username;
-            this.password = password;
-            this.sqlServerAddress = adress;
-            isOnline = true;
-            port = 8080;
+            Username = username;
+            Password = password;
+            SqlServerAddress = adress;
+            IsOnline = true;
+            Port = 8080;
         }
 
         public string GetStockForProductWithBarCode(string barCode)
         {
-            if (isOnline)
+            if (IsOnline)
             {
                 try
                 {
@@ -33,7 +33,7 @@ namespace ZSProduct
                     WebClient wc = new WebClient();
                     wc.Headers.Add(HttpRequestHeader.ContentType, "application/json; charset=utf-8");
                     Console.WriteLine(request);
-                    byte[] responseBytes = wc.UploadData(new Uri("http://192.168.100.174:" + port + "/") + barCode,
+                    byte[] responseBytes = wc.UploadData(new Uri("http://192.168.100.174:" + Port + "/") + barCode,
                                                "POST", dataBytes);
                     string responseString = Encoding.UTF8.GetString(responseBytes);
 
@@ -55,7 +55,7 @@ namespace ZSProduct
                 catch
                 {
                     Console.WriteLine("Falhou obter producto.Verifique conecçao.");
-                    this.isOnline = false;
+                    this.IsOnline = false;
                     return null;
                 }
             }

@@ -19,18 +19,20 @@
             android:minHeight="25px"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="65"
+            android:layout_weight="70"
             android:id="@+id/linearLayout2"
-            android:background="#e3e3e3"
-            android:paddingLeft="35px">
+            android:maxWidth="11dp"
+            android:background="#f4f4f4">
             <TextView
                 android:text="Text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/txtAdapterStockStore"
                 android:gravity="center_vertical"
-                android:textSize="9pt"
-                android:textColor="#BCD146" />
+                android:textSize="8pt"
+                android:maxWidth="11dp"
+                android:textColor="#BCD146"
+                android:paddingLeft="8dp" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -38,10 +40,10 @@
             android:minHeight="25px"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="35"
+            android:layout_weight="30"
             android:id="@+id/linearLayout2"
             android:background="#fff"
-            android:paddingRight="35px">
+            android:paddingRight="8dp">
             <TextView
                 android:text="Text"
                 android:layout_width="match_parent"
@@ -49,7 +51,7 @@
                 android:textColor="#BCD146"
                 android:id="@+id/txtAdapterStockStockProd"
                 android:gravity="center_vertical|right"
-                android:textSize="9pt" />
+                android:textSize="8pt" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -1,38 +1,26 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-
-namespace ZSProduct
+namespace ZSProduct.Modal
 {
-	public class Store
-	{
-		public uint code;
-		public string description;
-		public string name;
-		public string address;
+    public class Store
+    {
+        public uint Code;
+        public string Description;
+        public string Name;
+        public string Address;
 
-		public Store (uint code, string description, string name, string address)
-		{
-			this.code = code;
-			this.description = description;
-			this.name = name;
-			this.address = address;
-		}
+        public Store(uint code, string description, string name, string address)
+        {
+            Code = code;
+            Description = description;
+            Name = name;
+            Address = address;
+        }
 
-		public uint GetCode () => code;
+        public uint GetCode() => Code;
 
-		public string GetDescription () => description;
+        public string GetDescription() => Description;
 
-		public string GetName () => name;
+        public string GetName() => Name;
 
-		public string GetAddress () => address;
-	}
+        public string GetAddress() => Address;
+    }
 }

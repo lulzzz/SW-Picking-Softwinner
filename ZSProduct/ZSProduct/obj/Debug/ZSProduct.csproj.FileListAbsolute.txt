@@ -48,5 +48,6 @@ C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZSProduct\ZSProdu
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZSProduct\ZSProduct\obj\Debug\ZSProduct.csprojResolveAssemblyReference.cache
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZSProduct\ZSProduct\obj\Debug\res\layout\stockonstores.xml
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZSProduct\ZSProduct\obj\Debug\res\layout\listviewrowstock.xml
+C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZSProduct\ZSProduct\obj\Debug\res\drawable\background.xml
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZSProduct\ZSProduct\obj\Debug\ZSProduct.dll.mdb
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZSProduct\ZSProduct\bin\Debug\ZSProduct.dll.mdb

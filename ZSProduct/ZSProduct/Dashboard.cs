@@ -15,9 +15,9 @@ namespace ZSProduct
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Dashboard);
 
-            Dialog d = new Dialog(this);
-            d.SetContentView(Resource.Layout.Settings);
-            d.Show();
+            //Dialog d = new Dialog(this);
+            //d.SetContentView(Resource.Layout.Settings);
+            //d.Show();
             FindViewById<LinearLayout>(Resource.Id.lnlaDashboardProdDetails).Click += (sender, args) => { StartActivity(typeof(ProductFinder)); };
             FindViewById<LinearLayout>(Resource.Id.lnlaDashboardPdt).Click += (sender, args) => { StartActivity(typeof(Pdt)); };
         }

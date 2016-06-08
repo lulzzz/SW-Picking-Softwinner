@@ -9,21 +9,24 @@ namespace ZSProduct.Modal
     internal class ZsManager
     {
         public readonly ISharedPreferences Preferences = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
+        public EticadataSettings Eticadata;
+
         private readonly string _nif;
         private readonly string _username;
         private readonly string _password;
         private Context _context;
-        //private ConnectivityManager _connectivityManager;
-        //public ZSClient ZsClient;
 
+
+        //-----------------------------------------------------------
         public ZsManager()
         {
             _nif = GetItem("nif");
             _username = GetItem("username");
             _password = GetItem("password");
-            //ZsClient = new ZSClient(_username, _password, 0, _nif);
         }
 
+
+        //-----------------------------------------------------------
         public ZsManager(Context context)
         {
             _context = context;
@@ -33,7 +36,7 @@ namespace ZSProduct.Modal
         public void SaveData(List<AddProducttoListView> _prodList)
         {
             //var downloadsFolder = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDownloads);
-            var downloadsFolder = "/storage/emulated/0/ZSProduct";
+            const string downloadsFolder = "/storage/emulated/0/ZSProduct";
             var filePath = Path.Combine(downloadsFolder/*.Path*/, "export.csv");
 
             using (var streamWriter = new StreamWriter(filePath, false))
@@ -46,6 +49,7 @@ namespace ZSProduct.Modal
             }
         }
 
+        //-----------------------------------------------------------
         public struct EticadataSettings
         {
             public string Username;
@@ -53,8 +57,7 @@ namespace ZSProduct.Modal
             public string ServerAddress;
         }
 
-        public EticadataSettings Eticadata;
-
+        //-----------------------------------------------------------
         public bool HasEticadataIntegration
         {
             get
@@ -84,6 +87,7 @@ namespace ZSProduct.Modal
             }
         }
 
+        //-----------------------------------------------------------
         public bool CheckEticadataIntegration()
         {
             if (HasEticadataIntegration)
@@ -99,6 +103,7 @@ namespace ZSProduct.Modal
             return false;
         }
 
+        //-----------------------------------------------------------
         public bool HasEmail()
         {
             if (GetItem("emailToCSV") != "")

@@ -1,7 +1,6 @@
 using System;
-using Android.Hardware.Usb;
 
-namespace ZSProduct
+namespace ZSProduct.Modal
 {
 	public class Product
 	{
@@ -32,7 +31,7 @@ namespace ZSProduct
 		    Pcm = pcm;
 		}
 
-		public void printProductDetails ()
+		public void PrintProductDetails ()
 		{
 			Console.WriteLine  ("ProductName:" + Description + "\n" +
 			                    "Store:" + Store + "\n" +
@@ -45,7 +44,7 @@ namespace ZSProduct
 			);
 		}
 
-		public static void printProductDetails (Product singleProduct)
+		public static void PrintProductDetails (Product singleProduct)
 		{
 			Console.WriteLine ("ProductName:" +
 			singleProduct.Description + "\n" +
