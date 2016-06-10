@@ -4,8 +4,8 @@ namespace ZSProduct.Modal
 {
 	public class Product
 	{
-		public uint ProductCode;
-		public uint ProductRef;
+		public string ProductCode;
+		public string ProductRef;
 		public uint Store;
 		public uint Stock;
 		public uint SupplierId;
@@ -16,8 +16,8 @@ namespace ZSProduct.Modal
 		public string Reference;
 		public string Pcu;
 	    public string Pcm;
-
-		public Product (string description, uint productCode, uint store, uint stock, string barCode, double price, double pvp2, string reference, string pcu, string pcm = "-")
+    
+        public Product (string description, string productCode, uint store, uint stock, string barCode, double price, double pvp2, string reference, uint supplierId, string pcu, string pcm = "-")
 		{
 			ProductCode = productCode;
 			Description = description;
@@ -29,6 +29,7 @@ namespace ZSProduct.Modal
 			Reference = reference;
 			Pcu = pcu;
 		    Pcm = pcm;
+            SupplierId = supplierId;
 		}
 
 		public void PrintProductDetails ()

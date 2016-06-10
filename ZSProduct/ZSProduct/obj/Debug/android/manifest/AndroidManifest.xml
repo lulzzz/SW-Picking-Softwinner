@@ -6,8 +6,8 @@
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.INTERNET" />
   <application android:label="ZSProduct" android:name="mono.android.app.Application" android:allowBackup="true" android:debuggable="true">
-    <activity android:label="Sobre" android:screenOrientation="portrait" android:theme="@style/Theme.AppCompat.Light" android:name="md5cc2b321e93bfa5be8efd8aa79e8cad01.About" />
-    <activity android:label="Dashboard" android:screenOrientation="portrait" android:theme="@style/Theme.AppCompat.Light" android:name="md5cc2b321e93bfa5be8efd8aa79e8cad01.Dashboard" />
+    <activity android:label="Sobre" android:screenOrientation="portrait" android:theme="@style/Theme.DesignDemo" android:name="md5cc2b321e93bfa5be8efd8aa79e8cad01.About" />
+    <activity android:label="Painel de Controlo" android:screenOrientation="portrait" android:theme="@style/Theme.DesignDemo" android:name="md5cc2b321e93bfa5be8efd8aa79e8cad01.Dashboard" />
     <activity android:icon="@drawable/icon" android:label="ZSProduct" android:screenOrientation="portrait" android:theme="@style/Theme.DesignDemo" android:name="md5cc2b321e93bfa5be8efd8aa79e8cad01.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />

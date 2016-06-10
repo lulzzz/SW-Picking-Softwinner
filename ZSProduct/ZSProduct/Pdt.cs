@@ -64,6 +64,7 @@ namespace ZSProduct
 
             FindViewById<FloatingActionButton>(Resource.Id.fabPdt).Click += (sender, args) =>
             {
+                if (_productList.Count <= 0) { Toast.MakeText(this, "A lista encontra-se vazia...", ToastLength.Short); return; }
                 _manager.SaveData(_productList);
                 Toast.MakeText(this, "Exportado com sucesso!", ToastLength.Short).Show();
                 if (_manager.HasEmail())
@@ -165,7 +166,7 @@ namespace ZSProduct
                     {
                         _productList.Add(new AddProducttoListView(product.Description, product.ProductCode,
                             product.Store, product.Stock, product.BarCode, product.Pvp1, product.Pvp2,
-                            product.Reference, product.Pcu, Qtd));
+                            product.Reference, product.SupplierId, product.Pcu, Qtd));
                         FindViewById<ListView>(Resource.Id.lstPdtProducts).Adapter = _view;
                         txtPdtCodBarras.Text = "";
                     }

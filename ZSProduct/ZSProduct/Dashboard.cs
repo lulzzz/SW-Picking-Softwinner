@@ -2,45 +2,28 @@ using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Support.V7.App;
-using Android.Views;
 using Android.Widget;
+using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace ZSProduct
 {
-    [Activity(Label = "Dashboard", Theme = "@style/Theme.AppCompat.Light", ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "Painel de Controlo", Theme = "@style/Theme.DesignDemo", ScreenOrientation = ScreenOrientation.Portrait)]
     public class Dashboard : AppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Dashboard);
+            var toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBar);
+            SetSupportActionBar(toolBar);
+            var ab = SupportActionBar;
+            ab.SetHomeAsUpIndicator(Resource.Drawable.ic_arrow_back_white_18dp);
+            ab.SetDisplayHomeAsUpEnabled(true);
 
-            //Dialog d = new Dialog(this);
-            //d.SetContentView(Resource.Layout.Settings);
-            //d.Show();
             FindViewById<LinearLayout>(Resource.Id.lnlaDashboardProdDetails).Click += (sender, args) => { StartActivity(typeof(ProductFinder)); };
             FindViewById<LinearLayout>(Resource.Id.lnlaDashboardPdt).Click += (sender, args) => { StartActivity(typeof(Pdt)); };
-        }
-
-        public override bool OnCreateOptionsMenu(IMenu menu)
-        {
-            menu.Add(new Java.Lang.String("Configurações"));
-            menu.Add(new Java.Lang.String("Sobre"));
-            return true;
-        }
-
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            switch (item.TitleFormatted.ToString())
-            {
-                case "Configurações":
-                    StartActivity(typeof(Settings));
-                    break;
-                case "Sobre":
-                    StartActivity(typeof(About));
-                    break;
-            }
-            return true;
+            FindViewById<LinearLayout>(Resource.Id.lnlaDashboardSettings).Click += (sender, args) => { StartActivity(typeof(Settings)); };
+            FindViewById<LinearLayout>(Resource.Id.lnlaDashboardAbout).Click += (sender, args) => { StartActivity(typeof(About)); };
         }
     }
 }

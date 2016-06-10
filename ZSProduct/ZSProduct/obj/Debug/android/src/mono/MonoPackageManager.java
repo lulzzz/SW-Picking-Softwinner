@@ -85,6 +85,7 @@ class MonoPackageManager_Resources {
 		"Xamarin.Android.Support.Design.dll",
 		"Xamarin.Android.Support.v4.dll",
 		"Xamarin.Android.Support.v7.AppCompat.dll",
+		"Xamarin.Android.Support.v7.CardView.dll",
 		"Xamarin.Android.Support.v7.RecyclerView.dll",
 		"Xamarin.Android.Support.Vector.Drawable.dll",
 		"System.ServiceModel.Internals.dll",
