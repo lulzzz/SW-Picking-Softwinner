@@ -13,6 +13,10 @@ namespace ZSProduct
     [Activity(Label = "ZSProduct", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.DesignDemo", ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : AppCompatActivity
     {
+        private string _getNif;
+        string _getUsername;
+        string _getPassword;
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -32,14 +36,14 @@ namespace ZSProduct
             var txtEtiPassword = FindViewById<TextView>(Resource.Id.txtLoginEtiPassword);
             var txtEtiPort = FindViewById<TextView>(Resource.Id.txtLoginEtiPort);
             var manager = new ZsManager();
-            var getNif = manager.GetItem("nif");
-            var getUsername = manager.GetItem("username");
-            var getPassword = manager.GetItem("password");
             var optItem1Open = false;
             var optItem2Open = false;
 
-            if (getUsername != string.Empty || getPassword != string.Empty || getNif != string.Empty)
-                StartActivity(new Intent(this, typeof(Dashboard)));
+            _getNif = manager.GetItem("nif");
+            _getUsername = manager.GetItem("username");
+            _getPassword = manager.GetItem("password");
+
+            CheckLogin();
 
             optionsItem1.Visibility = ViewStates.Gone;
             optionsItem2.Visibility = ViewStates.Gone;
@@ -121,6 +125,18 @@ namespace ZSProduct
                     }
                 }
             };
+        }
+
+        private void CheckLogin()
+        {
+            if (_getUsername != string.Empty || _getPassword != string.Empty || _getNif != string.Empty)
+                StartActivity(new Intent(this, typeof(Dashboard)));
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+            CheckLogin();
         }
     }
 }

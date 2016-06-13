@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            android:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:layout_scrollFlags="scroll|enterAlways" />
     </android.support.design.widget.AppBarLayout>
     <LinearLayout
@@ -25,5 +25,139 @@
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/linearLayout1" />
+        android:id="@+id/linearLayout1"
+        android:background="#eeeeee">
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10px"
+            android:id="@+id/linearLayout2">
+            <TextView
+                android:text="SESSÃO ATUAL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView1"
+                android:textColor="#636363"
+                android:textStyle="bold"
+                android:textSize="7pt"
+                android:padding="5px" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:id="@+id/linearLayout5"
+                android:background="#bdbdbd" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout3"
+                android:weightSum="100"
+                android:layout_marginTop="15px">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/linearLayout4"
+                    android:layout_weight="95"
+                    android:layout_marginLeft="10px">
+                    <TextView
+                        android:text="Text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txtSettingsSessionInfo" />
+                    <TextView
+                        android:text="TERMINAR SESSÃO ATUAL"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/lblSettingsSignOut"
+                        android:textSize="8pt"
+                        android:textColor="#bcd146" />
+                </LinearLayout>
+                <ImageView
+                    android:src="@drawable/logo_zonesoft"
+                    android:layout_width="75px"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imgSettingsLoginType"
+                    android:layout_weight="5"
+                    android:layout_marginRight="10px" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="15px"
+                android:id="@+id/linearLayout6"
+                android:background="#dcdcdc" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10px"
+            android:id="@+id/linearLayout2">
+            <TextView
+                android:text="FUNÇÃO DE PDT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView1"
+                android:textColor="#636363"
+                android:textStyle="bold"
+                android:textSize="7pt"
+                android:padding="5px" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:id="@+id/linearLayout5"
+                android:background="#bdbdbd" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout3"
+                android:weightSum="100"
+                android:layout_marginTop="25px">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/linearLayout4"
+                    android:layout_weight="95"
+                    android:layout_marginLeft="10px">
+                    <TextView
+                        android:text="Enviar ficheiro .CSV por email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5px"
+                        android:id="@+id/textView2" />
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <EditText
+                            android:id="@+id/txtSettingsEmailCsv"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            android:hint="E-mail" />
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/chkSettingsCsvToEmail" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

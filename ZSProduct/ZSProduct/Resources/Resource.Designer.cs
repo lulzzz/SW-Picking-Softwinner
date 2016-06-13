@@ -1873,70 +1873,70 @@ namespace ZSProduct
 			public const int background = 2130837579;
 			
 			// aapt resource value: 0x7f02004c
-			public const int Circle_Icon_SoftWinner = 2130837580;
+			public const int border = 2130837580;
 			
 			// aapt resource value: 0x7f02004d
-			public const int design_fab_background = 2130837581;
+			public const int Circle_Icon_SoftWinner = 2130837581;
 			
 			// aapt resource value: 0x7f02004e
-			public const int design_snackbar_background = 2130837582;
+			public const int design_fab_background = 2130837582;
 			
 			// aapt resource value: 0x7f02004f
-			public const int eticadataLogo = 2130837583;
+			public const int design_snackbar_background = 2130837583;
 			
 			// aapt resource value: 0x7f020050
-			public const int header_block = 2130837584;
+			public const int eticadataLogo = 2130837584;
 			
 			// aapt resource value: 0x7f020051
-			public const int ic_add_circle_outline_black_24dp = 2130837585;
+			public const int header_block = 2130837585;
 			
 			// aapt resource value: 0x7f020052
-			public const int ic_arrow_back_white_18dp = 2130837586;
+			public const int ic_add_circle_outline_black_24dp = 2130837586;
 			
 			// aapt resource value: 0x7f020053
-			public const int ic_create_black_18dp = 2130837587;
+			public const int ic_arrow_back_white_18dp = 2130837587;
 			
 			// aapt resource value: 0x7f020054
-			public const int ic_delete_black_18dp = 2130837588;
+			public const int ic_create_black_18dp = 2130837588;
 			
 			// aapt resource value: 0x7f020055
-			public const int ic_keyboard_arrow_down_black_18dp = 2130837589;
+			public const int ic_delete_black_18dp = 2130837589;
 			
 			// aapt resource value: 0x7f020056
-			public const int ic_remove_circle_outline_black_24dp = 2130837590;
+			public const int ic_keyboard_arrow_down_black_18dp = 2130837590;
 			
 			// aapt resource value: 0x7f020057
-			public const int ic_send_white_24dp = 2130837591;
+			public const int ic_remove_circle_outline_black_24dp = 2130837591;
 			
 			// aapt resource value: 0x7f020058
-			public const int ic_store_black_24dp = 2130837592;
+			public const int ic_send_white_24dp = 2130837592;
 			
 			// aapt resource value: 0x7f020059
-			public const int ic_store_white_24dp = 2130837593;
+			public const int ic_store_black_24dp = 2130837593;
 			
 			// aapt resource value: 0x7f02005a
-			public const int Icon = 2130837594;
+			public const int ic_store_white_24dp = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int icon_About = 2130837595;
+			public const int Icon = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int icon_PDT = 2130837596;
+			public const int icon_About = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int icon_ProductFinder = 2130837597;
+			public const int icon_PDT = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int icon_Settings = 2130837598;
+			public const int icon_ProductFinder = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int logo_eticadata = 2130837599;
+			public const int icon_Settings = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int logo_zonesoft = 2130837600;
+			public const int logo_eticadata = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int menuCard = 2130837601;
+			public const int logo_zonesoft = 2130837601;
 			
 			// aapt resource value: 0x7f020065
 			public const int notification_template_icon_bg = 2130837605;
@@ -1963,11 +1963,11 @@ namespace ZSProduct
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0600c0
-			public const int RelativeLayout01 = 2131099840;
+			// aapt resource value: 0x7f0600c8
+			public const int RelativeLayout01 = 2131099848;
 			
-			// aapt resource value: 0x7f0600a3
-			public const int action0 = 2131099811;
+			// aapt resource value: 0x7f0600ac
+			public const int action0 = 2131099820;
 			
 			// aapt resource value: 0x7f06005a
 			public const int action_bar = 2131099738;
@@ -1993,8 +1993,8 @@ namespace ZSProduct
 			// aapt resource value: 0x7f06005b
 			public const int action_context_bar = 2131099739;
 			
-			// aapt resource value: 0x7f0600a7
-			public const int action_divider = 2131099815;
+			// aapt resource value: 0x7f0600b0
+			public const int action_divider = 2131099824;
 			
 			// aapt resource value: 0x7f060003
 			public const int action_menu_divider = 2131099651;
@@ -2041,17 +2041,17 @@ namespace ZSProduct
 			// aapt resource value: 0x7f060099
 			public const int btnMainPreencher = 2131099801;
 			
-			// aapt resource value: 0x7f0600cf
-			public const int btnSettingsEndSession = 2131099855;
+			// aapt resource value: 0x7f0600d7
+			public const int btnSettingsEndSession = 2131099863;
 			
-			// aapt resource value: 0x7f0600ce
-			public const int btnSettingsSave = 2131099854;
+			// aapt resource value: 0x7f0600d6
+			public const int btnSettingsSave = 2131099862;
 			
 			// aapt resource value: 0x7f060044
 			public const int buttonPanel = 2131099716;
 			
-			// aapt resource value: 0x7f0600a4
-			public const int cancel_action = 2131099812;
+			// aapt resource value: 0x7f0600ad
+			public const int cancel_action = 2131099821;
 			
 			// aapt resource value: 0x7f06002b
 			public const int center = 2131099691;
@@ -2065,8 +2065,11 @@ namespace ZSProduct
 			// aapt resource value: 0x7f060052
 			public const int checkbox = 2131099730;
 			
-			// aapt resource value: 0x7f0600aa
-			public const int chronometer = 2131099818;
+			// aapt resource value: 0x7f0600ab
+			public const int chkSettingsCsvToEmail = 2131099819;
+			
+			// aapt resource value: 0x7f0600b3
+			public const int chronometer = 2131099827;
 			
 			// aapt resource value: 0x7f060033
 			public const int clip_horizontal = 2131099699;
@@ -2077,8 +2080,8 @@ namespace ZSProduct
 			// aapt resource value: 0x7f06001f
 			public const int collapseActionView = 2131099679;
 			
-			// aapt resource value: 0x7f0600c4
-			public const int container = 2131099844;
+			// aapt resource value: 0x7f0600cc
+			public const int container = 2131099852;
 			
 			// aapt resource value: 0x7f06004a
 			public const int contentPanel = 2131099722;
@@ -2122,8 +2125,8 @@ namespace ZSProduct
 			// aapt resource value: 0x7f06001c
 			public const int end = 2131099676;
 			
-			// aapt resource value: 0x7f0600af
-			public const int end_padder = 2131099823;
+			// aapt resource value: 0x7f0600b8
+			public const int end_padder = 2131099832;
 			
 			// aapt resource value: 0x7f060023
 			public const int enterAlways = 2131099683;
@@ -2140,11 +2143,11 @@ namespace ZSProduct
 			// aapt resource value: 0x7f060051
 			public const int expanded_menu = 2131099729;
 			
-			// aapt resource value: 0x7f0600bf
-			public const int fab = 2131099839;
+			// aapt resource value: 0x7f0600c7
+			public const int fab = 2131099847;
 			
-			// aapt resource value: 0x7f0600b3
-			public const int fabPdt = 2131099827;
+			// aapt resource value: 0x7f0600bb
+			public const int fabPdt = 2131099835;
 			
 			// aapt resource value: 0x7f060035
 			public const int fill = 2131099701;
@@ -2200,8 +2203,11 @@ namespace ZSProduct
 			// aapt resource value: 0x7f060069
 			public const int imgLogoSoftWinner = 2131099753;
 			
-			// aapt resource value: 0x7f0600ae
-			public const int info = 2131099822;
+			// aapt resource value: 0x7f0600a7
+			public const int imgSettingsLoginType = 2131099815;
+			
+			// aapt resource value: 0x7f0600b7
+			public const int info = 2131099831;
 			
 			// aapt resource value: 0x7f060086
 			public const int item1 = 2131099782;
@@ -2215,17 +2221,20 @@ namespace ZSProduct
 			// aapt resource value: 0x7f06006f
 			public const int lbChooselQtdSelecioneQtd = 2131099759;
 			
-			// aapt resource value: 0x7f0600c1
-			public const int lblProdFinderSelecioneaLoja = 2131099841;
+			// aapt resource value: 0x7f0600c9
+			public const int lblProdFinderSelecioneaLoja = 2131099849;
+			
+			// aapt resource value: 0x7f0600a6
+			public const int lblSettingsSignOut = 2131099814;
 			
 			// aapt resource value: 0x7f06002f
 			public const int left = 2131099695;
 			
-			// aapt resource value: 0x7f0600a8
-			public const int line1 = 2131099816;
+			// aapt resource value: 0x7f0600b1
+			public const int line1 = 2131099825;
 			
-			// aapt resource value: 0x7f0600ac
-			public const int line3 = 2131099820;
+			// aapt resource value: 0x7f0600b5
+			public const int line3 = 2131099829;
 			
 			// aapt resource value: 0x7f06006e
 			public const int linearLayout1 = 2131099758;
@@ -2236,11 +2245,20 @@ namespace ZSProduct
 			// aapt resource value: 0x7f060080
 			public const int linearLayout3 = 2131099776;
 			
-			// aapt resource value: 0x7f0600b4
-			public const int linearLayout7 = 2131099828;
+			// aapt resource value: 0x7f0600a4
+			public const int linearLayout4 = 2131099812;
 			
-			// aapt resource value: 0x7f0600c5
-			public const int linearLayoutEticadata = 2131099845;
+			// aapt resource value: 0x7f0600a3
+			public const int linearLayout5 = 2131099811;
+			
+			// aapt resource value: 0x7f0600a8
+			public const int linearLayout6 = 2131099816;
+			
+			// aapt resource value: 0x7f0600bc
+			public const int linearLayout7 = 2131099836;
+			
+			// aapt resource value: 0x7f0600cd
+			public const int linearLayoutEticadata = 2131099853;
 			
 			// aapt resource value: 0x7f06000b
 			public const int listMode = 2131099659;
@@ -2260,14 +2278,14 @@ namespace ZSProduct
 			// aapt resource value: 0x7f0600a1
 			public const int lnlaDashboardSettings = 2131099809;
 			
-			// aapt resource value: 0x7f0600b2
-			public const int lstPdtProducts = 2131099826;
+			// aapt resource value: 0x7f0600ba
+			public const int lstPdtProducts = 2131099834;
 			
-			// aapt resource value: 0x7f0600d0
-			public const int lstStocks = 2131099856;
+			// aapt resource value: 0x7f0600d8
+			public const int lstStocks = 2131099864;
 			
-			// aapt resource value: 0x7f0600a6
-			public const int media_actions = 2131099814;
+			// aapt resource value: 0x7f0600af
+			public const int media_actions = 2131099823;
 			
 			// aapt resource value: 0x7f06001d
 			public const int middle = 2131099677;
@@ -2290,8 +2308,8 @@ namespace ZSProduct
 			// aapt resource value: 0x7f06000c
 			public const int normal = 2131099660;
 			
-			// aapt resource value: 0x7f0600c2
-			public const int optProdFinderStores = 2131099842;
+			// aapt resource value: 0x7f0600ca
+			public const int optProdFinderStores = 2131099850;
 			
 			// aapt resource value: 0x7f060089
 			public const int optionsItem1 = 2131099785;
@@ -2410,8 +2428,8 @@ namespace ZSProduct
 			// aapt resource value: 0x7f060031
 			public const int start = 2131099697;
 			
-			// aapt resource value: 0x7f0600a5
-			public const int status_bar_latest_event_content = 2131099813;
+			// aapt resource value: 0x7f0600ae
+			public const int status_bar_latest_event_content = 2131099822;
 			
 			// aapt resource value: 0x7f060065
 			public const int submit_area = 2131099749;
@@ -2419,14 +2437,14 @@ namespace ZSProduct
 			// aapt resource value: 0x7f06000d
 			public const int tabMode = 2131099661;
 			
-			// aapt resource value: 0x7f0600c3
-			public const int tbtnSettingsIntegratorSwith = 2131099843;
+			// aapt resource value: 0x7f0600cb
+			public const int tbtnSettingsIntegratorSwith = 2131099851;
 			
-			// aapt resource value: 0x7f0600ad
-			public const int text = 2131099821;
+			// aapt resource value: 0x7f0600b6
+			public const int text = 2131099830;
 			
-			// aapt resource value: 0x7f0600ab
-			public const int text2 = 2131099819;
+			// aapt resource value: 0x7f0600b4
+			public const int text2 = 2131099828;
 			
 			// aapt resource value: 0x7f06004d
 			public const int textSpacerNoButtons = 2131099725;
@@ -2434,23 +2452,23 @@ namespace ZSProduct
 			// aapt resource value: 0x7f06009e
 			public const int textView1 = 2131099806;
 			
-			// aapt resource value: 0x7f0600b1
-			public const int textView2 = 2131099825;
+			// aapt resource value: 0x7f0600a9
+			public const int textView2 = 2131099817;
 			
 			// aapt resource value: 0x7f0600a0
 			public const int textView3 = 2131099808;
 			
-			// aapt resource value: 0x7f0600c7
-			public const int textView4 = 2131099847;
+			// aapt resource value: 0x7f0600cf
+			public const int textView4 = 2131099855;
 			
-			// aapt resource value: 0x7f0600c9
-			public const int textView5 = 2131099849;
+			// aapt resource value: 0x7f0600d1
+			public const int textView5 = 2131099857;
 			
-			// aapt resource value: 0x7f0600cb
-			public const int textView6 = 2131099851;
+			// aapt resource value: 0x7f0600d3
+			public const int textView6 = 2131099859;
 			
-			// aapt resource value: 0x7f0600a9
-			public const int time = 2131099817;
+			// aapt resource value: 0x7f0600b2
+			public const int time = 2131099826;
 			
 			// aapt resource value: 0x7f060043
 			public const int title = 2131099715;
@@ -2461,8 +2479,8 @@ namespace ZSProduct
 			// aapt resource value: 0x7f06009b
 			public const int toolBar = 2131099803;
 			
-			// aapt resource value: 0x7f0600d1
-			public const int toolbar = 2131099857;
+			// aapt resource value: 0x7f0600d9
+			public const int toolbar = 2131099865;
 			
 			// aapt resource value: 0x7f060032
 			public const int top = 2131099698;
@@ -2530,53 +2548,59 @@ namespace ZSProduct
 			// aapt resource value: 0x7f060096
 			public const int txtMainUsername = 2131099798;
 			
-			// aapt resource value: 0x7f0600b0
-			public const int txtPdtBarCode = 2131099824;
-			
-			// aapt resource value: 0x7f0600b5
-			public const int txtProdFinderBarCode = 2131099829;
-			
-			// aapt resource value: 0x7f0600b6
-			public const int txtProdFinderDescription = 2131099830;
+			// aapt resource value: 0x7f0600b9
+			public const int txtPdtBarCode = 2131099833;
 			
 			// aapt resource value: 0x7f0600bd
-			public const int txtProdFinderPcm = 2131099837;
-			
-			// aapt resource value: 0x7f0600bc
-			public const int txtProdFinderPcu = 2131099836;
-			
-			// aapt resource value: 0x7f0600b7
-			public const int txtProdFinderProductCode = 2131099831;
-			
-			// aapt resource value: 0x7f0600b8
-			public const int txtProdFinderProductReference = 2131099832;
-			
-			// aapt resource value: 0x7f0600ba
-			public const int txtProdFinderPvp1 = 2131099834;
-			
-			// aapt resource value: 0x7f0600bb
-			public const int txtProdFinderPvp2 = 2131099835;
+			public const int txtProdFinderBarCode = 2131099837;
 			
 			// aapt resource value: 0x7f0600be
-			public const int txtProdFinderStockTotal = 2131099838;
+			public const int txtProdFinderDescription = 2131099838;
 			
-			// aapt resource value: 0x7f0600b9
-			public const int txtProdFinderSupplier = 2131099833;
+			// aapt resource value: 0x7f0600c5
+			public const int txtProdFinderPcm = 2131099845;
 			
-			// aapt resource value: 0x7f0600cd
-			public const int txtSettingsEmail = 2131099853;
+			// aapt resource value: 0x7f0600c4
+			public const int txtProdFinderPcu = 2131099844;
 			
-			// aapt resource value: 0x7f0600ca
-			public const int txtSettingsPasswordAPI = 2131099850;
+			// aapt resource value: 0x7f0600bf
+			public const int txtProdFinderProductCode = 2131099839;
 			
-			// aapt resource value: 0x7f0600cc
-			public const int txtSettingsPortWebService = 2131099852;
+			// aapt resource value: 0x7f0600c0
+			public const int txtProdFinderProductReference = 2131099840;
+			
+			// aapt resource value: 0x7f0600c2
+			public const int txtProdFinderPvp1 = 2131099842;
+			
+			// aapt resource value: 0x7f0600c3
+			public const int txtProdFinderPvp2 = 2131099843;
 			
 			// aapt resource value: 0x7f0600c6
-			public const int txtSettingsServerAddress = 2131099846;
+			public const int txtProdFinderStockTotal = 2131099846;
 			
-			// aapt resource value: 0x7f0600c8
-			public const int txtSettingsUsernameAPI = 2131099848;
+			// aapt resource value: 0x7f0600c1
+			public const int txtProdFinderSupplier = 2131099841;
+			
+			// aapt resource value: 0x7f0600d5
+			public const int txtSettingsEmail = 2131099861;
+			
+			// aapt resource value: 0x7f0600aa
+			public const int txtSettingsEmailCsv = 2131099818;
+			
+			// aapt resource value: 0x7f0600d2
+			public const int txtSettingsPasswordAPI = 2131099858;
+			
+			// aapt resource value: 0x7f0600d4
+			public const int txtSettingsPortWebService = 2131099860;
+			
+			// aapt resource value: 0x7f0600ce
+			public const int txtSettingsServerAddress = 2131099854;
+			
+			// aapt resource value: 0x7f0600a5
+			public const int txtSettingsSessionInfo = 2131099813;
+			
+			// aapt resource value: 0x7f0600d0
+			public const int txtSettingsUsernameAPI = 2131099856;
 			
 			// aapt resource value: 0x7f060009
 			public const int up = 2131099657;

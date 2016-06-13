@@ -16,7 +16,7 @@
     </activity>
     <activity android:label="PDT" android:screenOrientation="portrait" android:theme="@style/Theme.DesignDemo" android:name="md5cc2b321e93bfa5be8efd8aa79e8cad01.Pdt" />
     <activity android:label="Detalhes do Produto" android:screenOrientation="portrait" android:theme="@style/Theme.DesignDemo" android:name="md5cc2b321e93bfa5be8efd8aa79e8cad01.ProductFinder" />
-    <activity android:label="Configurações" android:screenOrientation="portrait" android:theme="@style/Theme.AppCompat.Light" android:name="md5cc2b321e93bfa5be8efd8aa79e8cad01.Settings" />
+    <activity android:label="Configurações" android:screenOrientation="portrait" android:theme="@style/Theme.DesignDemo" android:name="md5cc2b321e93bfa5be8efd8aa79e8cad01.Settings" />
     <activity android:label="StockOnStores" android:name="md5cc2b321e93bfa5be8efd8aa79e8cad01.StockOnStores" />
     <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="ZSProduct.ZSProduct.mono.MonoRuntimeProvider.__mono_init__" />
     <!--suppress ExportedReceiver-->
