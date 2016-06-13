@@ -67,7 +67,6 @@ C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwi
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\obj\Debug\ZSProduct.dll
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\obj\Debug\ZSProduct.pdb
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\obj\Debug\android\bin\ZSProduct.ZSProduct.apk
-C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\obj\Debug\res\layout\dashboard.xml
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\obj\Debug\res\layout\productfinder.xml
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\obj\Debug\res\layout\settings.xml
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\obj\Debug\res\layout\pdt.xml
@@ -106,5 +105,10 @@ C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwi
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\obj\Debug\res\drawable\logo_eticadata.png
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\obj\Debug\res\drawable\ic_keyboard_arrow_down_black_18dp.png
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\obj\Debug\res\drawable\logo_zonesoft.png
+C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\obj\Debug\res\layout\newdashboard.xml
+C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\obj\Debug\res\drawable\icon_about.png
+C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\obj\Debug\res\drawable\icon_pdt.png
+C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\obj\Debug\res\drawable\icon_productfinder.png
+C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\obj\Debug\res\drawable\icon_settings.png
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\obj\Debug\ZSProduct.dll.mdb
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\bin\Debug\ZSProduct.dll.mdb

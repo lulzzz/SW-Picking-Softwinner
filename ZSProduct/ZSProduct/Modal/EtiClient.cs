@@ -72,51 +72,50 @@ namespace ZSProduct.Modal
         {
             if (IsOnline)
             {
-                //try
-                // {
-                _product = null;
-                _request = "{\"username\":\"" + Username + "\",\"password\":\"" + Password + "\"}";
-                Console.WriteLine("\n\n\n" + _request);
-                Console.WriteLine("GET PRODUCT WITH BAR CODE: " + _request);
-                _dataBytes = Encoding.UTF8.GetBytes(_request);
-                _wc = new WebClient();
-                _wc.Headers.Add(HttpRequestHeader.ContentType, "application/json; charset=utf-8");
-                _responseBytes = _wc.UploadData(new Uri("http://" + SqlServerAddress + ":" + Port + "/GetProduct/" + barCode), "POST", _dataBytes);
-                _responseString = Encoding.UTF8.GetString(_responseBytes);
-                if (_responseString != "")
+                try
                 {
-                    var element = JObject.Parse(_responseString);
-                    Console.WriteLine(element);
-                    if ((int)element["Response"]["StatusCode"] == 200)
+                    _product = null;
+                    _request = "{\"username\":\"" + Username + "\",\"password\":\"" + Password + "\"}";
+                    Console.WriteLine("\n\n\n" + _request);
+                    Console.WriteLine("GET PRODUCT WITH BAR CODE: " + _request);
+                    _dataBytes = Encoding.UTF8.GetBytes(_request);
+                    _wc = new WebClient();
+                    _wc.Headers.Add(HttpRequestHeader.ContentType, "application/json; charset=utf-8");
+                    _responseBytes =
+                        _wc.UploadData(new Uri("http://" + SqlServerAddress + ":" + Port + "/GetProduct/" + barCode),
+                            "POST", _dataBytes);
+                    _responseString = Encoding.UTF8.GetString(_responseBytes);
+                    if (_responseString != "")
                     {
-                        Console.WriteLine("Produto obtido com sucesso");
-                        //Get the values and build Product object for each element
-                        Console.WriteLine(element.ToString());
-                        var array = JArray.Parse(element["Response"]["Content"].ToString());
-                        _product = new Product((string)"Em Breve",
-                            (string)"0",
-                            (uint)1,
-                            (uint)element["Response"]["StatusCode"],
-                            /*(uint) element["Response"]["Content"]["Product"]["stock"],
-                            (string)element["Response"]["Content"]["Product"]["code"].ToString(),*/
-                            (string)"0",
-                            (double)1,
-                            (double)1,
-                            (string)"0",
-                            (uint)1,
-                            (string)"0");
-                        return _product;
+                        //var element = JObject.Parse("{CPU:'Intel',Drives:['DVD read/writer','500 gigabyte hard drive']}");
+                        Console.WriteLine();
+                        var element = JObject.Parse(_responseString);
+                        //Console.WriteLine("\n\n\n\n\n");
+                        //Console.WriteLine(element);
+                        //Console.WriteLine("\n\n\n\n\n");
+                        Console.WriteLine(element);
+                        if ((int)element["Response"]["StatusCode"] == 200 /*&& element["Response"]["StatusMessage"]*/)
+                        {
+                            Console.WriteLine("Produto obtido com sucesso");
+                            //Get the values and build Product object for each element
+                            var desc = (double)element["Response"]["Content"]["product"]["stock"];
+                            Console.WriteLine(desc);
+                            _product = new Product("agaeg", "shf", 12, desc,
+                                (string)element["Response"]["Content"]["product"]["code"], 10, 9, "agag", 8, "dfhdf",
+                                "a");
+                            return _product;
+                        }
+                        return null;
                     }
                     return null;
                 }
-                return null;
+                catch
+                {
+                    Console.WriteLine("Produto sem stock");
+                    IsOnline = false;
+                    return null;
+                }
             }
-            //catch
-            //{
-            //    Console.WriteLine("Produto sem stock");
-            //    IsOnline = false;
-            //    return null;
-            //}
             return null;
         }
 

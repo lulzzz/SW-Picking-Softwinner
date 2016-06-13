@@ -160,7 +160,8 @@ namespace ZSProduct
                         _txtPvp2.Text = product.Pvp2 == null ? "-" : product.Pvp2 + " €";
                         _txtPcu.Text = product.Pcu == null ? "-" : product.Pcu + " €";
                         _txtPcm.Text = product.Pcm ?? "-";
-                        for (var x = 0; x > totalStores; x++)
+                        _txtTotalStock.Text = product.Stock.ToString();
+                        /*for (var x = 0; x > totalStores; x++)
                             _listStocks.Add(new AddStockStore(x.ToString(), x.ToString()));
                         try
                         {
@@ -169,7 +170,7 @@ namespace ZSProduct
                         catch (Exception)
                         {
                             _txtTotalStock.Text = "0";
-                        }
+                        }*/
                         //_stock = stock;
                     }
                 }

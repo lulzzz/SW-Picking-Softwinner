@@ -13,7 +13,7 @@ namespace ZSProduct
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.Dashboard);
+            SetContentView(Resource.Layout.newDashboard);
             var toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBar);
             SetSupportActionBar(toolBar);
             var ab = SupportActionBar;
