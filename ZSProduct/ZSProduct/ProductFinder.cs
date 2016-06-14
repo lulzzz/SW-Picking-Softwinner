@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using Android.App;
 using Android.Content.PM;
@@ -46,7 +47,10 @@ namespace ZSProduct
         private bool _searchingByCode;
         private bool _searchingByReference;
         private List<AddStockStore> _listStocks;
-        public Dictionary<string, int> _stock;
+        private BackgroundWorker _mWorker;
+        private Product _product;
+
+        public Dictionary<string, int> Stock;
 
         //-----------------------------------------------------------
         protected override void OnCreate(Bundle savedInstanceState)
@@ -58,7 +62,7 @@ namespace ZSProduct
             var ab = SupportActionBar;
             ab.SetHomeAsUpIndicator(Resource.Drawable.ic_arrow_back_white_18dp);
             ab.SetDisplayHomeAsUpEnabled(true);
-
+            _mWorker = new BackgroundWorker();
             _username = _manager.GetItem("username");
             _password = _manager.GetItem("password");
             _loginType = _manager.GetItem("loginType");
@@ -98,33 +102,56 @@ namespace ZSProduct
                 e.Handled = false;
                 if (e.Event.Action != KeyEventActions.Down || e.KeyCode != Keycode.Enter) return;
                 //Search in the zonesoft cloud
+                var transaction = FragmentManager.BeginTransaction();
+                var dialogFragment = new DialogLoading();
+                dialogFragment.Show(transaction, "dialog_fragment");
                 Console.WriteLine("Searching in zonesoft cloud");
                 var barCode = _txtBarCode.Text;
-                var zsHandler = new ZsClient(_username, _password, 0, _nif);
-                zsHandler.Login();
-                var totalStores = zsHandler.StoreCount();
-                if (_loginType == "zonesoft")
+                ZsClient zsHandler = null;
+                _mWorker.DoWork += (o, a) =>
                 {
-                    Console.WriteLine("Search on ZONE SOFT");
-                    for (var i = 0; i < totalStores; i++)
+                    zsHandler = new ZsClient(_username, _password, 0, _nif);
+                    zsHandler.Login();
+                    var totalStores = zsHandler.StoreCount();
+                    if (_loginType == "zonesoft")
                     {
-                        Console.WriteLine("FOR LOJA " + i);
-                        zsHandler = new ZsClient(_username, _password, i, _nif);
-                        zsHandler.Login();
-                        var product = zsHandler.GetProductWithBarCode(barCode);
+                        Console.WriteLine("Search on ZONE SOFT");
+                        for (var i = 0; i < totalStores; i++)
+                        {
+                            Console.WriteLine("FOR LOJA " + i);
+                            zsHandler = new ZsClient(_username, _password, i, _nif);
+                            zsHandler.Login();
+                            var product = zsHandler.GetProductWithBarCode(barCode);
+                            if (product != null)
+                            {
+                                _product = product;
+                                break;
+                            }
+                            if (i != totalStores - 1) continue;
+                            Toast.MakeText(this, "Produto não encontrado", ToastLength.Long).Show();
+                            ClearFields("barCode");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Search on Eticadata");
+                        var etiHandler = new EtiClient(_username, _password, _ip);
+                        etiHandler.Login();
+                        var product = etiHandler.GetProductWithBarCode(barCode);
                         if (product != null)
                         {
-                            _stock = zsHandler.GetStockInStoresWithProductCode(product.ProductCode.ToString());
+                            //_stock = zsHandler.GetStockInStoresWithProductCode(product.ProductCode.ToString());
                             _txtBarCode.Text = product.BarCode.ToString();
                             _txtCode.Text = product.ProductCode.ToString();
                             _txtRef.Text = product.Reference.ToString();
                             _txtDesc.Text = product.Description.ToString();
-                            _txtSupplier.Text = zsHandler.GetSupplierNameWithCode((int) product.SupplierId);
+                            //_txtSupplier.Text = zsHandler.GetSupplierNameWithCode((int)product.SupplierId);
                             _txtPvp1.Text = product.Pvp1 == null ? "-" : product.Pvp1 + " €";
                             _txtPvp2.Text = product.Pvp2 == null ? "-" : product.Pvp2 + " €";
                             _txtPcu.Text = product.Pcu == null ? "-" : product.Pcu + " €";
                             _txtPcm.Text = product.Pcm ?? "-";
-                            for (var x = 0; x > totalStores; x++)
+                            _txtTotalStock.Text = product.Stock.ToString();
+                            /*for (var x = 0; x > totalStores; x++)
                                 _listStocks.Add(new AddStockStore(x.ToString(), x.ToString()));
                             try
                             {
@@ -133,47 +160,34 @@ namespace ZSProduct
                             catch (Exception)
                             {
                                 _txtTotalStock.Text = "0";
-                            }
+                            }*/
                             //_stock = stock;
-                            break;
                         }
-                        if (i != totalStores - 1) continue;
-                        Toast.MakeText(this, "Produto não encontrado", ToastLength.Long).Show();
-                        ClearFields("barCode");
                     }
-                }
-                else
+
+                };
+                _mWorker.RunWorkerAsync();
+                _mWorker.RunWorkerCompleted += (o, args) =>
                 {
-                    Console.WriteLine("Search on Eticadata");
-                    var etiHandler = new EtiClient(_username, _password, _ip);
-                    etiHandler.Login();
-                    var product = etiHandler.GetProductWithBarCode(barCode);
-                    if (product != null)
-                    {
-                        //_stock = zsHandler.GetStockInStoresWithProductCode(product.ProductCode.ToString());
-                        _txtBarCode.Text = product.BarCode.ToString();
-                        _txtCode.Text = product.ProductCode.ToString();
-                        _txtRef.Text = product.Reference.ToString();
-                        _txtDesc.Text = product.Description.ToString();
-                        //_txtSupplier.Text = zsHandler.GetSupplierNameWithCode((int)product.SupplierId);
-                        _txtPvp1.Text = product.Pvp1 == null ? "-" : product.Pvp1 + " €";
-                        _txtPvp2.Text = product.Pvp2 == null ? "-" : product.Pvp2 + " €";
-                        _txtPcu.Text = product.Pcu == null ? "-" : product.Pcu + " €";
-                        _txtPcm.Text = product.Pcm ?? "-";
-                        _txtTotalStock.Text = product.Stock.ToString();
-                        /*for (var x = 0; x > totalStores; x++)
-                            _listStocks.Add(new AddStockStore(x.ToString(), x.ToString()));
-                        try
-                        {
-                            _txtTotalStock.Text = _stock.Sum(pos => pos.Value).ToString();
-                        }
-                        catch (Exception)
-                        {
-                            _txtTotalStock.Text = "0";
-                        }*/
-                        //_stock = stock;
-                    }
-                }
+                    zsHandler.Login();
+                    string stock;
+                    Stock = zsHandler.GetStockInStoresWithProductCode(_product.ProductCode.ToString());
+                    for (var x = 0; x > 11; x++)
+                        _listStocks.Add(new AddStockStore(x.ToString(), x.ToString()));
+                    try { stock = Stock.Sum(pos => pos.Value).ToString(); } catch (Exception) { stock = "0"; }
+                    dialogFragment.Dismiss();
+                    UpdateFields(_product.BarCode,
+                                 _product.ProductCode,
+                                 _product.Reference,
+                                 _product.Description,
+                                 stock,
+                                 _product.Pvp1 > 0 ? "€" + _product.Pvp1 : "-",
+                                 _product.Pvp2 > 0 ? "€" + _product.Pvp2 : "-",
+                                 zsHandler.GetSupplierNameWithCode((int)_product.SupplierId),
+                                 Convert.ToDecimal(_product.Pcu) > 0 ? "€" + _product.Pcu : "-",
+                                 "-");
+
+                };
                 e.Handled = true;
                 _searchingByBarCode = false;
             };
@@ -184,23 +198,15 @@ namespace ZSProduct
                 _searchingByCode = true;
                 e.Handled = false;
                 if (e.Event.Action != KeyEventActions.Down || e.KeyCode != Keycode.Enter) return;
-                if (_selectedStore == Eticadata)
+                var transaction = FragmentManager.BeginTransaction();
+                var dialogFragment = new DialogLoading();
+                dialogFragment.Show(transaction, "dialog_fragment");
+                //Search in the zonesoft cloud
+                Console.WriteLine("Searching in zonesoft cloud");
+                var code = _txtCode.Text;
+                var zsHandler = new ZsClient(_username, _password, 0, _nif);
+                _mWorker.DoWork += (o, a) =>
                 {
-                    //Search in eticadata
-                    _manager.CheckEticadataIntegration();
-                    Console.WriteLine("Searching in eticadata SQL Server");
-                    Console.WriteLine(_manager.Eticadata.Username);
-                    Console.WriteLine(_manager.Eticadata.Password);
-                    Console.WriteLine(_manager.Eticadata.ServerAddress);
-                    var etiConn = new EtiClient("xx", "xxx", "192.168.174");
-                    _txtTotalStock.Text = etiConn.GetStockForProductWithBarCode(_txtBarCode.Text);
-                }
-                else
-                {
-                    //Search in the zonesoft cloud
-                    Console.WriteLine("Searching in zonesoft cloud");
-                    var code = _txtCode.Text;
-                    var zsHandler = new ZsClient(_username, _password, 0, _nif);
                     zsHandler.Login();
                     var totalStores = zsHandler.StoreCount();
                     for (var i = 0; i < totalStores; i++)
@@ -211,25 +217,37 @@ namespace ZSProduct
                         var product = zsHandler.GetProductWithCode(code);
                         if (product != null)
                         {
-                            var stock = _zsClient.GetStockInStoresWithProductCode(product.ProductCode.ToString());
-                            _txtBarCode.Text = product.BarCode.ToString();
-                            _txtCode.Text = product.ProductCode.ToString();
-                            _txtRef.Text = product.Reference.ToString();
-                            _txtDesc.Text = product.Description.ToString();
-                            _txtSupplier.Text = product.SupplierId.ToString();
-                            _txtPvp1.Text = product.Pvp1 == null ? "-" : product.Pvp1 + " €";
-                            _txtPvp2.Text = product.Pvp2 == null ? "-" : product.Pvp2 + " €";
-                            _txtPcu.Text = product.Pcu == null ? "-" : product.Pcu + " €";
-                            _txtPcm.Text = product.Pcm ?? "-";
-                            try { _txtTotalStock.Text = stock.Sum(pos => pos.Value).ToString(); }
-                            catch (Exception) { _txtTotalStock.Text = "0"; }
+                            _product = product;
                             break;
                         }
                         if (i != totalStores - 1) continue;
                         Toast.MakeText(this, "Produto não encontrado", ToastLength.Long).Show();
-                        ClearFields("from");
+                        ClearFields("code");
                     }
-                }
+                };
+                _mWorker.RunWorkerAsync();
+                _mWorker.RunWorkerCompleted += (o, args) =>
+                {
+                    zsHandler.Login();
+                    string stock;
+                    Stock = zsHandler.GetStockInStoresWithProductCode(_product.ProductCode.ToString());
+                    for (var x = 0; x > 11; x++)
+                        _listStocks.Add(new AddStockStore(x.ToString(), x.ToString()));
+                    try { stock = Stock.Sum(pos => pos.Value).ToString(); } catch (Exception) { stock = "0"; }
+                    dialogFragment.Dismiss();
+
+                    UpdateFields(_product.BarCode,
+                                  _product.ProductCode,
+                                  _product.Reference,
+                                  _product.Description,
+                                  stock,
+                                  _product.Pvp1 > 0 ? "€" + _product.Pvp1 : "-",
+                                  _product.Pvp2 > 0 ? "€" + _product.Pvp2 : "-",
+                                  zsHandler.GetSupplierNameWithCode((int)_product.SupplierId),
+                                  Convert.ToDecimal(_product.Pcu) > 0 ? "€" + _product.Pcu : "-",
+                                  "-");
+
+                };
                 _searchingByCode = false;
                 e.Handled = true;
             };
@@ -240,23 +258,16 @@ namespace ZSProduct
                 _searchingByReference = true;
                 e.Handled = false;
                 if (e.Event.Action != KeyEventActions.Down || e.KeyCode != Keycode.Enter) return;
-                if (_selectedStore == Eticadata)
+                var transaction = FragmentManager.BeginTransaction();
+                var dialogFragment = new DialogLoading();
+                dialogFragment.Show(transaction, "dialog_fragment");
+
+                //Search in the zonesoft cloud
+                Console.WriteLine("Searching in zonesoft cloud");
+                var refe = _txtRef.Text;
+                var zsHandler = new ZsClient(_username, _password, 0, _nif);
+                _mWorker.DoWork += (o, a) =>
                 {
-                    //Search in eticadata
-                    _manager.CheckEticadataIntegration();
-                    Console.WriteLine("Searching in eticadata SQL Server");
-                    Console.WriteLine(_manager.Eticadata.Username);
-                    Console.WriteLine(_manager.Eticadata.Password);
-                    Console.WriteLine(_manager.Eticadata.ServerAddress);
-                    var etiConn = new EtiClient("xx", "xxx", "192.168.174");
-                    _txtTotalStock.Text = etiConn.GetStockForProductWithBarCode(_txtRef.Text);
-                }
-                else
-                {
-                    //Search in the zonesoft cloud
-                    Console.WriteLine("Searching in zonesoft cloud");
-                    var refe = _txtRef.Text;
-                    var zsHandler = new ZsClient(_username, _password, 0, _nif);
                     zsHandler.Login();
                     var totalStores = zsHandler.StoreCount();
                     for (var i = 0; i < totalStores; i++)
@@ -267,40 +278,67 @@ namespace ZSProduct
                         var product = zsHandler.GetProductWithReference(refe);
                         if (product != null)
                         {
-                            var stock = _zsClient.GetStockInStoresWithProductCode(product.ProductCode.ToString());
-                            _txtBarCode.Text = product.BarCode.ToString();
-                            _txtCode.Text = product.ProductCode.ToString();
-                            _txtRef.Text = product.Reference.ToString();
-                            _txtDesc.Text = product.Description.ToString();
-                            _txtSupplier.Text = product.SupplierId.ToString();
-                            _txtPvp1.Text = product.Pvp1 + " €";
-                            _txtPvp2.Text = product.Pvp2 + " €";
-                            _txtPcu.Text = product.Pcu == null ? "-" : product.Pcu + " €";
-                            _txtPcm.Text = product.Pcm ?? "-";
-                            try { _txtTotalStock.Text = stock.Sum(pos => pos.Value).ToString(); }
-                            catch (Exception) { _txtTotalStock.Text = "0"; }
+                            _product = product;
                             break;
                         }
                         if (i != totalStores - 1) continue;
                         Toast.MakeText(this, "Produto não encontrado", ToastLength.Long).Show();
                         ClearFields("ref");
                     }
-                }
+                };
+                _mWorker.RunWorkerAsync();
+                _mWorker.RunWorkerCompleted += (o, args) =>
+                {
+                    zsHandler.Login();
+                    string stock;
+                    Stock = zsHandler.GetStockInStoresWithProductCode(_product.ProductCode.ToString());
+                    for (var x = 0; x > 11; x++)
+                        _listStocks.Add(new AddStockStore(x.ToString(), x.ToString()));
+                    try { stock = Stock.Sum(pos => pos.Value).ToString(); } catch (Exception) { stock = "0"; }
+                    dialogFragment.Dismiss();
+
+                    UpdateFields(_product.BarCode,
+                                 _product.ProductCode,
+                                 _product.Reference,
+                                 _product.Description,
+                                 stock,
+                                 _product.Pvp1 > 0 ? "€" + _product.Pvp1 : "-",
+                                 _product.Pvp2 > 0 ? "€" + _product.Pvp2 : "-",
+                                 zsHandler.GetSupplierNameWithCode((int)_product.SupplierId),
+                                 Convert.ToDecimal(_product.Pcu) > 0 ? "€" + _product.Pcu : "-",
+                                 "-");
+
+                };
                 e.Handled = true;
                 _searchingByReference = false;
             };
 
             FindViewById<FloatingActionButton>(Resource.Id.fab).Click += (sender, args) =>
             {
-                if (_stock == null)
+                if (Stock == null)
                 {
                     Toast.MakeText(this, "Não tem stock...", ToastLength.Short).Show();
                     return;
                 }
                 var transition = FragmentManager.BeginTransaction();
-                var showStocks = new DialogStock(_stock);
+                var showStocks = new DialogStock(Stock);
                 showStocks.Show(transition, "dialog fragment");
             };
+        }
+
+        //-----------------------------------------------------------
+        private void UpdateFields(string barCode, string code, string reference, string description, string stock, string pvp1, string pvp2, string supplier, string pcu, string pcm)
+        {
+            _txtBarCode.Text = barCode;
+            _txtCode.Text = code;
+            _txtRef.Text = reference;
+            _txtDesc.Text = description;
+            _txtSupplier.Text = supplier;
+            _txtPvp1.Text = pvp1;
+            _txtPvp2.Text = pvp2;
+            _txtPcu.Text = pcu;
+            _txtPcm.Text = pcm;
+            _txtTotalStock.Text = stock;
         }
 
         //-----------------------------------------------------------
@@ -316,6 +354,7 @@ namespace ZSProduct
             _txtSupplier.Text = "";
             _txtPvp1.Text = "";
             _txtPvp2.Text = "";
+            _txtPcm.Text = "";
             _txtPcu.Text = "";
             _txtTotalStock.Text = "";
         }
