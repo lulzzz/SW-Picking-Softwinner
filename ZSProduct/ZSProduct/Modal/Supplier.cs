@@ -18,18 +18,5 @@ namespace ZSProduct.Modal
             Web = web;
             Email = email;
         }
-
-        //public uint GetId () => id;
-
-        //public string GetName () => name;
-
-        //public string GetPhone () => phone;
-
-        //public string GetMobilePhone () => mobilePhone;
-
-        //public string GetWeb () => web;
-
-        //public string GetEmail () => email;
-
     }
 }

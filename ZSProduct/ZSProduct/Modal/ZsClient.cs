@@ -273,7 +273,7 @@ namespace ZSProduct.Modal
                                 (double)array[0]["pvp2"],
                                 (string)array[0]["referencia"],
                                 (uint)array[0]["fornecedor"],
-                                (string)array[0]["ultimoprecocompra"]);
+                                (string)array[0]["ultprecocompra"]);
                             return _product;
                         }
                         return null;
@@ -324,7 +324,7 @@ namespace ZSProduct.Modal
                                 (double)element["Response"]["Content"]["product"]["pvp2"],
                                 (string)element["Response"]["Content"]["product"]["referencia"],
                                 (uint)element["Response"]["Content"]["product"]["fornecedor"],
-                                (string)element["Response"]["Content"]["product"]["ultimoprecocompra"]);
+                                (string)element["Response"]["Content"]["product"]["ultprecocompra"]);
                             return _product;
                         }
                         return null;
@@ -370,7 +370,7 @@ namespace ZSProduct.Modal
                         (double)array[0]["pvp2"],
                         (string)array[0]["referencia"],
                         (uint)array[0]["fornecedor"],
-                        (string)array[0]["ultimoprecocompra"]);
+                        (string)array[0]["ultprecocompra"]);
                     return _product;
                 }
                 return null;

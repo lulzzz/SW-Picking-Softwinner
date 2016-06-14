@@ -14,13 +14,5 @@ namespace ZSProduct.Modal
             Name = name;
             Address = address;
         }
-
-        public uint GetCode() => Code;
-
-        public string GetDescription() => Description;
-
-        public string GetName() => Name;
-
-        public string GetAddress() => Address;
     }
 }

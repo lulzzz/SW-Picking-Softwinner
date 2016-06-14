@@ -10,7 +10,6 @@ using Android.Content;
 using Android.Support.Design.Widget;
 using ZSProduct.Modal;
 using System.IO;
-using Console = System.Console;
 using Thread = System.Threading.Thread;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 
@@ -21,25 +20,31 @@ namespace ZSProduct
     {
         //-----------------------------------------------------------
         public int Qtd { get; set; }
+
+        //-----------------------------------------------------------
         private readonly List<AddProducttoListView> _productList = new List<AddProducttoListView>();
         private AdapterListView _view;
         private int _clicked;
-
-
-        private readonly ZsManager _manager = new ZsManager(Application.Context);
+        private readonly ZsManager _manager = new ZsManager();
 
         //-----------------------------------------------------------
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            //-----------------------------------------------------------
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Pdt);
+
+            //-----------------------------------------------------------
             var toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBar);
             SetSupportActionBar(toolBar);
             var ab = SupportActionBar;
             ab.SetHomeAsUpIndicator(Resource.Drawable.ic_arrow_back_white_18dp);
             ab.SetDisplayHomeAsUpEnabled(true);
 
+            //-----------------------------------------------------------
             _view = new AdapterListView(this, _productList);
+
+            //-----------------------------------------------------------
             FindViewById<EditText>(Resource.Id.txtPdtBarCode).KeyPress += (sender, e) =>
             {
                 e.Handled = false;
@@ -48,6 +53,7 @@ namespace ZSProduct
                 e.Handled = true;
             };
 
+            //-----------------------------------------------------------
             _view.OnDeleteClick += (sender, e) =>
             {
                 _clicked = e.Position;
@@ -62,6 +68,7 @@ namespace ZSProduct
                 t.Start();
             };
 
+            //-----------------------------------------------------------
             FindViewById<FloatingActionButton>(Resource.Id.fabPdt).Click += (sender, args) =>
             {
                 if (_productList.Count <= 0) { Toast.MakeText(this, "A lista encontra-se vazia...", ToastLength.Short); return; }
@@ -134,7 +141,7 @@ namespace ZSProduct
         {
             RunOnUiThread(() =>
             {
-                _productList[_clicked].qtd = Qtd;
+                _productList[_clicked].Qtd = Qtd;
                 FindViewById<ListView>(Resource.Id.lstPdtProducts).Adapter = _view;
             });
         }
@@ -184,6 +191,7 @@ namespace ZSProduct
             });
         }
 
+        //-----------------------------------------------------------
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             menu.Add(new Java.Lang.String("Configurações"));
@@ -191,6 +199,7 @@ namespace ZSProduct
             return true;
         }
 
+        //-----------------------------------------------------------
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             switch (item.TitleFormatted.ToString())

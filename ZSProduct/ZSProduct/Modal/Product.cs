@@ -58,22 +58,5 @@ namespace ZSProduct.Modal
             "UnitPrice:" + singleProduct.Pcu + "\n"
             );
         }
-        //        public string GetBarCode() => barCode;
-        //
-        //        public uint GetProductCode() => productCode;
-        //
-        //        public string GetDescription() => description;
-        //
-        //        public double GetPriceOfSale() => priceOfSale;
-        //
-        //        public uint GetSupplier() => supplierId;
-        //
-        //        public double GetPvp2() => pvp2;
-        //
-        //        public uint GetStock() => stock;
-        //
-        //        public string GetReference() => reference;
-        //
-        //        public string GetPcu() => pcu;
     }
 }

@@ -5,7 +5,7 @@
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.INTERNET" />
-  <application android:label="ZSProduct" android:name="mono.android.app.Application" android:allowBackup="true" android:debuggable="true">
+  <application android:label="ZSProduct" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true">
     <activity android:label="Sobre" android:screenOrientation="portrait" android:theme="@style/Theme.DesignDemo" android:name="md5cc2b321e93bfa5be8efd8aa79e8cad01.About" />
     <activity android:label="Painel de Controlo" android:screenOrientation="portrait" android:theme="@style/Theme.DesignDemo" android:name="md5cc2b321e93bfa5be8efd8aa79e8cad01.Dashboard" />
     <activity android:icon="@drawable/icon" android:label="ZSProduct" android:screenOrientation="portrait" android:theme="@style/Theme.DesignDemo" android:name="md5cc2b321e93bfa5be8efd8aa79e8cad01.MainActivity">
@@ -17,7 +17,6 @@
     <activity android:label="PDT" android:screenOrientation="portrait" android:theme="@style/Theme.DesignDemo" android:name="md5cc2b321e93bfa5be8efd8aa79e8cad01.Pdt" />
     <activity android:label="Detalhes do Produto" android:screenOrientation="portrait" android:theme="@style/Theme.DesignDemo" android:name="md5cc2b321e93bfa5be8efd8aa79e8cad01.ProductFinder" />
     <activity android:label="Configurações" android:screenOrientation="portrait" android:theme="@style/Theme.DesignDemo" android:name="md5cc2b321e93bfa5be8efd8aa79e8cad01.Settings" />
-    <activity android:label="StockOnStores" android:name="md5cc2b321e93bfa5be8efd8aa79e8cad01.StockOnStores" />
     <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="ZSProduct.ZSProduct.mono.MonoRuntimeProvider.__mono_init__" />
     <!--suppress ExportedReceiver-->
     <receiver android:name="mono.android.Seppuku">

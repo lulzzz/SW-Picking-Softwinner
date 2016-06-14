@@ -120,7 +120,7 @@ namespace ZSProduct.Modal
         }
 
 
-        public string GetStockForProductWithBarCode(string barCode)
+        /*public string GetStockForProductWithBarCode(string barCode)
         {
             if (IsOnline)
             {
@@ -158,6 +158,6 @@ namespace ZSProduct.Modal
                 }
             }
             return null;
-        }
+        }*/
     }
 }

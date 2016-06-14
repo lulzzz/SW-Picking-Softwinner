@@ -43,7 +43,7 @@ namespace ZSProduct.Modal
             {
                 foreach (var item in _prodList)
                 {
-                    streamWriter.WriteLine(item.Description + ";" + item.qtd);
+                    streamWriter.WriteLine(item.Description + ";" + item.Qtd);
                 }
                 streamWriter.Close();
             }

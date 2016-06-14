@@ -6,7 +6,7 @@ using Android.Widget;
 
 namespace ZSProduct.Modal
 {
-    class DialogStock : DialogFragment
+    internal class DialogStock : DialogFragment
     {
         private readonly Dictionary<string, int> _data;
         private List<AddStockStore> _listStocks;

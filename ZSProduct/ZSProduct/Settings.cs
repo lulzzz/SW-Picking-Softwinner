@@ -8,46 +8,58 @@ using Android.Widget;
 using ZSProduct.Modal;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 
+//-----------------------------------------------------------
 namespace ZSProduct
 {
     [Activity(Label = "Configurações", Theme = "@style/Theme.DesignDemo", ScreenOrientation = ScreenOrientation.Portrait)]
     public class Settings : AppCompatActivity
     {
+        //-----------------------------------------------------------
         private readonly ZsManager _manager = new ZsManager();
-        private ZsClient _zsClient;
-        private int _selectedStore;
-
         private ImageView _imgSettingsLoginType;
         private TextView _txtSettingsSessionInfo;
         private TextView _lblSettingsSignOut;
         private EditText _txtSettingsEmailCsv;
         private CheckBox _chkSettingsCsvToEmail;
 
+        //-----------------------------------------------------------
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            //-----------------------------------------------------------
             base.OnCreate(savedInstanceState);
-
             SetContentView(Resource.Layout.newSettings);
+
+            //-----------------------------------------------------------
             var toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBar);
             SetSupportActionBar(toolBar);
             var ab = SupportActionBar;
             ab.SetHomeAsUpIndicator(Resource.Drawable.ic_arrow_back_white_18dp);
             ab.SetDisplayHomeAsUpEnabled(true);
 
+            //-----------------------------------------------------------
             _imgSettingsLoginType = FindViewById<ImageView>(Resource.Id.imgSettingsLoginType);
             _txtSettingsSessionInfo = FindViewById<TextView>(Resource.Id.txtSettingsSessionInfo);
             _lblSettingsSignOut = FindViewById<TextView>(Resource.Id.lblSettingsSignOut);
             _txtSettingsEmailCsv = FindViewById<EditText>(Resource.Id.txtSettingsEmailCsv);
             _chkSettingsCsvToEmail = FindViewById<CheckBox>(Resource.Id.chkSettingsCsvToEmail);
-            
+
+            //-----------------------------------------------------------
             _chkSettingsCsvToEmail.Click += (sender, args) =>
             {
-                if (_chkSettingsCsvToEmail.Checked)
-                    _txtSettingsEmailCsv.Visibility = ViewStates.Visible;
-                else 
-                    _txtSettingsEmailCsv.Visibility = ViewStates.Gone;
+                _txtSettingsEmailCsv.Visibility = _chkSettingsCsvToEmail.Checked ? ViewStates.Visible : ViewStates.Gone;
             };
 
+            _lblSettingsSignOut.Click += (sender, args) =>
+            {
+                var pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
+                var edit = pref.Edit();
+                edit.Clear();
+                edit.Apply();
+                Toast.MakeText(this, "Sessão terminada com sucesso!", ToastLength.Short).Show();
+                StartActivity(typeof(MainActivity));
+            };
+
+            //-----------------------------------------------------------
             if (_manager.HasEmail())
                 _txtSettingsEmailCsv.Text = _manager.GetItem("emailToCSV");
 
@@ -64,29 +76,14 @@ namespace ZSProduct
                                                "\nUsername: " + _manager.GetItem("username") +
                                                "\nPorta: " + _manager.GetItem("port") + "\n";
             }
-
-
-            _lblSettingsSignOut.Click += (sender, args) =>
-            {
-                var pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
-                var edit = pref.Edit();
-                edit.Clear();
-                edit.Apply();
-                Toast.MakeText(this, "Sessão terminada com sucesso!", ToastLength.Short).Show();
-                StartActivity(typeof(MainActivity));
-            };
         }
 
         public override void OnBackPressed()
         {
             if (!_chkSettingsCsvToEmail.Checked)
-            {
                 base.OnBackPressed();
-            }
             else if (_chkSettingsCsvToEmail.Checked && string.IsNullOrEmpty(_txtSettingsEmailCsv.Text))
-            {
                 Toast.MakeText(this, "Por favor, preencha o e-mail..", ToastLength.Short).Show();
-            }
             else if (_chkSettingsCsvToEmail.Checked && !string.IsNullOrEmpty(_txtSettingsEmailCsv.Text))
             {
                 Toast.MakeText(this, "Agora, quando exportar o ficheiro CSV, vai poder enviá-lo para o email " + _txtSettingsEmailCsv.Text + "!", ToastLength.Short).Show();

@@ -43,7 +43,7 @@ namespace ZSProduct.Modal
         {
             var item = _products[position];
             var view = convertView ?? _context.LayoutInflater.Inflate(Resource.Layout.ListViewRow, null);
-            view.FindViewById<TextView>(Resource.Id.txtAdapterQtdProd).Text = item.qtd.ToString();
+            view.FindViewById<TextView>(Resource.Id.txtAdapterQtdProd).Text = item.Qtd.ToString();
             view.FindViewById<TextView>(Resource.Id.txtAdapterProdDesc).Text = item.Description;
             view.FindViewById<TextView>(Resource.Id.txtAdapterBarCode).Text = item.BarCode;
 
