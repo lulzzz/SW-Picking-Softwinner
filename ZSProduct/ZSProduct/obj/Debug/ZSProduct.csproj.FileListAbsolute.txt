@@ -137,3 +137,5 @@ C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwi
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\obj\Debug\android\assets\System.Xml.dll.mdb
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\obj\Debug\android\assets\System.Xml.Linq.dll.mdb
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\obj\Debug\android\assets\ZSProduct.dll.mdb
+C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\obj\Debug\ZSProduct.dll.mdb
+C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\bin\Debug\ZSProduct.dll.mdb
