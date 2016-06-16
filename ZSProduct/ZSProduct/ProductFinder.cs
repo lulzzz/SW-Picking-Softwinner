@@ -17,7 +17,7 @@ using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 namespace ZSProduct
 {
     //-----------------------------------------------------------
-    [Activity(Label = "Detalhes do Produto", Theme = "@style/Theme.DesignDemo", ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "@string/productFinderLabel", Theme = "@style/Theme.DesignDemo", ScreenOrientation = ScreenOrientation.Portrait)]
     public class ProductFinder : AppCompatActivity
     {
         //-----------------------------------------------------------

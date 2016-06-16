@@ -20,7 +20,7 @@
             android:layout_height="41.5dp"
             android:id="@+id/linearLayout2"
             android:weightSum="100"
-            android:background="#BCD146">
+            android:background="@color/mainColor">
             <LinearLayout
                 android:orientation="horizontal"
                 android:minWidth="25px"
@@ -30,7 +30,7 @@
                 android:layout_weight="70"
                 android:id="@+id/linearLayout2">
                 <TextView
-                    android:text="LOJA"
+                    android:text="@string/store"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="90"
@@ -50,7 +50,7 @@
                 android:layout_weight="30"
                 android:id="@+id/linearLayout2">
                 <TextView
-                    android:text="STOCK"
+                    android:text="@string/stock"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="10"
@@ -76,14 +76,6 @@
             android_paddingRight="75px"
             android_paddingLeft="75px"
             android:id="@+id/linearLayout1">
-        <!--
-          <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="OK"
-                android:textColor="#bcd146"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_gravity="right" />-->
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

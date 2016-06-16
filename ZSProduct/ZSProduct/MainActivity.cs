@@ -10,7 +10,7 @@ using ZSProduct.Modal;
 
 namespace ZSProduct
 {
-    [Activity(Label = "ZSProduct", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.DesignDemo", ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "@string/loginLabel", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.DesignDemo", ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : AppCompatActivity
     {
         private string _getNif;

@@ -15,7 +15,7 @@ using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace ZSProduct
 {
-    [Activity(Label = "PDT", Theme = "@style/Theme.DesignDemo", ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "@string/pdtLabel", Theme = "@style/Theme.DesignDemo", ScreenOrientation = ScreenOrientation.Portrait)]
     public class Pdt : AppCompatActivity
     {
         //-----------------------------------------------------------

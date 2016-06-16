@@ -1,22 +1,16 @@
-<resources><string name="ApplicationName">ZSProduct</string><string name="Author">© 2016, Hugo Santos</string><string name="AboutPortugal">
-"<b>\bPORTUGAL</b>" 
-"Rua da Eirinha, n.º 108 R/C Dtº" 
-"Abraveses" 
-"3515-124 Viseu \n" 
-"Telefone:  +351 304 500 605" 
-"Telemóvel: +351 925 351 645\n"
-"suporte@softwinner.pt"
+<resources><string name="ApplicationName">ZSProduct</string><string name="store">LOJA</string><string name="stock">STOCK</string><string name="currentSession">SESSÃO ATUAL</string><string name="logOut">TERMINAR SESSÃO ATUAL</string><string name="pdtFunction">FUNÇÃO DE PDT</string><string name="sendCsvFileEmail">Enviar ficheiro .CSV por email</string><string name="productBarCode">Código de Barras</string><string name="productCode">Código do Produto</string><string name="productReference">Referência do Produto</string><string name="productDescription">Descrição</string><string name="productSupplier">Fornecedor</string><string name="productPvp1">PVP1</string><string name="productPvp2">PVP2</string><string name="productPcu">Preço de Custo Último</string><string name="productPcm">Preço de Custo Médio</string><string name="productStock">Stock</string><string name="product">PRODUTO</string><string name="qtd">QTD</string><string name="options">OPÇÕES</string><string name="welcome">Bem-Vindo!</string><string name="nif">N.º Contribuinte</string><string name="username">Nome de Utilizador</string><string name="password">Palavra Passe</string><string name="ipOrDns">IP ou DNS</string><string name="port">Porta</string><string name="logIn">Iniciar Sessão</string><string name="getProductInfo">A recolher informações do produto</string><string name="loginLabel">Login</string><string name="dashboardLabel">Painel de Controlo</string><string name="productFinderLabel">Detalhes do Produto</string><string name="pdtLabel">PDT</string><string name="settingsLabel">Configurações</string><string name="aboutLabel">Sobre</string><string name="chooseQtd">Selecione a quantidade</string><string name="siteURL">www.softwinner.pt</string><string name="Author">© 2016, Hugo Santos</string><string name="AboutPortugal">
+    "<b>\bPORTUGAL</b>"
+    "Rua da Eirinha, n.º 108 R/C Dtº"
+    "Abraveses"
+    "3515-124 Viseu \n"
+    "Telefone:  +351 304 500 605"
+    "Telemóvel: +351 925 351 645\n"
+    "suporte@softwinner.pt"
   </string><string name="AboutAngola">
-"<b>\bANGOLA</b>"
-"Rua Vasco da Gama, nº 5 1º Andar"
-"Lobito - Benguela \n "
-"Telefone:  +244 934 560 883 "
-"Telemóvel: +244 924 851 364 \n" 
-"suporte@softwinner.net\n"
-  </string><string name="cheese_ipsum">
-    Jarlsberg lancashire edam. Dolcelatte hard cheese brie st. agur blue
-    cheese caerphilly bavarian bergkase cheese and biscuits mascarpone. Cheeseburger swiss bavarian
-    bergkase cream cheese fromage frais cheesy feet port-salut airedale. St. agur blue cheese rubber
-    cheese caerphilly cheddar cheesecake cream cheese manchego lancashire. Roquefort squirty cheese
-    the big cheese.
-  </string><string name="checkin">Checkin</string><string name="menu_settings">Settings</string></resources>
+    "<b>\bANGOLA</b>"
+    "Rua Vasco da Gama, nº 5 1º Andar"
+    "Lobito - Benguela \n "
+    "Telefone:  +244 934 560 883 "
+    "Telemóvel: +244 924 851 364 \n"
+    "suporte@softwinner.net\n"
+  </string></resources>

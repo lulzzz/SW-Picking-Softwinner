@@ -1,184 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px">
-    <RelativeLayout
-        android:id="@+id/RelativeLayout01"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_scrollFlags="scroll|enterAlways" />
+    </android.support.design.widget.AppBarLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout1"
+        android:background="@color/background">
         <LinearLayout
             android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
             android:layout_width="match_parent"
-            android:layout_height="63dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10px"
             android:id="@+id/linearLayout2">
             <TextView
-                android:text="Selecione a Loja"
-                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/currentSession"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/lblProdFinderSelecioneaLoja"
-                android:paddingTop="12dp"
-                android:paddingBottom="4dp"
-                android:layout_marginLeft="8dp"
-                android:textColor="#737373" />
-            <Spinner
+                android:id="@+id/textView1"
+                android:textColor="#636363"
+                android:textStyle="bold"
+                android:textSize="7pt"
+                android:padding="5px" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
                 android:layout_width="match_parent"
-                android:layout_height="38.5dp"
-                android:id="@+id/optProdFinderStores" />
+                android:layout_height="2dp"
+                android:id="@+id/linearLayout5"
+                android:background="#bdbdbd" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout3"
+                android:weightSum="100"
+                android:layout_marginTop="15px">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/linearLayout4"
+                    android:layout_weight="95"
+                    android:layout_marginLeft="10px">
+                    <TextView
+                        android:text="Text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txtSettingsSessionInfo" />
+                    <TextView
+                        android:text="@string/logOut"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/lblSettingsSignOut"
+                        android:textSize="8pt"
+                        android:textColor="@color/mainColor" />
+                </LinearLayout>
+                <ImageView
+                    android:src="@drawable/logo_zonesoft"
+                    android:layout_width="75px"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imgSettingsLoginType"
+                    android:layout_weight="5"
+                    android:layout_marginRight="10px" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="15px"
+                android:id="@+id/linearLayout6"
+                android:background="#dcdcdc" />
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
             android:layout_width="match_parent"
-            android:layout_marginTop="100px"
-            android:layout_height="match_parent">
-            <LinearLayout
-                android:orientation="horizontal"
-                android:minWidth="25px"
-                android:minHeight="25px"
+            android:layout_height="wrap_content"
+            android:layout_margin="10px"
+            android:id="@+id/linearLayout2">
+            <TextView
+                android:text="@string/pdtFunction"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/linearLayout3">
-                <ImageView
-                    android:src="@drawable/eticadatalogo"
-                    android:layout_width="61.5dp"
-                    android:layout_height="36.0dp"
-                    android:id="@+id/imageView1"
-                    android:scaleType="fitCenter"
-                    android:layout_marginTop="4.0dp"
-                    android:layout_marginRight="3.5dp"
-                    android:layout_marginBottom="4.0dp"
-                    android:layout_marginLeft="5.5dp" />
-                <TextView
-                    android:text="Integração  Eticadata"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:id="@+id/textView2"
-                    android:layout_marginRight="6.5dp" />
-                <ToggleButton
-                    android:layout_width="76.5dp"
-                    android:layout_height="match_parent"
-                    android:id="@+id/tbtnSettingsIntegratorSwith"
-                    android:textOff="Não"
-                    android:textOn="Sim"
-                    android:layout_marginRight="5.5dp"
-                    android:layout_marginLeft="3.5dp" />
-            </LinearLayout>
+                android:id="@+id/textView1"
+                android:textColor="#636363"
+                android:textStyle="bold"
+                android:textSize="7pt"
+                android:padding="5px" />
             <LinearLayout
                 android:orientation="horizontal"
                 android:minWidth="25px"
                 android:minHeight="25px"
-                android:id="@+id/container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="2dp"
+                android:id="@+id/linearLayout5"
+                android:background="#bdbdbd" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout3"
+                android:weightSum="100"
+                android:layout_marginTop="25px">
                 <LinearLayout
                     android:orientation="vertical"
-                    android:minWidth="25px"
-                    android:minHeight="25px"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:id="@+id/linearLayoutEticadata">
+                    android:id="@+id/linearLayout4"
+                    android:layout_weight="95"
+                    android:layout_marginLeft="10px">
                     <TextView
-                        android:text="Endereço Servidor Eticadata:"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:layout_width="204.5dp"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/textView3"
-                        android:layout_marginRight="47.0dp"
-                        android:layout_marginLeft="16dp" />
-                    <EditText
+                        android:text="@string/sendCsvFileEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/txtSettingsServerAddress"
-                        android:layout_marginLeft="16dp"
-                        android:hint="IP ou DNS" />
-                    <TextView
-                        android:text="Utilizador API:"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:layout_marginLeft="5px"
+                        android:id="@+id/textView2" />
+                    <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/textView4"
-                        android:layout_marginLeft="16dp" />
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/txtSettingsUsernameAPI"
-                        android:layout_marginLeft="16dp"
-                        android:hint="username" />
-                    <TextView
-                        android:text="Password:"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/textView5"
-                        android:layout_marginLeft="16dp" />
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/txtSettingsPasswordAPI"
-                        android:layout_marginLeft="16dp"
-                        android:hint="password"
-                        android:password="true" />
-                    <TextView
-                        android:text="Porta WebService"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/textView6"
-                        android:layout_marginLeft="16dp" />
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/txtSettingsPortWebService"
-                        android:layout_marginLeft="16dp"
-                        android:hint="8080" />
+                        android:layout_height="wrap_content">
+                        <EditText
+                            android:id="@+id/txtSettingsEmailCsv"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            android:hint="E-mail" />
+                    </android.support.design.widget.TextInputLayout>
                 </LinearLayout>
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/chkSettingsCsvToEmail" />
             </LinearLayout>
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="65.5dp"
-                android:id="@+id/linearLayout1">
-                <TextView
-                    android:text="Email para envio do ficheiro CSV"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView1"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="8dp" />
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/txtSettingsEmail"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:hint="Email" />
-            </LinearLayout>
-            <Button
-                android:text="Guardar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnSettingsSave"
-                android:layout_marginLeft="50px"
-                android:layout_marginRight="50px"
-                android:background="#ff00c853"
-                android:layout_marginTop="10.0dp"
-                android:layout_marginBottom="10.0dp" />
-            <Button
-                android:text="Terminar Sessão"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnSettingsEndSession"
-                android:layout_marginLeft="50px"
-                android:layout_marginRight="50px"
-                android:background="#fff44336"
-                android:layout_marginBottom="10.0dp"
-                android:layout_marginTop="10.0dp" />
         </LinearLayout>
-    </RelativeLayout>
-</ScrollView>
+    </LinearLayout>
+</LinearLayout>

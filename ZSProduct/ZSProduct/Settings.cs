@@ -11,7 +11,7 @@ using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 //-----------------------------------------------------------
 namespace ZSProduct
 {
-    [Activity(Label = "Configurações", Theme = "@style/Theme.DesignDemo", ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "@string/settingsLabel", Theme = "@style/Theme.DesignDemo", ScreenOrientation = ScreenOrientation.Portrait)]
     public class Settings : AppCompatActivity
     {
         //-----------------------------------------------------------
@@ -27,7 +27,7 @@ namespace ZSProduct
         {
             //-----------------------------------------------------------
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.newSettings);
+            SetContentView(Resource.Layout.Settings);
 
             //-----------------------------------------------------------
             var toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBar);

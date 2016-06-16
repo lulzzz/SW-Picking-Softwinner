@@ -7,13 +7,13 @@ using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace ZSProduct
 {
-    [Activity(Label = "Painel de Controlo", Theme = "@style/Theme.DesignDemo", ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "@string/dashboardLabel", Theme = "@style/Theme.DesignDemo", ScreenOrientation = ScreenOrientation.Portrait)]
     public class Dashboard : AppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.newDashboard);
+            SetContentView(Resource.Layout.Dashboard);
             var toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBar);
             SetSupportActionBar(toolBar);
             var ab = SupportActionBar;

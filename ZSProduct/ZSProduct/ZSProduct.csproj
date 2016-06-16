@@ -113,9 +113,6 @@
     <AndroidResource Include="Resources\layout\ProductFinder.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\Settings.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
     <AndroidResource Include="Resources\layout\Pdt.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
@@ -136,10 +133,10 @@
     <AndroidResource Include="Resources\layout\Login.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\newDashboard.axml">
+    <AndroidResource Include="Resources\layout\Dashboard.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\newSettings.axml">
+    <AndroidResource Include="Resources\layout\Settings.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\DialogLoading.axml">

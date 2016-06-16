@@ -59,7 +59,7 @@
                         android:nextFocusRight="@+id/txtProdFinderDescription"
                         android:nextFocusLeft="@+id/txtProdFinderDescription"
                         android:focusableInTouchMode="true"
-                        android:hint="Código de Barras" />
+                        android:hint="@string/productBarCode" />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
             <LinearLayout
@@ -86,7 +86,7 @@
                         android:nextFocusRight="@+id/txtProdFinderDescription"
                         android:nextFocusLeft="@+id/txtProdFinderDescription"
                         android:focusableInTouchMode="true"
-                        android:hint="Código do Produto" />
+                        android:hint="@string/productCode" />
                 </android.support.design.widget.TextInputLayout>
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -104,7 +104,7 @@
                         android:nextFocusRight="@+id/txtProdFinderDescription"
                         android:nextFocusLeft="@+id/txtProdFinderDescription"
                         android:focusableInTouchMode="true"
-                        android:hint="Referência do Produto" />
+                        android:hint="@string/productReference" />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
         </LinearLayout>
@@ -121,7 +121,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:hint="Descrição"
+                    android:hint="@string/productDescription"
                     android:clickable="false"
                     android:editable="false"
                     android:focusable="false" />
@@ -140,7 +140,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:hint="Fornecedor"
+                    android:hint="@string/productSupplier"
                     android:clickable="false"
                     android:editable="false"
                     android:focusable="false" />
@@ -163,7 +163,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:hint="PVP1"
+                    android:hint="@string/productPvp1"
                     android:clickable="false"
                     android:editable="false"
                     android:focusable="false" />
@@ -177,7 +177,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:hint="PVP2"
+                    android:hint="@string/productPvp2"
                     android:clickable="false"
                     android:editable="false"
                     android:focusable="false" />
@@ -200,7 +200,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:hint="Preço de Custo Último"
+                    android:hint="@string/productPcu"
                     android:clickable="false"
                     android:editable="false"
                     android:focusable="false" />
@@ -214,7 +214,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:hint="Preço de Custo Médio"
+                    android:hint="@string/productPcm"
                     android:clickable="false"
                     android:editable="false"
                     android:focusable="false" />
@@ -233,7 +233,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:hint="Stock"
+                    android:hint="@string/productStock"
                     android:clickable="false"
                     android:editable="false"
                     android:focusable="false" />

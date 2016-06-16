@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:minWidth="25px"
-    android:background="#eeeeee"
+    android:background="@color/background"
     android:minHeight="25px">
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -44,7 +44,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
-                    android:hint="Código de Barras" />
+                    android:hint="@string/productBarCode" />
             </android.support.design.widget.TextInputLayout>
             <LinearLayout
                 android:orientation="vertical"
@@ -67,7 +67,7 @@
                     android:id="@+id/linearLayout3"
                     android:padding="8dp">
                     <TextView
-                        android:text="PRODUTO"
+                        android:text="@string/product"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -75,14 +75,14 @@
                         android:id="@+id/textView1"
                         android:layout_marginLeft="8dp" />
                     <TextView
-                        android:text="QTD"
+                        android:text="@string/qtd"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="5"
                         android:id="@+id/textView2" />
                     <TextView
-                        android:text="OPÇÕES"
+                        android:text="@string/options"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"

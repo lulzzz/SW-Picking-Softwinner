@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#eeeeee"
+    android:background="@color/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20px"
@@ -50,8 +50,8 @@
             android:layout_marginLeft="50px"
             android:layout_marginRight="50px" />
         <TextView
-            android:text="www.softwinner.pt"
-            android:textColor="#BCD146"
+            android:text="@string/siteURL"
+            android:textColor="@color/mainColor"
             android:textSize="8pt"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="match_parent"

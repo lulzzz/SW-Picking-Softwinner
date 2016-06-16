@@ -9,7 +9,7 @@ using Android.Widget;
 //-----------------------------------------------------------
 namespace ZSProduct
 {
-    [Activity(Label = "Sobre", Theme = "@style/Theme.DesignDemo", ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "@string/aboutLabel", Theme = "@style/Theme.DesignDemo", ScreenOrientation = ScreenOrientation.Portrait)]
     public class About : AppCompatActivity
     {
         //-----------------------------------------------------------
