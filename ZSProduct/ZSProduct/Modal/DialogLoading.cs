@@ -5,7 +5,7 @@ using Android.Widget;
 
 namespace ZSProduct.Modal
 {
-    internal class DialogLoading : DialogFragment
+    public class DialogLoading : DialogFragment
     {
         //-----------------------------------------------------------
         private ProgressBar _prgDialogLoading;

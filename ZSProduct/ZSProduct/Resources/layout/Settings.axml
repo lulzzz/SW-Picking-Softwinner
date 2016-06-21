@@ -158,6 +158,46 @@
                     android:layout_height="match_parent"
                     android:id="@+id/chkSettingsCsvToEmail" />
             </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lnlaSettingsChangeWarehouse"
+                android:weightSum="100"
+                android:layout_marginTop="25px">
+                <TextView
+                    android:text="@string/chooseWarehouse"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/lnlaLoadStoreList"
+                    android:minWidth="25px"
+                    android:minHeight="25px">
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/progressBar1" />
+                    <TextView
+                        android:text="A carregar lista de lojas. Por favor, aguarde"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/mainColor"
+                        android:layout_marginLeft="10px"
+                        android:id="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/optSettingsStores"
+                    android:layout_marginTop="10px" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

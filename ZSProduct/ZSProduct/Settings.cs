@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -16,11 +20,15 @@ namespace ZSProduct
     {
         //-----------------------------------------------------------
         private readonly ZsManager _manager = new ZsManager();
+        private ZsClient _zsClient;
         private ImageView _imgSettingsLoginType;
         private TextView _txtSettingsSessionInfo;
         private TextView _lblSettingsSignOut;
         private EditText _txtSettingsEmailCsv;
         private CheckBox _chkSettingsCsvToEmail;
+        private int _selectedStore;
+        private BackgroundWorker _mWorker;
+        private List<string> _items;
 
         //-----------------------------------------------------------
         protected override void OnCreate(Bundle savedInstanceState)
@@ -28,13 +36,13 @@ namespace ZSProduct
             //-----------------------------------------------------------
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Settings);
+            _mWorker = new BackgroundWorker();
 
             //-----------------------------------------------------------
             var toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBar);
             SetSupportActionBar(toolBar);
-            var ab = SupportActionBar;
-            ab.SetHomeAsUpIndicator(Resource.Drawable.ic_arrow_back_white_18dp);
-            ab.SetDisplayHomeAsUpEnabled(true);
+            toolBar.SetNavigationIcon(Resource.Drawable.ic_arrow_back_white_18dp);
+            toolBar.NavigationClick += (sender, args) => OnBackPressed();
 
             //-----------------------------------------------------------
             _imgSettingsLoginType = FindViewById<ImageView>(Resource.Id.imgSettingsLoginType);
@@ -42,12 +50,43 @@ namespace ZSProduct
             _lblSettingsSignOut = FindViewById<TextView>(Resource.Id.lblSettingsSignOut);
             _txtSettingsEmailCsv = FindViewById<EditText>(Resource.Id.txtSettingsEmailCsv);
             _chkSettingsCsvToEmail = FindViewById<CheckBox>(Resource.Id.chkSettingsCsvToEmail);
-
+            FindViewById<Spinner>(Resource.Id.optSettingsStores).Visibility = ViewStates.Gone;
             //-----------------------------------------------------------
-            _chkSettingsCsvToEmail.Click += (sender, args) =>
+            if (_manager.GetItem("loginType") != "zonesoft")
             {
-                _txtSettingsEmailCsv.Visibility = _chkSettingsCsvToEmail.Checked ? ViewStates.Visible : ViewStates.Gone;
+                FindViewById<LinearLayout>(Resource.Id.lnlaSettingsChangeWarehouse).Visibility = ViewStates.Gone;
+            }
+
+            _mWorker.DoWork += (o, a) =>
+            {
+                if (_manager.GetItem("loginType") == "zonesoft")
+                {
+                    _zsClient = new ZsClient(_manager.GetItem("username"), _manager.GetItem("password"), 0,
+                        _manager.GetItem("nif"));
+                    _zsClient.Login();
+                    var stores = _zsClient.GetStoresList();
+                    _items = new List<string>();
+                    _items.AddRange(stores.Select(store => store.Description));
+                }
             };
+            _mWorker.RunWorkerAsync();
+            _mWorker.RunWorkerCompleted += (o, args) =>
+            {
+                if (_manager.GetItem("loginType") == "zonesoft")
+                {
+                    FindViewById<LinearLayout>(Resource.Id.lnlaLoadStoreList).Visibility = ViewStates.Gone;
+                    FindViewById<Spinner>(Resource.Id.optSettingsStores).Visibility = ViewStates.Visible;
+                    var adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerDropDownItem, _items);
+                    var spinner = FindViewById<Spinner>(Resource.Id.optSettingsStores);
+                    spinner.Adapter = adapter;
+                    spinner.ItemSelected += spinner_ItemSelected;
+                }
+            };
+
+            _chkSettingsCsvToEmail.Click += (sender, args) =>
+        {
+            _txtSettingsEmailCsv.Visibility = _chkSettingsCsvToEmail.Checked ? ViewStates.Visible : ViewStates.Gone;
+        };
 
             _lblSettingsSignOut.Click += (sender, args) =>
             {
@@ -80,6 +119,8 @@ namespace ZSProduct
 
         public override void OnBackPressed()
         {
+            var a = _selectedStore;
+            _manager.AddItem(_selectedStore.ToString(), "storeToPdt");
             if (!_chkSettingsCsvToEmail.Checked)
                 base.OnBackPressed();
             else if (_chkSettingsCsvToEmail.Checked && string.IsNullOrEmpty(_txtSettingsEmailCsv.Text))
@@ -90,6 +131,15 @@ namespace ZSProduct
                 _manager.AddItem(_txtSettingsEmailCsv.Text, "emailToCSV");
                 base.OnBackPressed();
             }
+        }
+
+        //Handler for the drop down list
+        private void spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+            //var spinner = (Spinner)sender;
+            _selectedStore = e.Position;
+            // Toast.MakeText(this, $"Loja  {spinner.GetItemAtPosition(_selectedStore)} selecionada", ToastLength.Long).Show();
+
         }
 
 

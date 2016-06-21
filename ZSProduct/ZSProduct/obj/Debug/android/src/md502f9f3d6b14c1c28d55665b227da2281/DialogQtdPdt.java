@@ -24,6 +24,13 @@ public class DialogQtdPdt
 			mono.android.TypeManager.Activate ("ZSProduct.Modal.DialogQtdPdt, ZSProduct, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
 	}
 
+	public DialogQtdPdt (double p0) throws java.lang.Throwable
+	{
+		super ();
+		if (getClass () == DialogQtdPdt.class)
+			mono.android.TypeManager.Activate ("ZSProduct.Modal.DialogQtdPdt, ZSProduct, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "System.Double, mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e", this, new java.lang.Object[] { p0 });
+	}
+
 
 	public android.view.View onCreateView (android.view.LayoutInflater p0, android.view.ViewGroup p1, android.os.Bundle p2)
 	{

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace ZSProduct.Modal
 {
@@ -6,9 +7,8 @@ namespace ZSProduct.Modal
     {
         public string ProductCode;
         public string ProductRef;
-        public uint Store;
-        public double Stock;
-        public uint SupplierId;
+        public Dictionary<string, int> Stock;
+        public string Supplier;
         public readonly string BarCode;
         public readonly string Description;
         public double Pvp1;
@@ -17,11 +17,10 @@ namespace ZSProduct.Modal
         public string Pcu;
         public string Pcm;
 
-        public Product(string description, string productCode, uint store, double stock, string barCode, double price, double pvp2, string reference, uint supplierId, string pcu, string pcm = "-")
+        public Product(string description, string productCode, Dictionary<string, int> stock, string barCode, double price, double pvp2, string reference, string supplier, string pcu, string pcm = "-")
         {
             ProductCode = productCode;
             Description = description;
-            Store = store;
             Stock = stock;
             BarCode = barCode;
             Pvp1 = price;
@@ -29,13 +28,12 @@ namespace ZSProduct.Modal
             Reference = reference;
             Pcu = pcu;
             Pcm = pcm;
-            SupplierId = supplierId;
+            Supplier = supplier;
         }
 
         public void PrintProductDetails()
         {
             Console.WriteLine("ProductName:" + Description + "\n" +
-                                "Store:" + Store + "\n" +
                                 "Stock:" + Stock + "\n" +
                                 "BarCode:" + BarCode + "\n" +
                                 "PriceOfSale:" + Pvp1 + "\n" +
@@ -49,7 +47,6 @@ namespace ZSProduct.Modal
         {
             Console.WriteLine("ProductName:" +
             singleProduct.Description + "\n" +
-            "Store:" + singleProduct.Store + "\n" +
             "Stock:" + singleProduct.Stock + "\n" +
             "BarCode:" + singleProduct.BarCode + "\n" +
             "PriceOfSale:" + singleProduct.Pvp1 + "\n" +

@@ -4,6 +4,7 @@ C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwi
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\obj\Debug\android\assets\mscorlib.dll
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\obj\Debug\android\assets\System.Core.dll
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\obj\Debug\android\assets\System.dll
+C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\obj\Debug\android\assets\System.ServiceModel.dll
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\obj\Debug\android\assets\System.ServiceModel.Internals.dll
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\obj\Debug\android\assets\System.Xml.dll
 C:\Users\andre\OneDrive\Documentos\Visual Studio 2015\Projects\ZS-Product-Softwinner\ZSProduct\ZSProduct\obj\Debug\android\assets\System.Xml.Linq.dll

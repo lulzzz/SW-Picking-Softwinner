@@ -42,6 +42,10 @@ ZSProduct.Modal.DialogStock, ZSProduct;md502f9f3d6b14c1c28d55665b227da2281.Dialo
 ZSProduct.Modal.DialogStock, ZSProduct, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md502f9f3d6b14c1c28d55665b227da2281.DialogStock
 ZSProduct.Modal.DialogStock;md502f9f3d6b14c1c28d55665b227da2281.DialogStock
 zsproduct.modal.DialogStock;md502f9f3d6b14c1c28d55665b227da2281.DialogStock
+ZSProduct.Modal.ZsManager, ZSProduct;md502f9f3d6b14c1c28d55665b227da2281.ZsManager
+ZSProduct.Modal.ZsManager, ZSProduct, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md502f9f3d6b14c1c28d55665b227da2281.ZsManager
+ZSProduct.Modal.ZsManager;md502f9f3d6b14c1c28d55665b227da2281.ZsManager
+zsproduct.modal.ZsManager;md502f9f3d6b14c1c28d55665b227da2281.ZsManager
 Android.Support.Design.Widget.Snackbar/SnackbarActionClickImplementor, Xamarin.Android.Support.Design;android.support.design.widget.Snackbar_SnackbarActionClickImplementor
 Android.Support.Design.Widget.Snackbar+SnackbarActionClickImplementor, Xamarin.Android.Support.Design, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;android.support.design.widget.Snackbar_SnackbarActionClickImplementor
 Android.Support.Design.Widget.Snackbar.SnackbarActionClickImplementor;android.support.design.widget.Snackbar_SnackbarActionClickImplementor

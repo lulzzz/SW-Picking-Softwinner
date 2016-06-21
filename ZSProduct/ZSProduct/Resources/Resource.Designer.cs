@@ -2269,11 +2269,17 @@ namespace ZSProduct
 			// aapt resource value: 0x7f06007d
 			public const int lnlaDashboardSettings = 2131099773;
 			
+			// aapt resource value: 0x7f0600cb
+			public const int lnlaLoadStoreList = 2131099851;
+			
+			// aapt resource value: 0x7f0600ca
+			public const int lnlaSettingsChangeWarehouse = 2131099850;
+			
 			// aapt resource value: 0x7f0600b4
 			public const int lstPdtProducts = 2131099828;
 			
-			// aapt resource value: 0x7f0600ca
-			public const int lstStocks = 2131099850;
+			// aapt resource value: 0x7f0600ce
+			public const int lstStocks = 2131099854;
 			
 			// aapt resource value: 0x7f0600a8
 			public const int media_actions = 2131099816;
@@ -2299,6 +2305,9 @@ namespace ZSProduct
 			// aapt resource value: 0x7f06000c
 			public const int normal = 2131099660;
 			
+			// aapt resource value: 0x7f0600cd
+			public const int optSettingsStores = 2131099853;
+			
 			// aapt resource value: 0x7f060094
 			public const int optionsItem1 = 2131099796;
 			
@@ -2316,6 +2325,9 @@ namespace ZSProduct
 			
 			// aapt resource value: 0x7f060089
 			public const int prgDialogLoading = 2131099785;
+			
+			// aapt resource value: 0x7f0600cc
+			public const int progressBar1 = 2131099852;
 			
 			// aapt resource value: 0x7f060006
 			public const int progress_circular = 2131099654;
@@ -2458,8 +2470,8 @@ namespace ZSProduct
 			// aapt resource value: 0x7f060076
 			public const int toolBar = 2131099766;
 			
-			// aapt resource value: 0x7f0600cb
-			public const int toolbar = 2131099851;
+			// aapt resource value: 0x7f0600cf
+			public const int toolbar = 2131099855;
 			
 			// aapt resource value: 0x7f060032
 			public const int top = 2131099698;
@@ -2827,17 +2839,17 @@ namespace ZSProduct
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f09003d
-			public const int AboutAngola = 2131296317;
+			// aapt resource value: 0x7f09003e
+			public const int AboutAngola = 2131296318;
 			
-			// aapt resource value: 0x7f09003c
-			public const int AboutPortugal = 2131296316;
+			// aapt resource value: 0x7f09003d
+			public const int AboutPortugal = 2131296317;
 			
 			// aapt resource value: 0x7f090017
 			public const int ApplicationName = 2131296279;
 			
-			// aapt resource value: 0x7f09003b
-			public const int Author = 2131296315;
+			// aapt resource value: 0x7f09003c
+			public const int Author = 2131296316;
 			
 			// aapt resource value: 0x7f090000
 			public const int abc_action_bar_home_description = 2131296256;
@@ -2896,8 +2908,8 @@ namespace ZSProduct
 			// aapt resource value: 0x7f090012
 			public const int abc_toolbar_collapse_description = 2131296274;
 			
-			// aapt resource value: 0x7f090038
-			public const int aboutLabel = 2131296312;
+			// aapt resource value: 0x7f090039
+			public const int aboutLabel = 2131296313;
 			
 			// aapt resource value: 0x7f090014
 			public const int appbar_scrolling_view_behavior = 2131296276;
@@ -2908,95 +2920,98 @@ namespace ZSProduct
 			// aapt resource value: 0x7f090016
 			public const int character_counter_pattern = 2131296278;
 			
-			// aapt resource value: 0x7f090039
-			public const int chooseQtd = 2131296313;
+			// aapt resource value: 0x7f09003a
+			public const int chooseQtd = 2131296314;
+			
+			// aapt resource value: 0x7f09001e
+			public const int chooseWarehouse = 2131296286;
 			
 			// aapt resource value: 0x7f09001a
 			public const int currentSession = 2131296282;
 			
-			// aapt resource value: 0x7f090034
-			public const int dashboardLabel = 2131296308;
+			// aapt resource value: 0x7f090035
+			public const int dashboardLabel = 2131296309;
+			
+			// aapt resource value: 0x7f090033
+			public const int getProductInfo = 2131296307;
+			
+			// aapt resource value: 0x7f090030
+			public const int ipOrDns = 2131296304;
 			
 			// aapt resource value: 0x7f090032
-			public const int getProductInfo = 2131296306;
-			
-			// aapt resource value: 0x7f09002f
-			public const int ipOrDns = 2131296303;
-			
-			// aapt resource value: 0x7f090031
-			public const int logIn = 2131296305;
+			public const int logIn = 2131296306;
 			
 			// aapt resource value: 0x7f09001b
 			public const int logOut = 2131296283;
 			
-			// aapt resource value: 0x7f090033
-			public const int loginLabel = 2131296307;
+			// aapt resource value: 0x7f090034
+			public const int loginLabel = 2131296308;
 			
-			// aapt resource value: 0x7f09002c
-			public const int nif = 2131296300;
+			// aapt resource value: 0x7f09002d
+			public const int nif = 2131296301;
 			
-			// aapt resource value: 0x7f09002a
-			public const int options = 2131296298;
+			// aapt resource value: 0x7f09002b
+			public const int options = 2131296299;
 			
-			// aapt resource value: 0x7f09002e
-			public const int password = 2131296302;
+			// aapt resource value: 0x7f09002f
+			public const int password = 2131296303;
 			
 			// aapt resource value: 0x7f09001c
 			public const int pdtFunction = 2131296284;
 			
-			// aapt resource value: 0x7f090036
-			public const int pdtLabel = 2131296310;
+			// aapt resource value: 0x7f090037
+			public const int pdtLabel = 2131296311;
 			
-			// aapt resource value: 0x7f090030
-			public const int port = 2131296304;
-			
-			// aapt resource value: 0x7f090028
-			public const int product = 2131296296;
-			
-			// aapt resource value: 0x7f09001e
-			public const int productBarCode = 2131296286;
-			
-			// aapt resource value: 0x7f09001f
-			public const int productCode = 2131296287;
-			
-			// aapt resource value: 0x7f090021
-			public const int productDescription = 2131296289;
-			
-			// aapt resource value: 0x7f090035
-			public const int productFinderLabel = 2131296309;
-			
-			// aapt resource value: 0x7f090026
-			public const int productPcm = 2131296294;
-			
-			// aapt resource value: 0x7f090025
-			public const int productPcu = 2131296293;
-			
-			// aapt resource value: 0x7f090023
-			public const int productPvp1 = 2131296291;
-			
-			// aapt resource value: 0x7f090024
-			public const int productPvp2 = 2131296292;
-			
-			// aapt resource value: 0x7f090020
-			public const int productReference = 2131296288;
-			
-			// aapt resource value: 0x7f090027
-			public const int productStock = 2131296295;
-			
-			// aapt resource value: 0x7f090022
-			public const int productSupplier = 2131296290;
+			// aapt resource value: 0x7f090031
+			public const int port = 2131296305;
 			
 			// aapt resource value: 0x7f090029
-			public const int qtd = 2131296297;
+			public const int product = 2131296297;
+			
+			// aapt resource value: 0x7f09001f
+			public const int productBarCode = 2131296287;
+			
+			// aapt resource value: 0x7f090020
+			public const int productCode = 2131296288;
+			
+			// aapt resource value: 0x7f090022
+			public const int productDescription = 2131296290;
+			
+			// aapt resource value: 0x7f090036
+			public const int productFinderLabel = 2131296310;
+			
+			// aapt resource value: 0x7f090027
+			public const int productPcm = 2131296295;
+			
+			// aapt resource value: 0x7f090026
+			public const int productPcu = 2131296294;
+			
+			// aapt resource value: 0x7f090024
+			public const int productPvp1 = 2131296292;
+			
+			// aapt resource value: 0x7f090025
+			public const int productPvp2 = 2131296293;
+			
+			// aapt resource value: 0x7f090021
+			public const int productReference = 2131296289;
+			
+			// aapt resource value: 0x7f090028
+			public const int productStock = 2131296296;
+			
+			// aapt resource value: 0x7f090023
+			public const int productSupplier = 2131296291;
+			
+			// aapt resource value: 0x7f09002a
+			public const int qtd = 2131296298;
 			
 			// aapt resource value: 0x7f09001d
 			public const int sendCsvFileEmail = 2131296285;
 			
-			// aapt resource value: 0x7f090037
-			public const int settingsLabel = 2131296311;
+			// aapt resource value: 0x7f090038
+			public const int settingsLabel = 2131296312;
 			
-			// aapt resource value: 0x7f09003a
-			public const int siteURL = 2131296314;
+			// aapt resource value: 0x7f09003b
+			public const int siteURL = 2131296315;
 			
 			// aapt resource value: 0x7f090013
 			public const int status_bar_notification_info_overflow = 2131296275;
@@ -3007,11 +3022,11 @@ namespace ZSProduct
 			// aapt resource value: 0x7f090018
 			public const int store = 2131296280;
 			
-			// aapt resource value: 0x7f09002d
-			public const int username = 2131296301;
+			// aapt resource value: 0x7f09002e
+			public const int username = 2131296302;
 			
-			// aapt resource value: 0x7f09002b
-			public const int welcome = 2131296299;
+			// aapt resource value: 0x7f09002c
+			public const int welcome = 2131296300;
 			
 			static String()
 			{

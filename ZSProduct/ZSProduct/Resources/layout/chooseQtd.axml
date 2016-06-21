@@ -43,9 +43,18 @@
             android:layout_height="match_parent"
             android:id="@+id/txtChooseQtd"
             android:textSize="20dp"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:gravity="center"
-            android:text="1" />
+            android:text="1"
+            android:nextFocusForward="@+id/txtChooseQtd"
+            android:nextFocusDown="@+id/txtChooseQtd"
+            android:nextFocusUp="@+id/txtChooseQtd"
+            android:nextFocusRight="@+id/txtChooseQtd"
+            android:nextFocusLeft="@+id/txtChooseQtd"
+            android:ems="10"
+            android:autoText="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true" />
         <ImageButton
             android:src="@drawable/ic_add_circle_outline_black_24dp"
             android:layout_width="wrap_content"

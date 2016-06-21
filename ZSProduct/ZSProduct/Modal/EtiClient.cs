@@ -1,7 +1,11 @@
 using System;
 using System.Net;
 using System.Text;
+using Android.Widget;
 using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System.Linq;
+using Newtonsoft.Json;
 
 namespace ZSProduct.Modal
 {
@@ -22,13 +26,13 @@ namespace ZSProduct.Modal
         private string _responseString;
         private JObject _element;
 
-        public EtiClient(string username, string password, string adress)
+        public EtiClient(string username, string password, string adress, uint port)
         {
             Username = username;
             Password = password;
             SqlServerAddress = adress;
             IsOnline = true;
-            Port = 8080;
+            Port = port;
         }
 
         public int Login()
@@ -87,22 +91,23 @@ namespace ZSProduct.Modal
                     _responseString = Encoding.UTF8.GetString(_responseBytes);
                     if (_responseString != "")
                     {
-                        //var element = JObject.Parse("{CPU:'Intel',Drives:['DVD read/writer','500 gigabyte hard drive']}");
                         Console.WriteLine();
                         var element = JObject.Parse(_responseString);
-                        //Console.WriteLine("\n\n\n\n\n");
-                        //Console.WriteLine(element);
-                        //Console.WriteLine("\n\n\n\n\n");
                         Console.WriteLine(element);
-                        if ((int)element["Response"]["StatusCode"] == 200 /*&& element["Response"]["StatusMessage"]*/)
+                        if ((int)element["Response"]["StatusCode"] == 200 && (string)element["Response"]["StatusMessage"] != "WARNING")
                         {
+                            var stocks = JsonConvert.DeserializeObject<Dictionary<string, object>>(element["Response"]["Content"]["product"]["stock"].ToString()).ToDictionary(item => item.Key, item => Convert.ToInt32(item.Value));
                             Console.WriteLine("Produto obtido com sucesso");
-                            //Get the values and build Product object for each element
-                            var desc = (double)element["Response"]["Content"]["product"]["stock"];
-                            Console.WriteLine(desc);
-                            _product = new Product("agaeg", "shf", 12, desc,
-                                (string)element["Response"]["Content"]["product"]["code"], 10, 9, "agag", 8, "dfhdf",
-                                "a");
+                            _product = new Product((string)element["Response"]["Content"]["product"]["description"],
+                                                   (string)element["Response"]["Content"]["product"]["code"],
+                                                   stocks,
+                                                   (string)element["Response"]["Content"]["product"]["barCode"],
+                                                   Convert.ToDouble(element["Response"]["Content"]["product"]["PVP1"].ToString()),
+                                                   (double)element["Response"]["Content"]["product"]["PVP2"],
+                                                   (string)element["Response"]["Content"]["product"]["reference"],
+                                                   (string)element["Response"]["Content"]["product"]["supplier"],
+                                                   (string)element["Response"]["Content"]["product"]["lastPrice"],
+                                                   (string)element["Response"]["Content"]["product"]["averageCost"]);
                             return _product;
                         }
                         return null;
@@ -118,46 +123,5 @@ namespace ZSProduct.Modal
             }
             return null;
         }
-
-
-        /*public string GetStockForProductWithBarCode(string barCode)
-        {
-            if (IsOnline)
-            {
-                try
-                {
-                    String request = "{\"product\":\"" + barCode + "\"}";
-                    byte[] dataBytes = Encoding.UTF8.GetBytes(request);
-                    WebClient wc = new WebClient();
-                    wc.Headers.Add(HttpRequestHeader.ContentType, "application/json; charset=utf-8");
-                    Console.WriteLine(request);
-                    byte[] responseBytes = wc.UploadData(new Uri("http://192.168.100.174:" + Port + "/") + barCode,
-                                               "POST", dataBytes);
-                    string responseString = Encoding.UTF8.GetString(responseBytes);
-
-                    //Parse the string to a JsonObject
-                    var element = JObject.Parse(responseString);
-                    if (((int)element["Response"]["StatusCode"]) == 200)
-                    {
-                        Console.WriteLine("Produto obtido com sucesso");
-                        //var array = JArray.Parse (element ["Response"] ["Content"] ["ProductStock"].ToString ());
-                        //Get the other values
-                        string productCode = (element["Response"]["Content"]["ProductStock"]["code"]).ToString();
-                        string productStock = (element["Response"]["Content"]["ProductStock"]["stock"]).ToString();
-                        //var deserializedProduct = JsonConvert.DeserializeObject (productCode);
-                        //Console.WriteLine (deserializedProduct.ToString ());
-                        return productStock;
-                    }
-                    return null;
-                }
-                catch
-                {
-                    Console.WriteLine("Falhou obter producto.Verifique conecçao.");
-                    this.IsOnline = false;
-                    return null;
-                }
-            }
-            return null;
-        }*/
     }
 }

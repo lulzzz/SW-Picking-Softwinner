@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Android.App;
+using Android.Renderscripts;
 using Android.Views;
 using Android.Widget;
 
@@ -23,6 +24,7 @@ namespace ZSProduct.Modal
         public List<AddStockStore> Data;
         private readonly ZsManager _manager = new ZsManager();
         private ZsClient _zsClient;
+        private string _nomeLoja;
 
         //-----------------------------------------------------------
         public override View GetView(int position, View convertView, ViewGroup parent)
@@ -31,9 +33,13 @@ namespace ZSProduct.Modal
             _zsClient.Login();
             var item = Data[position];
             var view = convertView ?? _context.LayoutInflater.Inflate(Resource.Layout.ListViewRowStock, null);
-            var nomeLoja = _zsClient.GetStoreDescription(Convert.ToInt32(item.Loja)).ToUpper();
-            view.FindViewById<TextView>(Resource.Id.txtAdapterStockStore).Text =  nomeLoja.Length > 11 ? nomeLoja.Substring(0, 13) : nomeLoja;
-            view.FindViewById<TextView>(Resource.Id.txtAdapterStockStockProd).Text = item.Stock + " und.";
+            if (_manager.GetItem("loginType") == "zonesoft")
+                _nomeLoja = _zsClient.GetStoreDescription(Convert.ToInt32(item.Loja)).ToUpper();
+            else
+                _nomeLoja = item.Loja.ToUpper();
+            //view.FindViewById<TextView>(Resource.Id.txtAdapterStockStore).Text = _nomeLoja.Length > 11 ? _nomeLoja.Substring(0, 13) : _nomeLoja;
+            view.FindViewById<TextView>(Resource.Id.txtAdapterStockStore).Text = _nomeLoja;
+            view.FindViewById<TextView>(Resource.Id.txtAdapterStockStockProd).Text = item.Stock + " un.";
             return view;
         }
 

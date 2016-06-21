@@ -4,11 +4,12 @@
   <uses-sdk android:minSdkVersion="16" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <uses-permission android:name="android.permission.INTERNET" />
-  <application android:label="ZSProduct" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true">
+  <application android:label="SWPicking" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true">
     <activity android:label="@string/aboutLabel" android:screenOrientation="portrait" android:theme="@style/Theme.DesignDemo" android:name="md5cc2b321e93bfa5be8efd8aa79e8cad01.About" />
     <activity android:label="@string/dashboardLabel" android:screenOrientation="portrait" android:theme="@style/Theme.DesignDemo" android:name="md5cc2b321e93bfa5be8efd8aa79e8cad01.Dashboard" />
-    <activity android:icon="@drawable/icon" android:label="@string/loginLabel" android:screenOrientation="portrait" android:theme="@style/Theme.DesignDemo" android:name="md5cc2b321e93bfa5be8efd8aa79e8cad01.MainActivity">
+    <activity android:icon="@drawable/icon" android:label="SWPicking" android:screenOrientation="portrait" android:theme="@style/Theme.DesignDemo" android:name="md5cc2b321e93bfa5be8efd8aa79e8cad01.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />

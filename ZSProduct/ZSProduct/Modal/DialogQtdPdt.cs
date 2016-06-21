@@ -1,7 +1,9 @@
 using System;
 using Android.App;
 using Android.OS;
+using Android.Support.V7.Widget;
 using Android.Views;
+using Android.Views.InputMethods;
 using Android.Widget;
 
 //-----------------------------------------------------------
@@ -21,6 +23,7 @@ namespace ZSProduct.Modal
     //-----------------------------------------------------------
     internal class DialogQtdPdt : DialogFragment
     {
+        private readonly double _initialQtd;
         //----------------------------------------------------------- 
         public EventHandler<OnSetQtdEventArgs> OnChangedComplete;
 
@@ -29,6 +32,11 @@ namespace ZSProduct.Modal
         private ImageButton _mImgBtnPlus;
         private Button _mBtnOk;
         private EditText _mtxtQtd;
+
+        public DialogQtdPdt(double qtd)
+        {
+            _initialQtd = qtd;
+        }
 
         //-----------------------------------------------------------
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -40,8 +48,8 @@ namespace ZSProduct.Modal
             _mImgBtnPlus = view.FindViewById<ImageButton>(Resource.Id.imgBtnChooseQtdPlus);
             _mBtnOk = view.FindViewById<Button>(Resource.Id.btnChooseOk);
             _mtxtQtd = view.FindViewById<EditText>(Resource.Id.txtChooseQtd);
-
-            var qtd = Convert.ToInt32(_mtxtQtd.Text);
+            _mtxtQtd.Text = _initialQtd.ToString();
+            var qtd = Convert.ToDouble(_mtxtQtd.Text);
             _mImgBtnLess.Click += (sender, args) =>
             {
                 if (qtd > 0)
@@ -54,7 +62,8 @@ namespace ZSProduct.Modal
             };
 
             _mBtnOk.Click += BtnOk_Click;
-
+            _mtxtQtd.RequestFocusFromTouch();
+            _mtxtQtd.Click += (sender, args) => _mtxtQtd.Text = "";
             return view;
         }
 

@@ -1,4 +1,5 @@
-﻿using Android.App;
+﻿using System;
+using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.Views;
@@ -10,7 +11,7 @@ using ZSProduct.Modal;
 
 namespace ZSProduct
 {
-    [Activity(Label = "@string/loginLabel", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.DesignDemo", ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "SWPicking", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.DesignDemo", ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : AppCompatActivity
     {
         private string _getNif;
@@ -23,7 +24,7 @@ namespace ZSProduct
             SetContentView(Resource.Layout.Login);
 
             var btnLogin = FindViewById<Button>(Resource.Id.btnLoginLogin);
-           // var btnPreencher = FindViewById<Button>(Resource.Id.btnLoginPreencher);
+            // var btnPreencher = FindViewById<Button>(Resource.Id.btnLoginPreencher);
             var item1 = FindViewById<LinearLayout>(Resource.Id.item1);
             var item2 = FindViewById<LinearLayout>(Resource.Id.item2);
             var optionsItem1 = FindViewById<LinearLayout>(Resource.Id.optionsItem1);
@@ -57,11 +58,6 @@ namespace ZSProduct
                 }
                 optionsItem1.Visibility = ViewStates.Visible;
                 optItem1Open = true;
-                //Matrix matrix = new Matrix();
-                //img.SetScaleType(ImageView.ScaleType.Matrix);
-                //matrix.PostRotate(45, 20, 20);
-                //img.ImageMatrix = matrix;
-
             };
 
             item2.Click += (sender, args) =>
@@ -93,7 +89,7 @@ namespace ZSProduct
                             saveData.AddItem(txtZsNif.Text, "nif");
                             saveData.AddItem(txtZsUsername.Text, "username");
                             saveData.AddItem(txtZsPassword.Text, "password");
-                            saveData.AddItem(0, "storeToPdt");
+                            saveData.AddItem("0", "storeToPdt");
                         }
                         else
                             Snackbar.Make(sender as View, "Dados incorretos...", Snackbar.LengthShort).Show();
@@ -105,7 +101,7 @@ namespace ZSProduct
                         Snackbar.Make(sender as View, "Preencha todos os campos...", Snackbar.LengthShort).Show();
                     else
                     {
-                        var etiHandler = new EtiClient(txtEtiUsername.Text, txtEtiPassword.Text, txtEtiIp.Text);
+                        var etiHandler = new EtiClient(txtEtiUsername.Text, txtEtiPassword.Text, txtEtiIp.Text, Convert.ToUInt32(txtEtiPort.Text));
                         etiHandler.Login();
                         if (etiHandler.Login() == 1)
                         {

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
@@ -8,8 +9,8 @@ using Android.Views;
 using Android.Widget;
 using Android.Content;
 using Android.Support.Design.Widget;
+using Android.Views.InputMethods;
 using ZSProduct.Modal;
-using System.IO;
 using Thread = System.Threading.Thread;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 
@@ -19,13 +20,17 @@ namespace ZSProduct
     public class Pdt : AppCompatActivity
     {
         //-----------------------------------------------------------
-        public int Qtd { get; set; }
+        public double Qtd { get; set; }
 
         //-----------------------------------------------------------
         private readonly List<AddProducttoListView> _productList = new List<AddProducttoListView>();
         private AdapterListView _view;
         private int _clicked;
         private readonly ZsManager _manager = new ZsManager();
+        private EditText _txtPdtCodBarras;
+        public DialogLoading DialogFragment;
+        private BackgroundWorker _mWorker;
+        private Product _product;
 
         //-----------------------------------------------------------
         protected override void OnCreate(Bundle savedInstanceState)
@@ -37,12 +42,13 @@ namespace ZSProduct
             //-----------------------------------------------------------
             var toolBar = FindViewById<SupportToolbar>(Resource.Id.toolBar);
             SetSupportActionBar(toolBar);
-            var ab = SupportActionBar;
-            ab.SetHomeAsUpIndicator(Resource.Drawable.ic_arrow_back_white_18dp);
-            ab.SetDisplayHomeAsUpEnabled(true);
+            toolBar.SetNavigationIcon(Resource.Drawable.ic_arrow_back_white_18dp);
+            toolBar.NavigationClick += (sender, args) => OnBackPressed();
 
             //-----------------------------------------------------------
             _view = new AdapterListView(this, _productList);
+            _txtPdtCodBarras = FindViewById<EditText>(Resource.Id.txtPdtBarCode);
+            _mWorker = new BackgroundWorker();
 
             //-----------------------------------------------------------
             FindViewById<EditText>(Resource.Id.txtPdtBarCode).KeyPress += (sender, e) =>
@@ -69,15 +75,18 @@ namespace ZSProduct
             };
 
             //-----------------------------------------------------------
+
+            _txtPdtCodBarras.Click += (sender, args) => _txtPdtCodBarras.Text = "";
+
             FindViewById<FloatingActionButton>(Resource.Id.fabPdt).Click += (sender, args) =>
             {
                 if (_productList.Count <= 0) { Toast.MakeText(this, "A lista encontra-se vazia...", ToastLength.Short); return; }
                 _manager.SaveData(_productList);
                 Toast.MakeText(this, "Exportado com sucesso!", ToastLength.Short).Show();
                 if (_manager.HasEmail())
-                    SendEmail(Path.Combine(Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDownloads).Path, "export.csv"));
+                    SendEmail("/storage/emulated/0/SWProductstock.imp");
                 else
-                    Toast.MakeText(this, "Guardado em " + Path.Combine(Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDownloads).Path, "export.csv"), ToastLength.Short).Show();
+                    Toast.MakeText(this, "Guardado em " + "SWProduct/stock.imp", ToastLength.Short).Show();
             };
         }
 
@@ -91,7 +100,7 @@ namespace ZSProduct
 
             var email = new Intent(Intent.ActionSend);
             email.PutExtra(Intent.ExtraEmail, new[] { _manager.GetItem("emailToCSV") });
-            email.PutExtra(Intent.ExtraSubject, "Your CSV file.");
+            email.PutExtra(Intent.ExtraSubject, "[SW PRODUCT] Contagem de Stock.");
             email.PutExtra(Intent.ExtraStream, uri);
 
             email.SetType("message/rfc822");
@@ -124,16 +133,15 @@ namespace ZSProduct
         //-----------------------------------------------------------
         public void OpenDialog(string from)
         {
-            var transaction = FragmentManager.BeginTransaction();
-            var dialogFragment = new DialogQtdPdt();
-            dialogFragment.Show(transaction, "dialog_fragment");
-            dialogFragment.OnChangedComplete += (sender, e) =>
+            if (from == "add")
             {
-                Qtd = Convert.ToInt32(e.QtdSeted);
-                var t = from == "add" ? new Thread(AddItem) : new Thread(EditItem);
-                t.Start();
-            };
-
+                var transaction = FragmentManager.BeginTransaction();
+                DialogFragment = new DialogLoading();
+                DialogFragment.Show(transaction, "dialog_fragment");
+                new Thread(AddItem).Start();
+            }
+            else
+                new Thread(EditItem).Start();
         }
 
         //-----------------------------------------------------------
@@ -141,8 +149,16 @@ namespace ZSProduct
         {
             RunOnUiThread(() =>
             {
-                _productList[_clicked].Qtd = Qtd;
-                FindViewById<ListView>(Resource.Id.lstPdtProducts).Adapter = _view;
+                var transaction = FragmentManager.BeginTransaction();
+                var dialogFragment = new DialogQtdPdt(_productList[_clicked].Qtd);
+                dialogFragment.Show(transaction, "dialog_fragment");
+                dialogFragment.OnChangedComplete += (sender, e) =>
+                {
+                    Qtd = Convert.ToDouble(e.QtdSeted.ToString().Replace(".", ","));
+                    DialogFragment.Dismiss();
+                    _productList[_clicked].Qtd = Qtd;
+                    FindViewById<ListView>(Resource.Id.lstPdtProducts).Adapter = _view;
+                };
             });
         }
 
@@ -151,43 +167,76 @@ namespace ZSProduct
         {
             RunOnUiThread(() =>
             {
-                var getNif = _manager.GetItem("nif");
-                var getUsername = _manager.GetItem("username");
-                var getPassword = _manager.GetItem("password");
-                var getWarehouse = _manager.GetItem("storeToPdt");
-                Toast.MakeText(this, "bla: " + getWarehouse, ToastLength.Short).Show();
-                var zsHandler = new ZsClient(getUsername, getPassword, Convert.ToInt32(getWarehouse), getNif);
-                zsHandler.Login();
-                Console.WriteLine("AddItem started " + zsHandler.StoreCount());
-                var txtPdtCodBarras = FindViewById<EditText>(Resource.Id.txtPdtBarCode);
-                var barCode = txtPdtCodBarras.Text;
-                var existe = false;
-                foreach (var item in _productList)
-                    if (item.BarCode == txtPdtCodBarras.Text)
-                        existe = true;
-                zsHandler.Login();
-                if (!existe)
+                if (_manager.GetItem("loginType") == "zonesoft")
                 {
-                    var product = zsHandler.GetProductWithBarCode(barCode);
-                    if (product != null)
+                    _mWorker.DoWork += (a, b) =>
                     {
-                        _productList.Add(new AddProducttoListView(product.Description, product.ProductCode,
-                            product.Store, product.Stock, product.BarCode, product.Pvp1, product.Pvp2,
-                            product.Reference, product.SupplierId, product.Pcu, Qtd));
-                        FindViewById<ListView>(Resource.Id.lstPdtProducts).Adapter = _view;
-                        txtPdtCodBarras.Text = "";
-                    }
-                    else
-                    {
-                        Toast.MakeText(this, "Produto inexistente", ToastLength.Long).Show();
-                        txtPdtCodBarras.Text = "";
-                    }
+                        var getNif = _manager.GetItem("nif");
+                        var getUsername = _manager.GetItem("username");
+                        var getPassword = _manager.GetItem("password");
+                        var getWarehouse = _manager.GetItem("storeToPdt");
+                        var zsHandler = new ZsClient(getUsername, getPassword, Convert.ToInt32(getWarehouse), getNif);
+                        zsHandler.Login();
+                        Console.WriteLine("AddItem started " + zsHandler.StoreCount());
+                        var barCode = _txtPdtCodBarras.Text;
+                        _product = zsHandler.GetProductWithBarCode(barCode);
+                    };
                 }
                 else
                 {
-                    Toast.MakeText(this, "Produto já adicionado", ToastLength.Long).Show();
-                    txtPdtCodBarras.Text = "";
+                    _mWorker.DoWork += (a, b) =>
+                    {
+                        var etiHandler = new EtiClient(_manager.GetItem("username"), _manager.GetItem("password"),
+                            _manager.GetItem("ip"), Convert.ToUInt32(_manager.GetItem("port")));
+                        etiHandler.Login();
+                        var barCode = _txtPdtCodBarras.Text;
+                        _product = etiHandler.GetProductWithBarCode(barCode);
+                    };
                 }
+                _mWorker.RunWorkerAsync();
+
+                var done = false;
+                _mWorker.RunWorkerCompleted += (o, args) =>
+                {
+                    var existe = false;
+                    foreach (var item in _productList)
+                        if (item.BarCode == _txtPdtCodBarras.Text)
+                            existe = true;
+                    if (done) return;
+                    if (!existe)
+                    {
+                        if (_product != null)
+                        {
+                            DialogFragment.Dismiss();
+                            var transaction = FragmentManager.BeginTransaction();
+                            var dialogFragment = new DialogQtdPdt(1);
+                            dialogFragment.Show(transaction, "dialog_fragment");
+                            dialogFragment.OnChangedComplete += (sender, e) =>
+                            {
+                                Qtd = Convert.ToDouble(e.QtdSeted.ToString().Replace(".", ","));
+                                _productList.Add(new AddProducttoListView(_product.Description, _product.ProductCode,
+                                    _product.Stock, _product.BarCode, _product.Pvp1, _product.Pvp2,
+                                    _product.Reference, _product.Supplier, _product.Pcu, Qtd));
+                                FindViewById<ListView>(Resource.Id.lstPdtProducts).Adapter = _view;
+                                done = true;
+                            };
+                            _txtPdtCodBarras.Text = "";
+                            done = true;
+                        }
+                        else
+                        {
+                            DialogFragment.Dismiss();
+                            Toast.MakeText(this, "Produto inexistente", ToastLength.Long).Show();
+                            _txtPdtCodBarras.Text = "";
+                        }
+                    }
+                    else
+                    {
+                        DialogFragment.Dismiss();
+                        Toast.MakeText(this, "Produto já adicionado", ToastLength.Long).Show();
+                        _txtPdtCodBarras.Text = "";
+                    }
+                };
             });
         }
 

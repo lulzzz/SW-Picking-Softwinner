@@ -44,6 +44,11 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
+                    android:nextFocusForward="@+id/txtPdtBarCode"
+                    android:nextFocusDown="@+id/txtPdtBarCode"
+                    android:nextFocusUp="@+id/txtPdtBarCode"
+                    android:nextFocusRight="@+id/txtPdtBarCode"
+                    android:nextFocusLeft="@+id/txtPdtBarCode"
                     android:hint="@string/productBarCode" />
             </android.support.design.widget.TextInputLayout>
             <LinearLayout
