@@ -8,7 +8,7 @@
   <string name="currentSession">SESSÃO ATUAL</string>
   <string name="logOut">TERMINAR SESSÃO ATUAL</string>
   <string name="pdtFunction">FUNÇÃO DE PDT</string>
-  <string name="sendCsvFileEmail">Enviar ficheiro .CSV por email</string>
+  <string name="sendCsvFileEmail">Enviar ficheiro por email</string>
   <string name="chooseWarehouse">Escolha o Armazém</string>
 
   <string name="productBarCode">Código de Barras</string>

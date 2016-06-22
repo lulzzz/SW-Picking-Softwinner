@@ -24,7 +24,6 @@ namespace ZSProduct
             SetContentView(Resource.Layout.Login);
 
             var btnLogin = FindViewById<Button>(Resource.Id.btnLoginLogin);
-            // var btnPreencher = FindViewById<Button>(Resource.Id.btnLoginPreencher);
             var item1 = FindViewById<LinearLayout>(Resource.Id.item1);
             var item2 = FindViewById<LinearLayout>(Resource.Id.item2);
             var optionsItem1 = FindViewById<LinearLayout>(Resource.Id.optionsItem1);

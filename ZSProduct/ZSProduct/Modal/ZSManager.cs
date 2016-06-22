@@ -58,7 +58,7 @@ namespace ZSProduct.Modal
         {
             //var downloadsFolder = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDownloads);
             // const string downloadsFolder = "/storage/emulated/0/SWProduct";
-            const string filePath = "/storage/emulated/0/SWProductstock.imp";
+            const string filePath = "/storage/emulated/0/SWPicking.imp";
 
             using (var streamWriter = new StreamWriter(filePath, false))
             {

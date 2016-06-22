@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
@@ -10,6 +11,8 @@ using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
 using ZSProduct.Modal;
+using static Android.Views.ViewGroup.LayoutParams;
+using String = Java.Lang.String;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 
 //-----------------------------------------------------------
@@ -42,10 +45,10 @@ namespace ZSProduct
         private bool _searchingByBarCode;
         private bool _searchingByCode;
         private bool _searchingByReference;
+        private bool _searchComplete;
         private BackgroundWorker _mWorker;
         private Product _product;
         private int _stock;
-
         public Dictionary<string, int> Stock;
         public List<AddStockStore> ListStocks;
 
@@ -64,19 +67,6 @@ namespace ZSProduct
             _username = _manager.GetItem("username");
             _password = _manager.GetItem("password");
             _loginType = _manager.GetItem("loginType");
-            if (_loginType == "zonesoft")
-            {
-                _nif = _manager.GetItem("nif");
-                _zsClient = new ZsClient(_username, _password, 0, _nif);
-                _zsClient.Login();
-            }
-            else
-            {
-                _ip = _manager.GetItem("ip");
-                _port = Convert.ToUInt32(_manager.GetItem("port"));
-                _etiClient = new EtiClient(_username, _password, _ip, _port);
-                _etiClient.Login();
-            }
 
             _txtBarCode = FindViewById<EditText>(Resource.Id.txtProdFinderBarCode);
             _txtCode = FindViewById<TextView>(Resource.Id.txtProdFinderProductCode);
@@ -91,15 +81,38 @@ namespace ZSProduct
             ListStocks = new List<AddStockStore>();
             _stock = 0;
 
+            if (_loginType == "zonesoft")
+            {
+                _nif = _manager.GetItem("nif");
+                _zsClient = new ZsClient(_username, _password, 0, _nif);
+                _zsClient.Login();
+            }
+            else
+            {
+                _txtRef.Enabled = false;
+                _ip = _manager.GetItem("ip");
+                _port = Convert.ToUInt32(_manager.GetItem("port"));
+                _etiClient = new EtiClient(_username, _password, _ip, _port);
+                _etiClient.Login();
+            }
+
             _txtBarCode.Click += (sender, args) => _txtBarCode.Text = "";
 
-            _txtCode.Click += (sender, args) => _txtCode.Text = "";
+            _txtCode.Click += (sender, args) =>
+            {
+                if (_loginType != "eticadata") _txtCode.Text = "";
+            };
 
             _txtRef.Click += (sender, args) => _txtRef.Text = "";
 
             _txtBarCode.KeyPress += (sender, e) =>
             {
                 if (_searchingByCode || _searchingByReference) return;
+                if (_searchComplete)
+                {
+                    _txtBarCode.Text = "";
+                    _searchComplete = false;
+                }
                 _searchingByBarCode = true;
                 e.Handled = false;
                 if (e.Event.Action != KeyEventActions.Down || e.KeyCode != Keycode.Enter) return;
@@ -109,7 +122,7 @@ namespace ZSProduct
                 dialogFragment.Show(transaction, "dialog_fragment");
                 var barCode = _txtBarCode.Text;
                 ZsClient zsHandler = null;
-                    _product = null;
+                _product = null;
                 _mWorker.DoWork += (a, b) =>
                 {
                     zsHandler = new ZsClient(_username, _password, 0, _nif);
@@ -226,6 +239,7 @@ namespace ZSProduct
                             ClearFields("barCode");
                         }
                     }
+                    _searchComplete = true;
                 };
                 e.Handled = true;
                 _searchingByBarCode = false;
@@ -400,8 +414,8 @@ namespace ZSProduct
         //-----------------------------------------------------------
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            menu.Add(new Java.Lang.String("Configurações"));
-            menu.Add(new Java.Lang.String("Sobre"));
+            menu.Add(new String("Configurações"));
+            menu.Add(new String("Sobre"));
             return true;
         }
 

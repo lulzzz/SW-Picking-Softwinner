@@ -2407,10 +2407,11 @@ containing a value of this type.
         public static final int icon_settings=0x7f02005f;
         public static final int logo_eticadata=0x7f020060;
         public static final int logo_zonesoft=0x7f020061;
-        public static final int notification_template_icon_bg=0x7f020065;
+        public static final int notification_template_icon_bg=0x7f020066;
         public static final int pdtlistrect=0x7f020062;
         public static final int stock=0x7f020063;
-        public static final int unnamed=0x7f020064;
+        public static final int swpicking_logo=0x7f020064;
+        public static final int unnamed=0x7f020065;
     }
     public static final class id {
         public static final int action0=0x7f0600a5;

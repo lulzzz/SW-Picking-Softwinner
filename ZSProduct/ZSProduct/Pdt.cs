@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
@@ -84,9 +85,9 @@ namespace ZSProduct
                 _manager.SaveData(_productList);
                 Toast.MakeText(this, "Exportado com sucesso!", ToastLength.Short).Show();
                 if (_manager.HasEmail())
-                    SendEmail("/storage/emulated/0/SWProductstock.imp");
+                    SendEmail("/storage/emulated/0/SWPicking.imp");
                 else
-                    Toast.MakeText(this, "Guardado em " + "SWProduct/stock.imp", ToastLength.Short).Show();
+                    Toast.MakeText(this, "Guardado em " + "SWPicking/stock.imp", ToastLength.Short).Show();
             };
         }
 
@@ -100,7 +101,8 @@ namespace ZSProduct
 
             var email = new Intent(Intent.ActionSend);
             email.PutExtra(Intent.ExtraEmail, new[] { _manager.GetItem("emailToCSV") });
-            email.PutExtra(Intent.ExtraSubject, "[SW PRODUCT] Contagem de Stock.");
+            email.PutExtra(Intent.ExtraSubject, "[SW PICKING] Contagem de Stock.");
+            email.PutExtra(Intent.ExtraText, "Contagem retirada no dia " + DateTime.Now.ToString(CultureInfo.InvariantCulture));
             email.PutExtra(Intent.ExtraStream, uri);
 
             email.SetType("message/rfc822");
@@ -213,11 +215,23 @@ namespace ZSProduct
                             dialogFragment.Show(transaction, "dialog_fragment");
                             dialogFragment.OnChangedComplete += (sender, e) =>
                             {
-                                Qtd = Convert.ToDouble(e.QtdSeted.ToString().Replace(".", ","));
-                                _productList.Add(new AddProducttoListView(_product.Description, _product.ProductCode,
-                                    _product.Stock, _product.BarCode, _product.Pvp1, _product.Pvp2,
-                                    _product.Reference, _product.Supplier, _product.Pcu, Qtd));
-                                FindViewById<ListView>(Resource.Id.lstPdtProducts).Adapter = _view;
+                                try
+                                {
+                                    Qtd = Convert.ToDouble(e.QtdSeted.ToString().Replace(".", ","));
+                                }
+                                catch
+                                {
+                                    Qtd = 0;
+                                }
+                                if (Qtd > 0)
+                                {
+                                    _productList.Add(new AddProducttoListView(_product.Description, _product.ProductCode,
+                                        _product.Stock, _product.BarCode, _product.Pvp1, _product.Pvp2,
+                                        _product.Reference, _product.Supplier, _product.Pcu, Qtd));
+                                    FindViewById<ListView>(Resource.Id.lstPdtProducts).Adapter = _view;
+                                }
+                                else
+                                    Toast.MakeText(this, "Não é possivel adicionar um produto sem quantidade...", ToastLength.Short).Show();
                                 done = true;
                             };
                             _txtPdtCodBarras.Text = "";

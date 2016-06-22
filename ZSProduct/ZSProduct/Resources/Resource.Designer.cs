@@ -1944,8 +1944,8 @@ namespace ZSProduct
 			// aapt resource value: 0x7f020061
 			public const int logo_zonesoft = 2130837601;
 			
-			// aapt resource value: 0x7f020065
-			public const int notification_template_icon_bg = 2130837605;
+			// aapt resource value: 0x7f020066
+			public const int notification_template_icon_bg = 2130837606;
 			
 			// aapt resource value: 0x7f020062
 			public const int PdtListRect = 2130837602;
@@ -1954,7 +1954,10 @@ namespace ZSProduct
 			public const int stock = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int unnamed = 2130837604;
+			public const int SWPicking_logo = 2130837604;
+			
+			// aapt resource value: 0x7f020065
+			public const int unnamed = 2130837605;
 			
 			static Drawable()
 			{

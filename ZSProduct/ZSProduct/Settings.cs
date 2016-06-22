@@ -57,6 +57,13 @@ namespace ZSProduct
                 FindViewById<LinearLayout>(Resource.Id.lnlaSettingsChangeWarehouse).Visibility = ViewStates.Gone;
             }
 
+            if (_manager.HasEmail())
+            {
+                _chkSettingsCsvToEmail.Checked = true;
+                _txtSettingsEmailCsv.Visibility = ViewStates.Visible;
+                _txtSettingsEmailCsv.Text = _manager.GetItem("emailToCsv");
+            }
+
             _mWorker.DoWork += (o, a) =>
             {
                 if (_manager.GetItem("loginType") == "zonesoft")
@@ -84,9 +91,9 @@ namespace ZSProduct
             };
 
             _chkSettingsCsvToEmail.Click += (sender, args) =>
-        {
-            _txtSettingsEmailCsv.Visibility = _chkSettingsCsvToEmail.Checked ? ViewStates.Visible : ViewStates.Gone;
-        };
+            {
+                _txtSettingsEmailCsv.Visibility = _chkSettingsCsvToEmail.Checked ? ViewStates.Visible : ViewStates.Gone;
+            };
 
             _lblSettingsSignOut.Click += (sender, args) =>
             {
